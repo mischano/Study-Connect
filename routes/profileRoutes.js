@@ -2,26 +2,56 @@ const express = require("express");
 const profileModel = require("../models/profile");
 const app = express();
 
-app.get('/profiles', (req, res) => {
+/* Establishes a /profiles endpoint for GET requests */
+app.get("/profiles", async (req, res) => {
+   const profiles = await profileModel.find({});
 
-  profileModel.find({})
-      .then((data) => {
-        console.log('Data: ', data);
-        res.json(data);
-      })
-      .catch((error) => {
-        console.log('error');
-      });
+   try {
+      res.send(profiles);
+   } catch (error) {
+      res.status(500).send(error);
+   }
 });
 
-app.get("/profiles", async (request, response) => {
-  const profiles = await profileModel.find({});
+/* Establishes a /profile endpoint for POST requests to
+   create a new profile and save it to the database */
+app.post("/profile", async (req, res) => {
+   const profile = new profileModel(req.body);
 
-  try {
-    response.send(profiles);
-  } catch (error) {
-    response.status(500).send(error);
-  }
+   try {
+      await profile.save();
+      res.send(profile);
+   } catch (error) {
+      res.status(500).send(error);
+   }
+});
+
+/* Establishes a /profile/:id endpoint for PATCH requests
+   to update an existing profile and save the changes to
+   the database */
+app.patch("/profile/:id", async (req, res) => {
+   try {
+      await profileModel.findByIdAndUpdate(req.params.id, req.body);
+      await profileModel.save();
+      res.send(profile);
+   } catch (error) {
+      res.status(500).send(error);
+   }
+});
+
+/* Establishes a /profile/:id endpoint for DELETE requests
+   to remove an existing profile and save the changes to
+   the database */
+app.delete("/profile/:id", async (req, res) => {
+   try {
+      const profile = await profileModel.findByIdAndDelete(req.params.id);
+
+      if (!profile)
+         res.status(404).send("No profile found.");
+      res.status(200).send();
+   } catch (error) {
+      res.status(500).send(error);
+   }
 });
 
 module.exports = app;

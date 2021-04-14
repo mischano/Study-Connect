@@ -16,6 +16,8 @@ mongoose.connect(
       useUnifiedTopology: true
    });
 
+
+/*
 const classData = {
     department: 'CSC',
     number: 430,
@@ -43,7 +45,7 @@ newUser.save((error) => {
         console.log('data has been saved');
     }
 })
-
+/*
 app.use(profileRouter);
 
 app.get('/', (req, res) => {
@@ -53,3 +55,4 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
    console.log('Server is running...')
 });
+*/

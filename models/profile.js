@@ -7,7 +7,7 @@ const profileSchema = new mongoose.Schema({
    college: String,
    major: String,
    friends: [String],
-   classes: [{type: Schema.Types.ObjectId, ref: 'Class'}]
+   classes: [{ type: Schema.Types.ObjectId, ref: 'Class' }]
 });
 
 const Profile = mongoose.model("Profile", profileSchema);
