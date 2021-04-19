@@ -91,42 +91,4 @@ mongoose.connect(
       useUnifiedTopology: true
    });
 
-/*
-const classData = {
-    department: 'CSC',
-    number: 430,
-    startTime: 12,
-    endTime: 14
-}
-
-const userData = {
-    user: 'Lucas Radovan',
-    pass: '1234',
-    college: 'CPSLO',
-    major: 'CS',
-    friends: ['Raphael', 'Mansur', 'Keith', 'Caroline'],
-    classes: []
-}
-
-const newUser = new Profile(userData);
-
-newUser.classes.push(new Class(classData));
-
-newUser.save((error) => {
-    if (error) {
-        console.log('Something went wrong');
-    } else {
-        console.log('data has been saved');
-    }
-})
-/*
 app.use(profileRouter);
-
-app.get('/', (req, res) => {
-   res.send("Hello world!")
-});
-
-app.listen(PORT, () => {
-   console.log('Server is running...')
-});
-*/

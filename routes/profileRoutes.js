@@ -1,6 +1,9 @@
 const express = require("express");
 const profileModel = require("../models/profile");
 const app = express();
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.json());
 
 /* Establishes a /profiles endpoint for GET requests */
 app.get("/profiles", async (req, res) => {
