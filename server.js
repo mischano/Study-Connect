@@ -8,6 +8,10 @@ const mongoose = require("mongoose");
 const socketio = require('socket.io');
 
 const profileRouter = require("./routes/profileRoutes.js");
+const classRouter = require("./routes/classRoutes.js");
+const messageRouter = require("./routes/messageRoutes.js");
+const conversationRouter = require("./routes/conversationRoutes.js");
+
 const Profile = require("./models/profile");
 const Class = require("./models/class");
 
@@ -91,4 +95,7 @@ mongoose.connect(
       useUnifiedTopology: true
    });
 
+app.use(classRouter);
+app.use(conversationRouter);
+app.use(messageRouter);
 app.use(profileRouter);
