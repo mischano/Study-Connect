@@ -7,7 +7,7 @@ app.use(bodyParser.json());
 
 /* Establishes a /conversation endpoint for GET requests */
 app.get("/conversations", async (req, res) => {
-    const conversation = await conversationModel.find({});
+    const conversations = await conversationModel.find({});
 
     try {
         res.send(conversations);

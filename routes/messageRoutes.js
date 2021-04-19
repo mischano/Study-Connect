@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 
 /* Establishes a /messages endpoint for GET requests */
 app.get("/messages", async (req, res) => {
-    const message = await messageModel.find({});
+    const messages = await messageModel.find({});
 
     try {
         res.send(messages);
