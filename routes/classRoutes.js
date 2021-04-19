@@ -1,6 +1,9 @@
 const express = require("express");
 const classModel = require("../models/class");
 const app = express();
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.json());
 
 /* Establishes a /classes endpoint for GET requests */
 app.get("/classes", async (req, res) => {
