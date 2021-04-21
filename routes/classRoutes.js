@@ -3,6 +3,7 @@ const classModel = require("../models/class");
 const app = express();
 const bodyParser = require('body-parser');
 
+// hi
 app.use(bodyParser.json());
 
 /* Establishes a /classes endpoint for GET requests */
