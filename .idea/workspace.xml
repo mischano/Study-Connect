@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0f9810dd-e0e9-415a-b2f1-7a219cb39769" name="Default Changelist" comment="fixed routes" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1r5W4ldTvm2PXZQUeFzkpmTpGS5" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0f9810dd-e0e9-415a-b2f1-7a219cb39769" name="Default Changelist" comment="" />
+      <created>1618266241977</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1618266241977</updated>
+      <workItem from="1618266243798" duration="3754000" />
+      <workItem from="1618280546813" duration="5825000" />
+      <workItem from="1618358096843" duration="4732000" />
+      <workItem from="1618362958529" duration="197000" />
+      <workItem from="1618426628793" duration="3043000" />
+      <workItem from="1618543974543" duration="5967000" />
+      <workItem from="1618806013796" duration="621000" />
+      <workItem from="1618806726934" duration="2074000" />
+      <workItem from="1618810273504" duration="33000" />
+      <workItem from="1618854931802" duration="12652000" />
+      <workItem from="1619147233306" duration="279000" />
+      <workItem from="1619147686968" duration="5000" />
+      <workItem from="1619214389550" duration="685000" />
+    </task>
+    <task id="LOCAL-00001" summary="fixed database">
+      <created>1618358789550</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1618358789550</updated>
+    </task>
+    <task id="LOCAL-00002" summary="fixed profile schema">
+      <created>1618808430027</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1618808430027</updated>
+    </task>
+    <task id="LOCAL-00003" summary="updated profileRoutes to use body-parser">
+      <created>1618808604534</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1618808604534</updated>
+    </task>
+    <task id="LOCAL-00004" summary="updated classRoutes to use body-parser">
+      <created>1618855024239</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1618855024239</updated>
+    </task>
+    <task id="LOCAL-00005" summary="added conversation and message schema, as well as appropriate routes">
+      <created>1618865656767</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1618865656767</updated>
+    </task>
+    <task id="LOCAL-00006" summary="fixed routes">
+      <created>1618866211933</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1618866211933</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fixed database" />
+    <MESSAGE value="fixed profile schema" />
+    <MESSAGE value="updated profileRoutes to use body-parser" />
+    <MESSAGE value="updated classRoutes to use body-parser" />
+    <MESSAGE value="added conversation and message schema, as well as appropriate routes" />
+    <MESSAGE value="fixed routes" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed routes" />
+  </component>
+</project>
