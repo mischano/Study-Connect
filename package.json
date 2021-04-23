@@ -18,10 +18,12 @@
   },
   "homepage": "https://github.com/Raphael-Pham/study_connect#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "moment": "^2.29.1",
-    "mongoose": "^5.12.3",
+    "mongodb": "^3.6.6",
+    "mongoose": "^5.12.5",
     "socket.io": "^4.0.1"
   },
   "devDependencies": {
