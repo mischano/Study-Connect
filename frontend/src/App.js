@@ -1,36 +1,35 @@
 import React from 'react';
 import './App.css';
-import nav from './components/nav';
+import Nav from './components/Nav';
+import Login from './components/Login';
+import Signup1 from './components/Signup1';
+import Signup2 from './components/Signup2';
+import Signup3 from './components/Signup3';
 import Dashboard from './components/Dashboard';
 import Groups from './components/Groups';
 import Messages from './components/Messages';
 import Profile from './components/Profile';
-import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
-
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 function App() {
   return (
     <Router>
     <div className="App">
-      <nav />
+      <Nav />
 
       <Switch>
-      <Route path="/" exact component={Home}/>
-      <Route path="/dashboard" exact component={Dashboard} />
-      <Route path="/groups" exact component={Groups} />
-      <Route path="/messages" exact component={Messages} />
-      <Route path="/profile" exact component={Profile} />
+      <Route path="/" exact component={Dashboard}/>
+      <Route path="/login" exact component={Login}/>
+      <Route path="/signup1" exact component={Signup1}/>
+      <Route path="/signup2" exact component={Signup2}/>
+      <Route path="/signup3" exact component={Signup3}/>
+      <Route path="/groups" exact component={Groups}/>
+      <Route path="/messages" exact component={Messages}/>
+      <Route path="/profile" exact component={Profile}/>
       </Switch> 
     </div>
     </Router>
   );
 }
-
-const Home = () => (
-  <div>
-<h1> Home Page </h1>
-    </div>
-
-);
 
 export default App;

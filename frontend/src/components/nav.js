@@ -1,28 +1,46 @@
 import React from 'react';
 import '../App.css';
-
 import { Link } from 'react-router-dom';
 
-function nav()
+export default class Nav extends React.Component
 {
-    return (
-        <nav>
-            <u1 className="nav-links">
-            <Link to="/Dashboard">
-                    <li>  Dashboard </li> 
-                </Link>
-                <Link to="/Messages">
-                    <li>  Messages </li> 
-                </Link>
-                <Link to="/Profile">
-                    <li>  Profile </li> 
-                </Link>
-                <Link to="/Groups">
-                    <li> Groups</li> 
-                </Link>
-            </u1>
-        </nav>
-    );
-}
+   constructor(props) {
+      super(props);
+   }
 
-export default nav;
+   render() {
+      const navStyle = {
+      color: 'white'
+      };
+      return (
+         <nav>
+            <ul className="nav-links">
+               <Link style={navStyle} to="/">
+                  <li> Dashboard </li> 
+               </Link>
+               <Link style={navStyle} to="/messages">
+                  <li> Messages </li> 
+               </Link>
+               <Link style={navStyle} to="/profile">
+                  <li> Profile </li> 
+               </Link>
+               <Link style={navStyle} to="/groups">
+                  <li> Groups </li> 
+               </Link>
+               <Link style={navStyle} to="/login">
+                  <li> Login </li>
+               </Link>
+               <Link style={navStyle} to="/signup1">
+                  <li> Signup 1 </li>
+               </Link>
+               <Link style={navStyle} to="/signup2">
+                  <li> Signup 2 </li>
+               </Link>
+               <Link style={navStyle} to="/signup3">
+                  <li> Signup 3 </li>
+               </Link>
+            </ul>
+         </nav>
+      );
+   }
+}

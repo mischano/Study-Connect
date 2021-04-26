@@ -1,13 +1,17 @@
 import React from 'react';
 import '../App.css';
 
-function Messages()
+export default class Messages extends React.Component
 {
-    return (
-        <div>
-            <h1> Messages </h1>
-        </div>
-    );
-}
+   constructor(props) {
+      super(props);
+   }
 
-export default Messages;
+   render() {
+      return (
+         <div>
+            <h1> Messages </h1>
+         </div>
+      );
+   }
+}

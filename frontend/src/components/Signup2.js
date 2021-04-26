@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
 
-export default class Profile extends React.Component
+export default class Signup2 extends React.Component
 {
    constructor(props) {
       super(props);
@@ -10,7 +10,7 @@ export default class Profile extends React.Component
    render() {
       return (
          <div>
-            <h1> Profile </h1>
+            <h1> Signup2 </h1>
          </div>
       );
    }

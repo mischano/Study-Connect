@@ -1,13 +1,17 @@
 import React from 'react';
 import '../App.css';
 
-function Groups()
+export default class Groups extends React.Component
 {
-    return (
-        <div>
-            <h1> Groups </h1>
-        </div>
-    );
-}
+   constructor(props) {
+      super(props);
+   }
 
-export default Groups;
+   render() {
+      return (
+         <div>
+            <h1> Groups </h1>
+         </div>
+      );
+   }
+}
