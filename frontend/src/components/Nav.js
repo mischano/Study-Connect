@@ -18,6 +18,9 @@ export default class Nav extends React.Component
                <Link style={navStyle} to="/">
                   <li> Dashboard </li> 
                </Link>
+               <Link style={navStyle} to="/auth">
+                  <li> Auth </li>
+               </Link>
                <Link style={navStyle} to="/messages">
                   <li> Messages </li> 
                </Link>
