@@ -4,9 +4,9 @@ import {GoogleLogin} from 'react-google-login';
 import useStyles from './styles';
 import Input from './Input';
 import Icon from './icon';
-
+import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
-
+import { signin , signup } from '../../actions/auth';
 
 const intitialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
 
@@ -16,10 +16,17 @@ const Auth = () => {
     const [isSignup, setIsSignup] = useState(false);
     const [formData, setFormData] = useState(intitialState);
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(formData);
+
+        if(isSignup) {
+            dispatch(signup(formData, history))
+        }
+        else {
+            dispatch(signin(formData, history))
+        }
     };
 
     const handleChange = (e) => {
@@ -28,7 +35,7 @@ const Auth = () => {
 
     const switchMode = () => {
         setIsSignup((prevIsSignup) => !prevIsSignup);
-        handleShowPassword(false);
+        setShowPassword(false);
     };
 
     const googleSuccess = async (res) => {
@@ -36,7 +43,7 @@ const Auth = () => {
        const token = res?.tokenId;
        try {
            dispatch({type: 'AUTH', data: { result, token}});
-
+           history.push('/');
        } catch (error) {
            console.log(error)
        }
@@ -68,6 +75,7 @@ const Auth = () => {
                         {isSignup && <Input name="confirmPassword" label="Repeat Password" handleChange={handleChange}
                                             type="password"/>}
                     </Grid>
+
                     <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
                         {isSignup ? 'Continue' : 'Sign In'}
                     </Button>

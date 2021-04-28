@@ -1,19 +1,23 @@
-/*****************************************************
- * npm run dev -- To run the server on local host.   *
- * http://localhost:5000/                            *
- ****************************************************/
 
-const express = require("express");
-const mongoose = require("mongoose");
+import express from "express";
+import mongoose from "mongoose";
+import bodyParser from 'body-parser';
+import cors from 'cors';
 
-const profileRouter = require("./routes/profileRoutes.js");
-const classRouter = require("./routes/classRoutes.js");
-const messageRouter = require("./routes/messageRoutes.js");
-const conversationRouter = require("./routes/conversationRoutes.js");
+import profileRouter from './routes/profileRoutes.js';
+
+//const classRouter = require("./routes/classRoutes.js");
+//const messageRouter = require("./routes/messageRoutes.js");
+//const conversationRouter = require("./routes/conversationRoutes.js");
 
 const app = express();
 
-const PORT = 5000 || process.env.PORT;
+const PORT = 5000;
+
+app.use(bodyParser.json({ limit: "30mb", extended: true}));
+//app.use(bodyParser.urlencoded({ limit: "30mb", extended: true}));
+app.use(cors());
+app.use('/user', profileRouter)
 
 mongoose.connect(
    "mongodb+srv://StudyConnectUser:srcAVv$vq!7Lvfr@studyconnect.dscne.mongodb.net/StudyConnect?retryWrites=true&w=majority",
@@ -24,9 +28,11 @@ mongoose.connect(
    });
 
 const db = mongoose.connection;
+
 db.once('open', _ => {
     console.log('Database connected...');
 });
+
 
 db.on('error', err => {
     console.error('Database connection error...', err);
@@ -38,7 +44,7 @@ app.get('/', (req, res) => {
 
 app.listen(PORT, () => console.log(`Server running on PORT ${PORT}`));
 
-app.use(classRouter);
-app.use(conversationRouter);
-app.use(messageRouter);
-app.use(profileRouter);
+//app.use(classRouter);
+//app.use(conversationRouter);
+//app.use(messageRouter);
+//app.use(profileRouter);

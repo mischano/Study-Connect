@@ -1,9 +1,14 @@
-const express = require("express");
-const profileModel = require("../models/profile");
-const app = express();
-const bodyParser = require('body-parser');
 
-app.use(bodyParser.json());
+import express from "express";
+import profileModel from "../models/profile.js";
+const app = express();
+
+import { signin, signup } from '../controllers/profile.js'
+
+const router = express.Router();
+
+router.post('/signin', signin)
+router.post('/signup', signup)
 
 /* Establishes a /profiles endpoint for GET requests */
 app.get("/profiles", async (req, res) => {
@@ -56,5 +61,7 @@ app.delete("/profile/:id", async (req, res) => {
       res.status(500).send(error);
    }
 });
+// module.exports = app;
 
-module.exports = app;
+export default router;
+

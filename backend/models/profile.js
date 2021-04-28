@@ -1,14 +1,16 @@
-const mongoose = require("mongoose");
-const Schema = require("mongoose");
+import mongoose from 'mongoose'
 
 const profileSchema = new mongoose.Schema({
-   user: String,
-   pass: String,
-   college: String,
-   major: String,
-   friends: [{ type: Schema.Types.ObjectId, ref: 'Profile'}],
-   classes: [{ type: Schema.Types.ObjectId, ref: 'Class' }]
+   name: { type: String, required: true},
+   email : { type: String, required: true},
+   password : { type: String, required: true},
+   id: { type: String }
+ //  major: String,
+ //  friends: [{ type: Schema.Types.ObjectId, ref: 'Profile'}],
+  // classes: [{ type: Schema.Types.ObjectId, ref: 'Class' }]
 });
 
-const Profile = mongoose.model("Profile", profileSchema);
-module.exports = Profile;
+export default mongoose.model("Profile", profileSchema);
+
+//const Profile = mongoose.model("Profile", profileSchema);
+//module.exports = Profile;
