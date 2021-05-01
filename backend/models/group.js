@@ -1,10 +1,9 @@
 const mongoose = require("mongoose");
 const Schema = require("mongoose");
 
-const conversationSchema = new mongoose.Schema(
+const groupSchema = new mongoose.Schema(
     {
     participants: [{ type: Schema.Types.ObjectId, ref: 'Profile'}]
 });
 
-const Conversation = mongoose.model("Conversation", conversationSchema);
-module.exports = Conversation;
+export default mongoose.model("Profile", groupSchema);
