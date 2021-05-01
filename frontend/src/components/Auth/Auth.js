@@ -8,7 +8,16 @@ import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { signin , signup } from '../../actions/auth';
 
-const intitialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
+const intitialState = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    school: '',
+    major: '',
+    gradDate: '',
+};
 
 const Auth = () => {
     const classes = useStyles();
@@ -24,6 +33,7 @@ const Auth = () => {
         if(isSignup) {
             dispatch(signup(formData, history))
         }
+
         else {
             dispatch(signin(formData, history))
         }
@@ -67,6 +77,9 @@ const Auth = () => {
                             <>
                                 <Input name="firstName" label="First Name" handleChange={handleChange} autoFocus half/>
                                 <Input name="lastName" label="Last Name" handleChange={handleChange} half/>
+                                <Input name="school" label="Name of School" handleChange={handleChange} />
+                                <Input name="major" label="Major" handleChange={handleChange} half/>
+                                <Input name="gradDate" label="Exp. Grad. Date" handleChange={handleChange} half/>
                             </>
                         )}
                         <Input name="email" label="Email Address" handleChange={handleChange} type="email"/>
@@ -76,7 +89,7 @@ const Auth = () => {
                                             type="password"/>}
                     </Grid>
 
-                    <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
+                    <Button type="submit" fullWidth variant="contained" color="secondary" className={classes.submit}>
                         {isSignup ? 'Continue' : 'Sign In'}
                     </Button>
                     <GoogleLogin
@@ -93,7 +106,7 @@ const Auth = () => {
                     <Grid container justify="flex-end">
                         <Grid item>
                             <Button onClick={switchMode}>
-                                {isSignup ? 'Already have an account? Sign In' : "Don't have an account? Sign up"}
+                                {isSignup ? 'Already have an account? Sign In here' : "Don't have an account? Register here"}
                             </Button>
                         </Grid>
                     </Grid>

@@ -1,16 +1,15 @@
-
 import express from "express";
-import profileModel from "../models/profile.js";
-const app = express();
 
-import { signin, signup } from '../controllers/profile.js'
+import { signin, signup } from '../controllers/user.js'
 
 const router = express.Router();
 
 router.post('/signin', signin)
 router.post('/signup', signup)
 
-/* Establishes a /profiles endpoint for GET requests */
+export default router;
+
+/*
 app.get("/profiles", async (req, res) => {
    const profiles = await profileModel.find({});
 
@@ -21,8 +20,7 @@ app.get("/profiles", async (req, res) => {
    }
 });
 
-/* Establishes a /profile endpoint for POST requests to
-   create a new profile and save it to the database */
+
 app.post("/profile", async (req, res) => {
    const profile = new profileModel(req.body);
 
@@ -34,9 +32,7 @@ app.post("/profile", async (req, res) => {
    }
 });
 
-/* Establishes a /profile/:id endpoint for PATCH requests
-   to update an existing profile and save the changes to
-   the database */
+
 app.patch("/profile/:id", async (req, res) => {
    try {
       await profileModel.findByIdAndUpdate(req.params.id, req.body);
@@ -47,9 +43,6 @@ app.patch("/profile/:id", async (req, res) => {
    }
 });
 
-/* Establishes a /profile/:id endpoint for DELETE requests
-   to remove an existing profile and save the changes to
-   the database */
 app.delete("/profile/:id", async (req, res) => {
    try {
       const profile = await profileModel.findByIdAndDelete(req.params.id);
@@ -62,6 +55,6 @@ app.delete("/profile/:id", async (req, res) => {
    }
 });
 // module.exports = app;
+*/
 
-export default router;
 
