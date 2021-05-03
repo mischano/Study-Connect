@@ -38,7 +38,6 @@ function Signup1()
     
       const handleClose = () => {
         setOpen(false);
-
       };
 
       return (
@@ -179,7 +178,6 @@ function Signup1()
               <Grid item xs={3} sm={3}>
                 <InputField name="endTime" label="end time" handleChange={handleChange} />
               </Grid>
-
             </Grid>
         </div>
       );

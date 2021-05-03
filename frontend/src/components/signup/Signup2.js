@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../../App.css';
+import Signup1 from './Signup1'
 
-export default class Signup2 extends React.Component
+function Signup2()
 {
-   constructor(props) {
-      super(props);
-   }
+   const [inputList, setInputList] = useState([]);
 
-   render() {
-      return (
-         <div>
-            <h1> Signup2 </h1>
-         </div>
-      );
-   }
+   const onAddBtnClick = event => {
+      setInputList(inputList.concat(<Signup1 key={inputList.length} />));
+   };
+
+   return (
+       <div>
+          <button onClick={onAddBtnClick}>Add a Class</button>
+          {inputList}
+       </div>
+   )
 }
+
+export default Signup2;
