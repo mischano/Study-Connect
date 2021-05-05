@@ -36,14 +36,24 @@ function getStudyTip(){
 function getGreeting(){
    let today = new Date();
    let currentHour = today.getHours();
-   let userName = (JSON.parse(localStorage.getItem('profile'))).result.name;
-   if(userName){ }
-   if(currentHour >= 5 && currentHour < 12){
-      return("Good morning, " + userName + "!");
-   } else if (currentHour >= 12 && currentHour < 17){
-      return("Good afternoon, " + userName + "!");
-   } else if(currentHour >= 17 || currentHour < 5){
-      return("Good evening, " + userName + "!");
+   if(JSON.parse(localStorage.getItem('profile'))){
+      let userName = (JSON.parse(localStorage.getItem('profile'))).result.name;
+      if(currentHour >= 5 && currentHour < 12){
+         return("Good morning, " + userName + "!");
+      } else if (currentHour >= 12 && currentHour < 17){
+         return("Good afternoon, " + userName + "!");
+      } else if(currentHour >= 17 || currentHour < 5){
+         return("Good evening, " + userName + "!");
+      }
+   } else{
+      if(currentHour >= 5 && currentHour < 12){
+         return("Good morning!");
+      } else if (currentHour >= 12 && currentHour < 17){
+         return("Good afternoon!");
+      } else if(currentHour >= 17 || currentHour < 5){
+         return("Good evening!");
+      }
    }
 
 }
+
