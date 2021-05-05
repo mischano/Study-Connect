@@ -27,7 +27,7 @@ function getStudyTip(){
                move around to different rooms. Try going to a café or the library!`
    let tip2 = `Studies show “cramming” hinders retention and makes it difficult to process information. 
                Instead of studying for a long block of time, break it into shorter sessions with frequent 
-               breaks in between to refresh and refocus.`
+               breaks in between to refresh and refocus.`            
    let tips = [tip1,tip2,'dolor','amet'];
    const randomTip = tips[Math.floor(Math.random() * tips.length)];
    return randomTip;
