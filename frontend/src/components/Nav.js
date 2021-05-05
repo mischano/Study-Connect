@@ -6,7 +6,7 @@ import { Button } from '@material-ui/core';
 import decode from 'jwt-decode';
 
 const Nav = () => {
-   const navStyle = {color: 'white'};
+   const navStyle = {color: 'black'};
    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
    const dispatch = useDispatch();
    const history = useHistory();
@@ -37,33 +37,33 @@ const Nav = () => {
              Logout
           </Button>
           <ul className="nav-links">
-             <Link style={navStyle} to="/">
+             <Link to="/">
                 <li> Dashboard</li>
              </Link>
-             <Link style={navStyle} to="/auth">
+             <Link to="/auth">
                 <li> Auth</li>
              </Link>
-             <Link style={navStyle} to="/messages">
+             <Link to="/messages">
                 <li> Messages</li>
              </Link>
-             <Link style={navStyle} to="/profile">
+             <Link to="/profile">
                 {user ? (
                     user.result.name
                     ) : null}
              </Link>
-             <Link style={navStyle} to="/groups">
+             <Link to="/groups">
                 <li> Groups</li>
              </Link>
-             <Link style={navStyle} to="/login">
+             <Link to="/login">
                 <li> Login</li>
              </Link>
-             <Link style={navStyle} to="/signup1">
+             <Link to="/signup1">
                 <li> Signup 1</li>
              </Link>
-             <Link style={navStyle} to="/signup2">
+             <Link to="/signup2">
                 <li> Signup 2</li>
              </Link>
-             <Link style={navStyle} to="/signup3">
+             <Link to="/signup3">
                 <li> Signup 3</li>
              </Link>
           </ul>

@@ -1,23 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
+
+
 .App {
   text-align: center;
+  font-family: 'Lato', sans-serif;
+  
 }
 
-nav {
-   display: flex;
-   justify-content: space-around;
-   align-items: center;
-   min-height: 10vh;
-   background: rgb(73, 79, 82);
-   color: white;
+.nav-links{
+  list-style: none;
+  color: black;
+  
 }
 
-.nav-links {
-   width: 40%;
-   display: flex;
-   justify-content: space-around;
-   align-items: center;
-   list-style: none;
+.nav-links a{
+  color: black;
 }
+
+.topBanner{
+  background-color: #E2EDF7;
+  padding: 2em;
+}
+
+#studyTip{
+  text-align: left;
+  max-width: 35em;
+}
+
+#didYouKnow{
+  text-align: left;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
 
 .App-logo {
   height: 40vmin;
@@ -53,3 +68,40 @@ nav {
     transform: rotate(360deg);
   }
 }
+
+@media only screen and {min-width: 400px}{
+
+  .topBanner{
+    display: grid;
+    row-template-columns: 40% 60%;
+  }
+
+  .mainPageTitle{
+    grid-column: 1 / 2;
+  }
+
+  .mainPageTitle{
+    text-align: left;
+    margin: 2em;
+  }
+
+  .nav-links {
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    
+ }
+
+ nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 10vh;
+  background: rgb(73, 79, 82);
+  color: black;
+}
+
+}
+
