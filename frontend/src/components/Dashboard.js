@@ -9,6 +9,7 @@ export default class Dashboard extends React.Component
 
    render() {
       return (
+      <div>
         <div className="topBanner">
             <h1 className="mainPageTitle"> Dashboard </h1>
             <div className = "bannerBlurb">
@@ -17,8 +18,20 @@ export default class Dashboard extends React.Component
                <p id="studyTip">{getStudyTip()}</p>
             </div>
         </div>
+        <div className="groups">
+            <h2 className="sectionHeader">Your Groups</h2>
+           {groupCard()}
+           {groupCard()}
+        </div>
+        <div className="resources">
+           <h2 className="sectionHeader">Resources</h2>
+           {resourceCard()}
+        </div>
+      </div>
       );
    }
+
+   
 }
 
 function getStudyTip(){
@@ -28,7 +41,7 @@ function getStudyTip(){
    let tip2 = `Studies show “cramming” hinders retention and makes it difficult to process information. 
                Instead of studying for a long block of time, break it into shorter sessions with frequent 
                breaks in between to refresh and refocus.`            
-   let tips = [tip1,tip2,'dolor','amet'];
+   let tips = [tip1,tip2];
    const randomTip = tips[Math.floor(Math.random() * tips.length)];
    return randomTip;
 }
@@ -54,6 +67,30 @@ function getGreeting(){
          return("Good evening!");
       }
    }
-
 }
 
+function groupCard(props){
+   return(
+      <div className="card">
+         <div className="cardTitle">
+            <h2>CHEM126 Lab Group</h2>
+         </div>
+         <div className="subTitle">
+            <p>32 members</p>
+         </div>       
+      </div>
+   )
+}
+
+function resourceCard(props){
+   return(
+      <div className="card">
+         <div className="cardTitle">
+            <h2>Mustang Success Center</h2>
+         </div>
+         <div className="subTitle">
+            <p>Academic Resources</p>
+         </div>       
+      </div>
+   )
+}
