@@ -18,13 +18,13 @@ export default class Dashboard extends React.Component
                <p id="studyTip">{getStudyTip()}</p>
             </div>
         </div>
+        <h2 className="sectionHeader">Your Groups</h2>
         <div className="groups">
-            <h2 className="sectionHeader">Your Groups</h2>
            {groupCard()}
            {groupCard()}
         </div>
+        <h2 className="sectionHeader">Resources</h2>
         <div className="resources">
-           <h2 className="sectionHeader">Resources</h2>
            {resourceCard()}
         </div>
       </div>

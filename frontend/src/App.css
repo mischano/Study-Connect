@@ -2,7 +2,6 @@
 
 
 .App {
-  text-align: center;
   font-family: 'Lato', sans-serif;
   
 }
@@ -86,7 +85,7 @@
   }
 }
 
-@media only screen and {min-width: 400px}{
+@media only screen and (min-width: 400px){
 
   .topBanner{
     display: grid;
@@ -118,6 +117,18 @@
   min-height: 10vh;
   background: rgb(73, 79, 82);
   color: black;
+}
+
+.sectionHeader{
+  width: 100%;
+}
+.groups, .resources {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.card{
+  margin: 1em;
 }
 
 }
