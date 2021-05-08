@@ -2,19 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0f9810dd-e0e9-415a-b2f1-7a219cb39769" name="Default Changelist" comment="authentication page">
-      <change afterPath="$PROJECT_DIR$/backend/controllers/profile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/middleware/auth.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/actions/auth.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/api/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/profileRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/profileRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/conversation.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/group.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/conversationRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/groupRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/profileRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/userRoutes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/actions/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/actions/auth.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Auth/Auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Auth/Auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Auth/Input.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Auth/Input.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Nav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/reducers/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/reducers/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/signup/Signup1.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/signup/Signup1.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +87,11 @@
       <workItem from="1619625429077" duration="3600000" />
       <workItem from="1619629078572" duration="662000" />
       <workItem from="1619629757427" duration="46000" />
-      <workItem from="1619629814099" duration="4967000" />
+      <workItem from="1619629814099" duration="8501000" />
+      <workItem from="1619759328797" duration="1962000" />
+      <workItem from="1619808716680" duration="3765000" />
+      <workItem from="1619815180867" duration="3496000" />
+      <workItem from="1619826066332" duration="3058000" />
     </task>
     <task id="LOCAL-00001" summary="fixed database">
       <created>1618358789550</created>
@@ -162,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619581233390</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="authentication page">
+      <created>1619636809668</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1619636809668</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,7 +181,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/develop" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>

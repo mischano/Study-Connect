@@ -1,11 +1,12 @@
-const express = require("express");
-const conversationModel = require("../models/conversation");
-const app = express();
-const bodyParser = require('body-parser');
+import express from "express";
 
-app.use(bodyParser.json());
+const router = express.Router();
 
-/* Establishes a /conversation endpoint for GET requests */
+
+export default router;
+
+
+/*
 app.get("/conversations", async (req, res) => {
     const conversations = await conversationModel.find({});
 
@@ -16,8 +17,7 @@ app.get("/conversations", async (req, res) => {
     }
 });
 
-/* Establishes a /conversation endpoint for POST requests to
-   create a new conversation and save it to the database */
+
 app.post("/conversation", async (req, res) => {
     const conversation = new conversationModel(req.body);
 
@@ -29,9 +29,7 @@ app.post("/conversation", async (req, res) => {
     }
 });
 
-/* Establishes a /conversation/:id endpoint for PATCH requests
-   to update an existing conversation and save the changes to
-   the database */
+
 app.patch("/conversation/:id", async (req, res) => {
     try {
         await conversationModel.findByIdAndUpdate(req.params.id, req.body);
@@ -42,9 +40,6 @@ app.patch("/conversation/:id", async (req, res) => {
     }
 });
 
-/* Establishes a /conversation/:id endpoint for DELETE requests
-   to remove an existing conversation and save the changes to
-   the database */
 app.delete("/conversation/:id", async (req, res) => {
     try {
         const conversation = await conversationModel.findByIdAndDelete(req.params.id);
@@ -58,3 +53,4 @@ app.delete("/conversation/:id", async (req, res) => {
 });
 
 module.exports = app;
+*/
