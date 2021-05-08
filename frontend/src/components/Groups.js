@@ -9,7 +9,7 @@ export default class Groups extends React.Component
 
    render() {
       return (
-         <div>
+         <div className="topBanner">
             <h1> Groups </h1>
          </div>
       );
