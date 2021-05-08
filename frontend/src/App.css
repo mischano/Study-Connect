@@ -1,23 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
 
+*{ 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+
+}
 
 .App {
   font-family: 'Lato', sans-serif;
   
 }
 
-.nav-links{
-  list-style: none;
-  color: black;
-  
-}
-
-.nav-links a{
-  color: black;
-}
-
 .topBanner{
-  background-color: #E2EDF7;
+  background-color: hsl(209, 57%, 93%);
   padding: 2em;
 }
 
@@ -103,12 +99,14 @@
     margin: 2em;
   }
 
+  /*
   .nav-links {
     width: 40%;
     display: flex;
     justify-content: space-around;
     align-items: center;
     list-style: none;
+    color: white;
     
  }
 
@@ -118,8 +116,9 @@
   align-items: center;
   min-height: 10vh;
   background: rgb(73, 79, 82);
-  color: black;
+  color: white;
 }
+<<<<<<< HEAD
 
 .sectionHeader{
   width: 100%;
@@ -134,5 +133,8 @@
 }
 
 
+=======
+*/
+>>>>>>> ef34cde3a8527f07fc6ac127021bebb277ccbb79
 }
 
