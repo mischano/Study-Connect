@@ -71,6 +71,7 @@ function getGreeting(){
 
 function groupCard(props){
    return(
+      <a className="cardLink" href="">
       <div className="card">
          <div className="cardTitle">
             <h2>CHEM126 Lab Group</h2>
@@ -79,18 +80,22 @@ function groupCard(props){
             <p>32 members</p>
          </div>       
       </div>
+      </a>
    )
 }
 
 function resourceCard(props){
    return(
+      <a href="" className="cardLink">
       <div className="card">
          <div className="cardTitle">
             <h2>Mustang Success Center</h2>
          </div>
          <div className="subTitle">
             <p>Academic Resources</p>
-         </div>       
+         </div>  
+             
       </div>
+      </a> 
    )
 }
