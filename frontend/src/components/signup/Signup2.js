@@ -1,19 +1,42 @@
 import React, { useState } from 'react';
 import '../../App.css';
-import Signup1 from './Signup1'
+import ClassAdd from './ClassAdd'
+import {Button, Grid} from '@material-ui/core';
+import { useDispatch } from 'react-redux';
+import { classAdder } from '../../actions/auth';
+import { useHistory } from 'react-router-dom'
+import useStyles from "./styles";
 
 function Signup2()
 {
    const [inputList, setInputList] = useState([]);
+   const [classes, setClasses] = useState([]);
+   const dispatch = useDispatch();
+    const history = useHistory();
+    const Classes = useStyles();
 
    const onAddBtnClick = event => {
-      setInputList(inputList.concat(<Signup1 key={inputList.length} />));
+      setInputList(inputList.concat(
+          <Grid item>
+          <ClassAdd onSubmit={event => classes.push(event)} key={inputList.length}/>
+          </Grid>));
    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(classAdder(classes, history))
+    };
 
    return (
        <div>
-          <button onClick={onAddBtnClick}>Add a Class</button>
+          <Button className={Classes.addClass} onClick={onAddBtnClick}>Add another Class</Button>
+           <Grid container spacing={1}>
+               <ClassAdd onSubmit={event => classes.push(event)}/>
           {inputList}
+           </Grid>
+          <Button className={Classes.submit} onClick={handleSubmit}>
+              Continue
+          </Button>
        </div>
    )
 }

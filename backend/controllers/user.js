@@ -24,7 +24,6 @@ export const signin = async (req, res) =>
         res.status(500).json({ message : 'Something went wrong'});
     }
 }
-
 export const signup = async (req, res) => {
     const { email, password, confirmPassword, firstName, lastName, school, major, gradDate } = req.body;
 

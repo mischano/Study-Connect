@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { signin , signup } from '../../actions/auth';
 
-const intitialState = {
+const initialState = {
     firstName: '',
     lastName: '',
     email: '',
@@ -23,7 +23,7 @@ const Auth = () => {
     const classes = useStyles();
     const [showPassword, setShowPassword] = useState(false);
     const [isSignup, setIsSignup] = useState(false);
-    const [formData, setFormData] = useState(intitialState);
+    const [formData, setFormData] = useState(initialState);
     const dispatch = useDispatch();
     const history = useHistory();
 
