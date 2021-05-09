@@ -1,24 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
+
+*{ 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+
+}
+
 .App {
-  text-align: center;
+  font-family: 'Lato', sans-serif;
+  
 }
 
-nav {
-   display: flex;
-   justify-content: space-around;
-   align-items: center;
-   min-height: 10vh;
-   background: rgb(73, 79, 82);
-   color: white;
+.topBanner{
+  background-color: hsl(209, 57%, 93%);
+  padding: 2em;
 }
 
-.nav-links {
-   width: 40%;
-   display: flex;
-   justify-content: space-around;
-   align-items: center;
-   list-style: none;
+#studyTip{
+  text-align: left;
+  max-width: 35em;
 }
 
+#didYouKnow{
+  text-align: left;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.cardLink{
+  text-decoration: none;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -45,6 +57,23 @@ nav {
   color: #61dafb;
 }
 
+.sectionHeader{
+  text-align: left;
+  margin-left: 2em;
+}
+.card{
+  background-color: #006494;
+  max-width: 22em;
+  padding:2em;
+  margin: auto;
+  margin-bottom: 1em;
+  border-radius: 1em;
+}
+
+.cardTitle, .subTitle{
+  color: whitesmoke;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -53,3 +82,56 @@ nav {
     transform: rotate(360deg);
   }
 }
+
+@media only screen and (min-width: 400px){
+
+  .topBanner{
+    display: grid;
+    row-template-columns: 40% 60%;
+  }
+
+  .mainPageTitle{
+    grid-column: 1 / 2;
+  }
+
+  .mainPageTitle{
+    text-align: left;
+    margin: 2em;
+  }
+
+  /*
+  .nav-links {
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    color: white;
+    
+ }
+
+ nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 10vh;
+  background: rgb(73, 79, 82);
+  color: white;
+}
+
+.sectionHeader{
+  width: 100%;
+}
+.groups, .resources {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.card{
+  margin: 1em;
+}
+
+*/
+
+}
+
