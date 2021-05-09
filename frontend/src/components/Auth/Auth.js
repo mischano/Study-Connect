@@ -53,11 +53,12 @@ const Auth = () => {
        const token = res?.tokenId;
        try {
            dispatch({type: 'AUTH', data: { result, token}});
-           history.push('/');
+           history.push('/dashboard');
        } catch (error) {
            console.log(error)
        }
     };
+
     const googleFailure = () =>
     {
         console.log("Google sign in was unsuccessful");
