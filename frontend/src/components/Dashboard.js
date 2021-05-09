@@ -1,3 +1,4 @@
+import { Grid } from '@material-ui/core';
 import React from 'react';
 import '../App.css';
 
@@ -20,18 +21,20 @@ export default class Dashboard extends React.Component
         </div>
         <h2 className="sectionHeader">Your Groups</h2>
         <div className="groups">
-           {groupCard()}
-           {groupCard()}
+           <Grid container spacing={2} justify="center">
+              <Grid item> {groupCard()} </Grid>
+           </Grid>
         </div>
         <h2 className="sectionHeader">Resources</h2>
         <div className="resources">
-           {resourceCard()}
+           <Grid container spacing={2} alignItems="center" justify="center">
+              <Grid item> {resourceCard()} </Grid>
+              <Grid item> {resourceCard()} </Grid>
+           </Grid>
         </div>
       </div>
       );
    }
-
-   
 }
 
 function getStudyTip(){
@@ -86,16 +89,16 @@ function groupCard(props){
 
 function resourceCard(props){
    return(
-      <a href="" className="cardLink">
+      <a href={props} className="cardLink">
       <div className="card">
          <div className="cardTitle">
             <h2>Mustang Success Center</h2>
          </div>
          <div className="subTitle">
-            <p>Academic Resources</p>
+            <p>Academic Services</p>
          </div>  
              
       </div>
-      </a> 
+      </a>
    )
 }

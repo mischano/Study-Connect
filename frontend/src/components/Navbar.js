@@ -48,7 +48,7 @@ const Navbar = () => {
          </NavLink>
          <Bars /> 
          <NavMenu>
-            <NavLink to="/" activeStyle> 
+            <NavLink to="/dashboard" activeStyle> 
                Dashboard
             </NavLink>
             <NavLink to="/groups" activeStyle> 
@@ -62,18 +62,14 @@ const Navbar = () => {
                   user.result.name
                   ) : null}
             </NavLink>
-            <NavLink to="/signup1" activeStyle>
-               Signup 1
-            </NavLink>
             <NavLink to="/signup2" activeStyle>
-               Signup 2
-            </NavLink>
-            <NavLink to="/signup3" activeStyle>
-               Signup 3
+               Signup
             </NavLink>
          </NavMenu>
          <NavBtn>
-            <NavBtnLink to="/auth">Login</NavBtnLink>
+               {user ? (
+                  null
+                  ) : <NavBtnLink to="/auth">Login</NavBtnLink>}
          </NavBtn>
          <Button onClick={logout}>
             Logout

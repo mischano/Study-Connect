@@ -38,12 +38,14 @@ const ClassAdd = ({onSubmit}) =>
                             <TextField required name="number"
                                        label="Course number"
                                        onChange={handleChange}
+                                       variant="outlined"
                                        fullWidth/>
                         </Grid>
                         <Grid item xs={12} sm={12}>
                             <TextField required name="startTime" id="time"
                                        label="Start Time"
                                        type="time"
+                                       variant="outlined"
                                        onChange={handleChange}
                                        fullWidth/>
                         </Grid>
@@ -52,12 +54,13 @@ const ClassAdd = ({onSubmit}) =>
                                        id="time"
                                        label="End Time"
                                        type="time"
+                                       variant="outlined"
                                        onChange={handleChange}
                                        fullWidth/>
                         </Grid>
                         <Grid item xs={12} sm={12}>
                             <Button className={Classes.confirm} onClick={handleSubmit}>
-                                Confirm
+                                Add
                             </Button>
                         </Grid>
                     </Grid>

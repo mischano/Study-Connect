@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import Login from './components/Login';
 import Signup2 from './components/signup/Signup2';
+import Home from './components/Home';
 import Dashboard from './components/Dashboard';
 import Groups from './components/Groups';
 import Messages from './components/Messages';
@@ -13,18 +13,18 @@ import Auth from "./components/Auth/Auth";
 function App() {
   return (
   <Router>
+    <Switch>
+    <Route path="/" exact component={Home}/>
+    <Route path="/signup2" exact component={Signup2}/>
+    <Route path="/auth" exact component={Auth}/>
     <div className="App">
       <Navbar/>
-        <Switch>
-          <Route path="/" exact component={Dashboard}/>
-          <Route path="/auth" exact component={Auth}/>
-          <Route path="/login" exact component={Login}/>
-          <Route path="/signup2" exact component={Signup2}/>
+          <Route path="/dashboard" exact component={Dashboard}/>
           <Route path="/groups" exact component={Groups}/>
           <Route path="/messages" exact component={Messages}/>
           <Route path="/profile" exact component={Profile}/>
-        </Switch>
     </div>
+    </Switch>
   </Router>
 
   );

@@ -27,6 +27,7 @@ export default makeStyles((theme)=> ({
         height: 48,
         padding: '0 30px',
     },
+
     paper: {
         marginTop: theme.spacing(8),
         display: 'flex',
