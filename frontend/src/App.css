@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
 
+
 *{ 
   box-sizing: border-box; 
   margin: 0; 
@@ -9,38 +10,52 @@
 
 .App {
   font-family: 'Lato', sans-serif;
-  
+  letter-spacing: .05em;
 }
+
 
 .topBanner{
   background-color: hsl(209, 57%, 93%);
   padding: 2em;
 }
 
+#greeting{
+  margin: 1em 0 1em 0;
+}
 #studyTip{
   text-align: left;
   max-width: 35em;
+
 }
 
 #didYouKnow{
   text-align: left;
   text-transform: uppercase;
   opacity: 0.6;
+  margin: 1em 0 1em 0;
 }
 
 .cardLink{
   text-decoration: none;
 }
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.profileBanner h2{
+  color:white;
 }
+
+.profileBanner h4{
+  color: white;
+  font-style: italic;
+  line-height: 150%;
+  
+}
+
+
 
 .App-header {
   background-color: #282c34;
@@ -59,14 +74,17 @@
 
 .sectionHeader{
   text-align: left;
-  margin-left: 2em;
+  margin: 1em 0 1em 1em;
+
+}
+
+.bannerBlurb{
+  margin: 1em;
 }
 .card{
   background-color: #006494;
-  max-width: 22em;
-  padding:2em;
-  margin: auto;
-  margin-bottom: 1em;
+  padding:3em;
+  margin: 0 1em 0 1em;
   border-radius: 1em;
 }
 
@@ -83,7 +101,13 @@
   }
 }
 
-@media only screen and (min-width: 400px){
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@media only screen and (min-width: 600px){
 
   .topBanner{
     display: grid;
@@ -123,14 +147,17 @@
 .sectionHeader{
   width: 100%;
 }
-.groups, .resources {
-  display: flex;
-  flex-flow: row wrap;
-}
+
 
 .card{
   margin: 1em;
+  max-width: 20em;
 }
+
+.bannerBlurb{
+  grid-column: 2/3;
+}
+
 
 
 

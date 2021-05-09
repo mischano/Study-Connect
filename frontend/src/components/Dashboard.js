@@ -14,22 +14,35 @@ export default class Dashboard extends React.Component
         <div className="topBanner">
             <h1 className="mainPageTitle"> Dashboard </h1>
             <div className = "bannerBlurb">
-               <h2>{getGreeting()}</h2>
+               <h2 id ="greeting">{getGreeting()}</h2>
                <h4 id="didYouKnow">Did you know...</h4>
                <p id="studyTip">{getStudyTip()}</p>
             </div>
         </div>
-        <h2 className="sectionHeader">Your Groups</h2>
         <div className="groups">
-           <Grid container spacing={2} justify="center">
-              <Grid item> {groupCard()} </Grid>
+               <Grid container 
+               spacing={1}
+               direction = "row"
+               justify="flex-start"
+               alignItems="center"
+               wrap="wrap">
+               <Grid item xs={12}> <h2 className="sectionHeader">Your Groups</h2></Grid>
+               <Grid item xs={12} sm={4} spacing={1}> {groupCard()} </Grid>
+               <Grid item xs={12} sm={4} spacing={1}> {groupCard()} </Grid>
+               <Grid item xs={12} sm={4} spacing={1}> {groupCard()} </Grid>
            </Grid>
         </div>
-        <h2 className="sectionHeader">Resources</h2>
+        
         <div className="resources">
-           <Grid container spacing={2} alignItems="center" justify="center">
-              <Grid item> {resourceCard()} </Grid>
-              <Grid item> {resourceCard()} </Grid>
+        <Grid container 
+               spacing={1}
+               direction = "row"
+               justify="flex-start"
+               alignItems="center"
+               wrap="wrap">
+               <Grid item xs={12}> <h2 className="sectionHeader">Resources</h2></Grid>
+               <Grid item xs={12} sm={6} spacing={0}>{resourceCard()} </Grid>
+               <Grid item xs={12} sm={6} spacing={0}>{resourceCard()} </Grid>
            </Grid>
         </div>
       </div>
@@ -72,6 +85,7 @@ function getGreeting(){
    }
 }
 
+/* update when database can be accessed with group schema*/
 function groupCard(props){
    return(
       <a className="cardLink" href="">
@@ -87,6 +101,7 @@ function groupCard(props){
    )
 }
 
+/* update when database can be accessed with resources*/
 function resourceCard(props){
    return(
       <a href={props} className="cardLink">
