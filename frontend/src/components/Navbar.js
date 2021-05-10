@@ -43,7 +43,7 @@ const Navbar = () => {
    return (
       <>
       <Nav>
-         <NavLink to="/">
+         <NavLink to="/dashboard">
                <img id ='logo' src={logo} alt='StudyConnect'></img>
                {/*/*</NavLink><img src={require('./Assets/logo.svg')}*/}
          </NavLink>

@@ -30,18 +30,18 @@ const ClassAdd = ({onSubmit}) =>
     return (
         <div>
                 <Paper className={Classes.paper} elevation={3}>
-                    <Grid container spacing={2} justify="center">
-                        <Grid item xs={1}>
+                    <Grid container spacing={2}>
+                        <Grid item xs={6} md={4}>
                             <DepartmentInput handleChange={e => setFormData({...formData, ["department"]: e})}/>
                         </Grid>
-                        <Grid item xs={1}>
+                        <Grid item xs={6}md={4}>
                             <TextField required name="number"
                                        label="Course number"
                                        onChange={handleChange}
                                        variant="outlined"
                                        fullWidth/>
                         </Grid>
-                        <Grid item xs={2}>
+                        <Grid item xs={6} md={2}>
                             <TextField required name="startTime" id="time"
                                        label="Start Time"
                                        type="time"
@@ -50,7 +50,7 @@ const ClassAdd = ({onSubmit}) =>
                                        onChange={handleChange}
                                        fullWidth/>
                         </Grid>
-                        <Grid item md={2}>
+                        <Grid item xs={6} md={2}>
                             <TextField required name="endTime"
                                        id="time"
                                        label="End Time"
@@ -60,12 +60,12 @@ const ClassAdd = ({onSubmit}) =>
                                        onChange={handleChange}
                                        fullWidth/>
                         </Grid>
-                        <Grid item xs={5}>
+                        <Grid item xs={12} align="center">
                         <WeekDayPicker handleChange={e => setFormData({...formData, ["weekDays"]: e})}/>
                         </Grid>
-                        <Grid item md={1}>
+                        <Grid item xs={12} align="center">
                             <Button className={Classes.confirm} onClick={handleSubmit}>
-                                Add
+                                Add Class
                             </Button>
                         </Grid>
                     </Grid>
