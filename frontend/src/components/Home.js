@@ -20,7 +20,8 @@ const contentStyle = {
    position:'fixed',
    top:'50%', 
    left:'50%', 
-   transform:'translate(-50%,-50%)'
+   transform:'translate(-50%,-50%)',
+   filter: 'drop-shadow(0 0 0.75rem rgb(0,0,0,0.4))'
 
 }
 
@@ -38,9 +39,11 @@ export default class Home extends React.Component
                <h1 id='homeHeading'>Study. Share. Schedule. <span style={{fontWeight: '900'}}>Succeed.</span></h1>
                <p id='homeBlurb'>StudyConnect is here to take the headache out of group
                   work. Schedule meetings, study together, and more.</p>
-                  <Button component={Link} to="/auth" color="primary">
-               GET STARTED FOR FREE
-            </Button>
+                  <a href='/auth' style={{color: '#F2F0F0'}}>
+                     <div className="callToAction">
+                        <h3>Get Started for Free</h3>
+                     </div>
+                  </a>
             </div>
          </div>
          </div>

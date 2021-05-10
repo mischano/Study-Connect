@@ -59,7 +59,7 @@
 #homeHeading{
   font-weight: 400;
   font-size: 3em;
-  margin: 1em;
+  margin-bottom: 0.5em;
 }
 
 #homeBlurb{
@@ -101,6 +101,23 @@
 .cardTitle, .subTitle{
   color: whitesmoke;
 }
+
+.callToAction{
+  display: inline-block;
+  max-width: 25em;
+  margin-top: 1em;
+  padding: 1em 1.25em;
+  background-color: #E5623B;
+  border-radius: 5em;
+  
+}
+
+.callToAction h3{
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1em;
+}
+
 
 @keyframes App-logo-spin {
   from {
