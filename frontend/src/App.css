@@ -110,7 +110,13 @@
   padding: 1em 1.25em;
   background-color: #E5623B;
   border-radius: 5em;
+  transition: 0.3s;
   
+}
+
+.callToAction:hover{
+  background-color: #C37EB8;
+
 }
 
 .callToAction h3{
