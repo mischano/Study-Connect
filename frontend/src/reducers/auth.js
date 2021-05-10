@@ -33,8 +33,9 @@ const authReducer = (state = initialState, action) => {
             return { ...state, state: initialState };
 
         case ADDCLASS:
-            console.log(action.data)
-
+            const user = JSON.parse(localStorage.getItem('profile'));
+            user.result.classes = user.result.classes.concat(action.data);
+            window.localStorage.setItem('profile', JSON.stringify(user));
             return { ...state, classes: state.classes.concat(action?.data)};
         default:
             return state;

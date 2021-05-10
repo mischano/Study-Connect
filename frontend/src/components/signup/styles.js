@@ -8,6 +8,7 @@ export default makeStyles((theme)=> ({
         background: 'darkorange',
         color: 'white',
         height: 48,
+        justifyContent: 'center'
     },
     addClass: {
         border: 0,
@@ -34,6 +35,5 @@ export default makeStyles((theme)=> ({
         flexDirection: 'column',
         alignItems: 'center',
         padding: theme.spacing(2),
-        background: 'lightblue'
     },
 }));

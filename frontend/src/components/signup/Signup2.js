@@ -16,7 +16,6 @@ function Signup2()
     const Classes = useStyles();
 
 
-
    const onAddBtnClick = event => {
       setInputList(inputList.concat(
           <Grid item>
@@ -32,11 +31,11 @@ function Signup2()
    return (
        <div>
           <Button className={Classes.addClass} onClick={onAddBtnClick}>Add another Class</Button>
-           <Grid container spacing={1}>
+           <Grid container spacing={1} justify="center" alignItems="center">
                <ClassAdd onSubmit={event => classes.push(event)}/>
           {inputList}
            </Grid>
-          <Button className={Classes.submit} onClick={handleSubmit}>
+          <Button className={Classes.submit} onClick={handleSubmit} >
               Continue
           </Button>
        </div>
