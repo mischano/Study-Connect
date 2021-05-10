@@ -2,6 +2,7 @@
 
 
 *{ 
+
   box-sizing: border-box; 
   margin: 0; 
   padding: 0; 
@@ -55,7 +56,15 @@
   
 }
 
+#homeHeading{
+  font-weight: 400;
+  font-size: 3em;
+  margin: 1em;
+}
 
+#homeBlurb{
+  margin-bottom: 1em;
+}
 
 .App-header {
   background-color: #282c34;
@@ -81,6 +90,7 @@
 .bannerBlurb{
   margin: 1em;
 }
+
 .card{
   background-color: #006494;
   padding:3em;
