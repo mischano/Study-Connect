@@ -2,6 +2,7 @@ import React from 'react';
 import '../App.css';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import logo from './Assets/WHITE.png';
 
 
 
@@ -25,6 +26,7 @@ const contentStyle = {
 
 }
 
+
 export default class Home extends React.Component
 {
    constructor(props) {
@@ -34,6 +36,14 @@ export default class Home extends React.Component
    render() {
       return (
          <div style={styling}>
+         <div className='homeNav'>
+            <img id='logo' src={logo} alt='StudyConnect'></img>
+            <a href='/auth' style={{color: '#F2F0F0'}}>
+               <div id='homeNavButton'className="callToAction">
+                  <h3>Login + Sign Up</h3>
+               </div>
+            </a>
+         </div>
          <div className="getStartedBtn">
             <div style={contentStyle}>
                <h1 id='homeHeading'>Study. Share. Schedule. <span style={{fontWeight: '900'}}>Succeed.</span></h1>
