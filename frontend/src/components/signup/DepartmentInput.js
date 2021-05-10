@@ -48,8 +48,9 @@ const DepartmentInput = ({handleChange}) => {
           <TextField
               id="auto"
               fullWidth
+              variant="outlined"
               onClick={() => setDisplay(!display)}
-              placeholder="Enter Department"
+              placeholder="Department"
               value={search}
               onChange={event => setSearch(event.target.value)}
           />
