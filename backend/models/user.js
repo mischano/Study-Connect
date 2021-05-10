@@ -6,7 +6,6 @@ const userSchema = new mongoose.Schema({
    password : { type: String, required: true},
    id: { type: String },
    major: { type: String, required: true},
-   school: { type: String, required: true},
    gradDate: { type: String, required: true},
    friends: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Profile'}],
    classes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Class' }]

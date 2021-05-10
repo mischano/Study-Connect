@@ -14,7 +14,6 @@ const initialState = {
     email: '',
     password: '',
     confirmPassword: '',
-    school: '',
     major: '',
     gradDate: '',
 };
@@ -78,7 +77,6 @@ const Auth = () => {
                             <>
                                 <Input name="firstName" label="First Name" handleChange={handleChange} autoFocus half/>
                                 <Input name="lastName" label="Last Name" handleChange={handleChange} half/>
-                                <Input name="school" label="Name of School" handleChange={handleChange} />
                                 <Input name="major" label="Major" handleChange={handleChange} half/>
                                 <Input name="gradDate" label="Exp. Grad. Date" handleChange={handleChange} half/>
                             </>

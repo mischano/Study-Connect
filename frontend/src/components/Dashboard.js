@@ -41,8 +41,9 @@ export default class Dashboard extends React.Component
                alignItems="center"
                wrap="wrap">
                <Grid item xs={12}> <h2 className="sectionHeader">Resources</h2></Grid>
-               <Grid item xs={12} sm={6} spacing={0}>{resourceCard()} </Grid>
-               <Grid item xs={12} sm={6} spacing={0}>{resourceCard()} </Grid>
+               <Grid item xs={12} sm={3} spacing={0}>{resourceCard("https://success.calpoly.edu/", "Mustang Success", "Academic Services")} </Grid>
+               <Grid item xs={12} sm={3} spacing={0}>{resourceCard("https://careerservices.calpoly.edu/", "Career Services", "Career Development")} </Grid>
+               <Grid item xs={12} sm={3} spacing={0}>{resourceCard("https://basicneeds.calpoly.edu/calfresh", "CalFresh", "Health and Wellbeing")} </Grid>
            </Grid>
         </div>
       </div>
@@ -102,15 +103,15 @@ function groupCard(props){
 }
 
 /* update when database can be accessed with resources*/
-function resourceCard(props){
+function resourceCard(link, name, descrip){
    return(
-      <a href={props} className="cardLink">
+      <a href={link} className="cardLink">
       <div className="card">
          <div className="cardTitle">
-            <h2>Mustang Success Center</h2>
+            <h2>{name}</h2>
          </div>
          <div className="subTitle">
-            <p>Academic Services</p>
+            <p>{descrip}</p>
          </div>  
              
       </div>

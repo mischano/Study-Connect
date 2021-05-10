@@ -8,8 +8,8 @@ import WeekDayPicker from './WeekDayPicker'
   const intitialState = {
     department: '',
     number: '',
-    startTime: '',
-    endTime: '',
+    startTime: "07:30",
+    endTime: "07:30",
     weekDays: ''
 };
 
@@ -35,7 +35,6 @@ const ClassAdd = ({onSubmit}) =>
                             <DepartmentInput handleChange={e => setFormData({...formData, ["department"]: e})}/>
                         </Grid>
                         <Grid item xs={1}>
-
                             <TextField required name="number"
                                        label="Course number"
                                        onChange={handleChange}
@@ -62,7 +61,7 @@ const ClassAdd = ({onSubmit}) =>
                                        fullWidth/>
                         </Grid>
                         <Grid item xs={5}>
-                        <WeekDayPicker handleChange={e => setFormData({...formData, ["weekdays"]: e})}/>
+                        <WeekDayPicker handleChange={e => setFormData({...formData, ["weekDays"]: e})}/>
                         </Grid>
                         <Grid item md={1}>
                             <Button className={Classes.confirm} onClick={handleSubmit}>
