@@ -36,45 +36,33 @@ const WeekDayPicker = ({handleChange}) => {
             <FormLabel component="legend"> </FormLabel>
             <FormGroup aria-label="position" row>
                 <FormControlLabel
-                    value="Sunday"
-                    control={<Checkbox color="primary" onClick={getValue}/>}
-                    label="SU"
-                    labelPlacement="top"
-                />
-                <FormControlLabel
-                    value="Monday"
+                    value="M"
                     control={<Checkbox color="primary" onClick={getValue}/>}
                     label="MO"
                     labelPlacement="top"
                 />
                 <FormControlLabel
-                    value="Tuesday"
+                    value="T"
                     control={<Checkbox color="primary" onClick={getValue}/>}
                     label="TU"
                     labelPlacement="top"
                 />
                 <FormControlLabel
-                    value="Wednesday"
+                    value="W"
                     control={<Checkbox color="primary" onClick={getValue}/>}
                     label="WE"
                     labelPlacement="top"
                 />
                 <FormControlLabel
-                    value="Thursday"
+                    value="R"
                     control={<Checkbox color="primary" onClick={getValue}/>}
                     label="TH"
                     labelPlacement="top"
                 />
                 <FormControlLabel
-                    value="Friday"
+                    value="F"
                     control={<Checkbox color="primary" onClick={getValue}/>}
                     label="FR"
-                    labelPlacement="top"
-                />
-                <FormControlLabel
-                    value="Saturday"
-                    control={<Checkbox color="primary" onClick={getValue}/>}
-                    label="SA"
                     labelPlacement="top"
                 />
             </FormGroup>

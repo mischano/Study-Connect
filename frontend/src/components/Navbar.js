@@ -62,9 +62,6 @@ const Navbar = () => {
                   user.result.name
                   ) : null}
             </NavLink>
-            <NavLink to="/signup2" activeStyle>
-               Signup
-            </NavLink>
          </NavMenu>
          <NavBtn>
                {user ? (
