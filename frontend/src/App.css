@@ -131,7 +131,6 @@
 #logo{
   max-width: 15em;
   float: left;
-  filter: drop-shadow(0 0 0.75rem rgb(0,0,0,0.3));
 }
 
 #homeNavButton{

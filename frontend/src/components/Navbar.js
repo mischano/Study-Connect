@@ -4,6 +4,7 @@ import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Button } from '@material-ui/core';
 import decode from 'jwt-decode';
+import logo from './Assets/BLACK.png';
 import {
    Nav, 
    NavLink, 
@@ -43,7 +44,7 @@ const Navbar = () => {
       <>
       <Nav>
          <NavLink to="/">
-               <h1>Logo</h1>
+               <img id ='logo' src={logo} alt='StudyConnect'></img>
                {/*/*</NavLink><img src={require('./Assets/logo.svg')}*/}
          </NavLink>
          <Bars /> 
