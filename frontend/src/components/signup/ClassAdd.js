@@ -65,7 +65,7 @@ const ClassAdd = ({onSubmit}) =>
                         </Grid>
                         <Grid item xs={12} align="center">
                             <Button className={Classes.confirm} onClick={handleSubmit}>
-                                Add Class
+                                Submit
                             </Button>
                         </Grid>
                     </Grid>

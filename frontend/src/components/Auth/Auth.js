@@ -7,6 +7,7 @@ import Icon from './icon';
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { signin , signup } from '../../actions/auth';
+import logo from '../Assets/BLACK.png';
 
 const initialState = {
     firstName: '',
@@ -66,7 +67,9 @@ const Auth = () => {
     const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
 
     return (
+        
         <Container component="main" maxWidth="xs">
+            <div style={{display: 'inline-block', width:'100%'}}><a href="/"><img id='logo' src={logo} alt='StudyConnect'></img></a></div>
             <Paper className={classes.paper} elevation={3}>
                 <Avatar className={classes.avatar}>
                 </Avatar>
