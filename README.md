@@ -7,3 +7,6 @@ Caroline Padilla
 
 System Architecture:
 ![Deployment Diagram](system_architecture.jpg)
+
+Style Guide:
+https://google.github.io/styleguide/jsguide.html
