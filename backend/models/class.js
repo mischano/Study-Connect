@@ -1,11 +1,10 @@
-const mongoose = require("mongoose");
+import mongoose from 'mongoose'
 
 const classSchema = new mongoose.Schema({
-   department: String,
-   number: Number,
-   startTime: Number,
-   endTime: Number
+   department: { type: String, required: true},
+   number: { type: Number, required: true},
+   startTime: {type: Number, required: true},
+   endTime: {type : Number, required: true }
 });
 
-const Class = mongoose.model("Class", classSchema);
-module.exports = Class;
+export default mongoose.model("Class", classSchema);

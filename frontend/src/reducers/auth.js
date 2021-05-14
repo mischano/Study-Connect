@@ -1,40 +1,21 @@
 import { AUTH, LOGOUT, ADDCLASS } from '../constants/actionTypes';
 
-const initialState = {
-    name: '',
-    id: '',
-    email: '',
-    password: '',
-    major: '',
-    gradDate: '',
-    friends: [],
-    classes: [],
-    token: ''
-};
-
-const authReducer = (state = initialState, action) => {
+const authReducer = (state = { authData: null }, action) => {
     switch (action.type) {
         case AUTH:
             localStorage.setItem('profile', JSON.stringify({...action?.data }))
-            return { ...state,
-                name: action?.data.result.name,
-                id: action?.data.result.id,
-                email: action?.data.result.email,
-                password: action?.data.result.password,
-                major: action?.data.result.major,
-                gradDate: action?.data.result.gradDate,
-                token: action?.data.token,
-            };
+            return { ...state, authData: action?.data};
 
         case LOGOUT:
             localStorage.clear();
-            return { ...state, state: initialState };
+            return { ...state, authData: action?.data};
 
         case ADDCLASS:
             const user = JSON.parse(localStorage.getItem('profile'));
-            user.result.classes = user.result.classes.concat(action.data);
-            window.localStorage.setItem('profile', JSON.stringify(user));
-            return { ...state, classes: state.classes.concat(action?.data)};
+            user.result.classes = user.result.classes.concat(action?.data);
+            localStorage.setItem('profile', JSON.stringify(user));
+            return { ...state, authData: action?.data};
+            
         default:
             return state;
     }

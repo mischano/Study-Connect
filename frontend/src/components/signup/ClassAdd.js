@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../../App.css';
-import {Button, Container, Grid, makeStyles, Paper, TextField} from "@material-ui/core";
+import {Button, Grid, Paper, TextField} from "@material-ui/core";
 import DepartmentInput from "./DepartmentInput";
 import useStyles from "./styles";
 import WeekDayPicker from './WeekDayPicker'

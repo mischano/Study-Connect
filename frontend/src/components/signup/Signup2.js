@@ -3,7 +3,7 @@ import '../../App.css';
 import ClassAdd from './ClassAdd'
 import { Button, Grid } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
-import { classAdder } from '../../actions/auth';
+import { updateUser } from '../../actions/auth';
 import { useHistory } from 'react-router-dom'
 import useStyles from "./styles";
 import logo from '../Assets/BLACK.png';
@@ -14,21 +14,20 @@ function Signup2() {
     const dispatch = useDispatch();
     const history = useHistory();
     const Classes = useStyles();
-
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
     const onAddBtnClick = event => {
         setInputList(inputList.concat(
             <Grid item>
                 <ClassAdd onSubmit={event => classes.push(event)} key={inputList.length} />
             </Grid>));
-        
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(classAdder(classes, history))
+        dispatch(updateUser(user.result._id, classes, history))
     };
-
+  
     return (
         <div>
             <div style={{display: 'inline-block', width:'100%'}}><a href="/"><img id='logo' src={logo} alt='StudyConnect'></img></a></div>

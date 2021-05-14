@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import '../../App.css';
 import { TextField } from "@material-ui/core";
 import InputField from "../Auth/Input";
-
+   
 const DepartmentInput = ({handleChange}) => {
    const [display, setDisplay] = useState(false);
    const [options, setOptions] = useState([]);

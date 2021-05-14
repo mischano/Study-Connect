@@ -23,9 +23,10 @@ export const signup = (formData, history) => async (dispatch) => {
     }
 }
 
-export const classAdder = (formData, history) => async (dispatch) => {
+export const updateUser = (id, classes, history) => async (dispatch) => {
     try {
-        dispatch({ type: ADDCLASS,  data: formData});
+        await api.updateUser(id, classes);
+        dispatch({ type: ADDCLASS, data : classes});
         history.push('/dashboard')
     } catch (error) {
         console.log(error);

@@ -1,18 +1,20 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../App.css';
-import {Button, Grid, TextField, Checkbox, FormControl, FormControlLabel, FormLabel, FormGroup} from "@material-ui/core";
-import InputField from "../Auth/Input";
-import ClassAdd from "./ClassAdd";
+import {Checkbox, FormControl, FormControlLabel, FormLabel, FormGroup} from "@material-ui/core";
 
 const WeekDayPicker = ({handleChange}) => {
 
     const [Weekdays, setWeekdays] = useState([])
+
+    //correct order of days
+    const days = ["M", "T", "W", "R", "F"];
 
     useEffect(() => {
        handleChange(Weekdays)
     }, [Weekdays])
 
 
+    // removes the given day from the array
     function remove(arr, value) {
 
         return arr.filter(function(ele){
@@ -20,14 +22,22 @@ const WeekDayPicker = ({handleChange}) => {
         });
     }
 
+    // sorts the days into the correct order
+    const sortDays = function (a, b) {
+        a = days.indexOf(a);
+        b = days.indexOf(b);
+        return a < b ? -1 : 1;
+      };
+
+    // adds or removes the day from the weekdays array
     const getValue = (e) => {
         if(Weekdays.includes(e.target.value))
         {
-            setWeekdays(remove(Weekdays, e.target.value))
+            setWeekdays(remove(Weekdays, e.target.value).sort(sortDays))
         }
         else
         {
-                setWeekdays(Weekdays.concat([e.target.value]));
+            setWeekdays(Weekdays.concat([e.target.value]).sort(sortDays));
         }
     }
 

@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
    major: { type: String, required: true},
    gradDate: { type: String, required: true},
    friends: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Profile'}],
-   classes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Class' }]
+   classes: []
 });
 
 export default mongoose.model("User", userSchema);
