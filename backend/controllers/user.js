@@ -60,7 +60,7 @@ export const updateUser = async (req, res) => {
     }
     else
     {
-        var updatedUser = await User.findByIdAndUpdate(_id, { classes : classes}, { new: true});
+        var updatedUser = await User.findByIdAndUpdate(_id, {$push: {"classes" : classes}}, { new: true});
     }
 
     res.json(updatedUser);
