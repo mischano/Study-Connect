@@ -7,14 +7,14 @@ import Icon from './icon';
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { signin , signup } from '../../actions/auth';
+import logo from '../Assets/BLACK.png';
 
-const intitialState = {
+const initialState = {
     firstName: '',
     lastName: '',
     email: '',
     password: '',
     confirmPassword: '',
-    school: '',
     major: '',
     gradDate: '',
 };
@@ -23,7 +23,7 @@ const Auth = () => {
     const classes = useStyles();
     const [showPassword, setShowPassword] = useState(false);
     const [isSignup, setIsSignup] = useState(false);
-    const [formData, setFormData] = useState(intitialState);
+    const [formData, setFormData] = useState(initialState);
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -53,11 +53,12 @@ const Auth = () => {
        const token = res?.tokenId;
        try {
            dispatch({type: 'AUTH', data: { result, token}});
-           history.push('/');
+           history.push('/dashboard');
        } catch (error) {
            console.log(error)
        }
     };
+
     const googleFailure = () =>
     {
         console.log("Google sign in was unsuccessful");
@@ -66,7 +67,9 @@ const Auth = () => {
     const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
 
     return (
+        
         <Container component="main" maxWidth="xs">
+            <div style={{display: 'inline-block', width:'100%'}}><a href="/"><img id='logo' src={logo} alt='StudyConnect'></img></a></div>
             <Paper className={classes.paper} elevation={3}>
                 <Avatar className={classes.avatar}>
                 </Avatar>
@@ -77,7 +80,6 @@ const Auth = () => {
                             <>
                                 <Input name="firstName" label="First Name" handleChange={handleChange} autoFocus half/>
                                 <Input name="lastName" label="Last Name" handleChange={handleChange} half/>
-                                <Input name="school" label="Name of School" handleChange={handleChange} />
                                 <Input name="major" label="Major" handleChange={handleChange} half/>
                                 <Input name="gradDate" label="Exp. Grad. Date" handleChange={handleChange} half/>
                             </>
