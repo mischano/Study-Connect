@@ -19,6 +19,10 @@ export default makeStyles((theme)=> ({
         height: 48,
         padding: '0 30px',
     },
+    form: {
+        width: '100%', // Fix IE 11 issue.
+        marginTop: theme.spacing(3),
+    },
     confirm: {
         border: 0,
         borderRadius: 8,

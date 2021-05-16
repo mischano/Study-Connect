@@ -51,6 +51,7 @@ const DepartmentInput = ({handleChange}) => {
               variant="outlined"
               onClick={() => setDisplay(!display)}
               placeholder="Department"
+              required
               value={search}
               onChange={event => setSearch(event.target.value)}
           />
