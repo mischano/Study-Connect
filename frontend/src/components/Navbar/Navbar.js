@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import '../App.css';
+import '../../App.css';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Button } from '@material-ui/core';
 import decode from 'jwt-decode';
-import logo from './Assets/BLACK.png';
+import logo from '.././Assets/BLACK.png';
 import {
    Nav, 
    NavLink, 
