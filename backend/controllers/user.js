@@ -71,7 +71,8 @@ export const getUser = async (req, res) => {
 
     const user = await User.findOne({ _id: mongoose.Types.ObjectId(_id) });
     res.json(user);
-    
+}
+
 export const getProfiles = async (req, res) => {
     const profiles = await User.find({})
 

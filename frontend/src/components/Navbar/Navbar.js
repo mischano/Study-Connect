@@ -18,13 +18,11 @@ import {
 const Navbar = () => {
     const navStyle = { color: 'black' };
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+    const [input, setInput] = useState('');
+    const [profile, addProfile] = useState([]);
     const dispatch = useDispatch();
     const history = useHistory();
     const location = useLocation();
-
-    const [display, setDisplay] = useState(false);
-    const [options, setOptions] = useState([]);
-    const [search, setSearch] = useState("");
 
     const logout = () => {
         dispatch({ type: 'LOGOUT' });
@@ -46,11 +44,14 @@ const Navbar = () => {
     }, [location])
     
     // Gets user profiles from the database.
-    const getProfiles = async() => {
-        const pokemon = [];
+    const getProfiles = async () => {
         const profiles = await api.getProfiles().then(response => {
             const data = response.data;
-            console.log(data);
+            data.map(user => {
+               addProfile(profile.push(user.name))
+               console.log(user.name);
+            })
+            console.log(profile);
         })
         .catch(() => {
             alert("error: Navbar.js -> line: 55");
@@ -60,9 +61,9 @@ const Navbar = () => {
     // Search Bar. Need to integrate the databse.
     const SearchBar = () => {
         return (
-            <div>
-                <input type="text" placeholder="Search..." onClick={getProfiles}/>
-            </div>
+           <div>
+              <input value={input} onInput={e => setInput(e.target.value)}/>
+           </div>
         );
     }
 
