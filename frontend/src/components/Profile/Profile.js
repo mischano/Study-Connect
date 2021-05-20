@@ -1,6 +1,7 @@
 import { Grid, Typography, CardContent, CardActions, Card, makeStyles, Container } from '@material-ui/core';
 import React from 'react';
-import '../App.css';
+import FriendsList from './FriendsList';
+import '../../App.css';
 
 const bannerTheme = {
    width: '100%',
@@ -102,6 +103,7 @@ const Profile = () => {
             </Grid>
             <h2 className="sectionHeader">Your Groups</h2>
          </Grid>
+         <FriendsList/>
       </div>
    );
 }

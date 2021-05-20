@@ -1,12 +1,13 @@
 import express from "express";
 
-import { signin, signup, updateUser } from '../controllers/user.js'
+import { signin, signup, updateUser, getUser } from '../controllers/user.js'
 
 const router = express.Router();
 
 router.post('/signin', signin);
 router.post('/signup', signup);
 router.patch('/:id', updateUser);
+router.get('/users/:id', getUser);
 
 export default router;
 
@@ -57,5 +58,3 @@ app.delete("/profile/:id", async (req, res) => {
 });
 // module.exports = app;
 */
-
-

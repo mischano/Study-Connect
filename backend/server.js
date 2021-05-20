@@ -12,10 +12,9 @@ const app = express();
 const PORT = 5000;
 
 app.use(bodyParser.json({ limit: "30mb", extended: true}));
-//app.use(bodyParser.urlencoded({ limit: "30mb", extended: true}));
 app.use(cors());
-app.use('/user', userRouter)
-app.use('/group', groupRouter)
+app.use('/user', userRouter);
+app.use('/group', groupRouter);
 
 mongoose.connect(
    "mongodb+srv://StudyConnectUser:srcAVv$vq!7Lvfr@studyconnect.dscne.mongodb.net/StudyConnect?retryWrites=true&w=majority",
