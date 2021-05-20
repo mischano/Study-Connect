@@ -71,4 +71,16 @@ export const getUser = async (req, res) => {
 
     const user = await User.findOne({ _id: mongoose.Types.ObjectId(_id) });
     res.json(user);
+    
+export const getProfiles = async (req, res) => {
+    const profiles = await User.find({})
+
+    try {
+        res.send(profiles);
+    } catch (error) {
+        res.stats(500).json({message: 'Error in backend: controllers -> user.js'});
+    }
+    finally {
+        console.log(profiles);
+    }
 }
