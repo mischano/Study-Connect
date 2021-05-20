@@ -14,3 +14,5 @@ export const signIn = (formData) => API.post('/user/signin', formData);
 export const signUp = (formData) => API.post('/user/signup', formData);
 
 export const updateUser = (id, updatedUser) => axios.patch(`/user/${id}`, updatedUser);
+
+export const getProfiles = () => API.get('/user/users');

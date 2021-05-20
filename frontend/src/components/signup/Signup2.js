@@ -7,6 +7,7 @@ import { updateUser } from '../../actions/auth';
 import { useHistory } from 'react-router-dom'
 import useStyles from "./styles";
 import logo from '../Assets/BLACK.png';
+import * as api from '../../api/index';
 
 function Signup2() {
     const [inputList, setInputList] = useState([]);
@@ -27,6 +28,15 @@ function Signup2() {
         e.preventDefault();
         dispatch(updateUser(user.result._id, classes, history))
     };
+
+    const getProfiles = async() => {
+        const profiles = await api.getProfiles().then(data => {
+            console.log(data);
+        })
+        .catch(() => {
+            alert('dip, we are caught :O');
+        })
+    }
   
     return (
         <div>
@@ -41,6 +51,9 @@ function Signup2() {
                 <Button className={Classes.addClass} onClick={onAddBtnClick} style={{float:'left'}}>Add another Class</Button>
                 <Button className={Classes.submit} onClick={handleSubmit} style={{float:'right'}}>
                     Continue
+                </Button>
+                <Button onClick={getProfiles}>
+                    Get Profiles
                 </Button>
             </div>
         </div>

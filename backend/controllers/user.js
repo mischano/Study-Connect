@@ -65,3 +65,16 @@ export const updateUser = async (req, res) => {
 
     res.json(updatedUser);
 }
+
+export const getProfiles = async (req, res) => {
+    const profiles = await User.find({})
+
+    try {
+        res.send(profiles);
+    } catch (error) {
+        res.stats(500).json({message: 'Error in backend: controllers -> user.js'});
+    }
+    finally {
+        console.log(profiles);
+    }
+}
