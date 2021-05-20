@@ -56,7 +56,7 @@ export const updateUser = async (req, res) => {
 
     if(!mongoose.Types.ObjectId.isValid(_id))
     {
-        return res.status(404).send('No post with that id');
+        return res.status(404).send('No user with that id');
     }
     else
     {
@@ -64,4 +64,24 @@ export const updateUser = async (req, res) => {
     }
 
     res.json(updatedUser);
+}
+
+export const getUser = async (req, res) => {
+    const { id: _id} = req.params;
+
+    const user = await User.findOne({ _id: mongoose.Types.ObjectId(_id) });
+    res.json(user);
+}
+
+export const getProfiles = async (req, res) => {
+    const profiles = await User.find({})
+
+    try {
+        res.send(profiles);
+    } catch (error) {
+        res.stats(500).json({message: 'Error in backend: controllers -> user.js'});
+    }
+    finally {
+        console.log(profiles);
+    }
 }

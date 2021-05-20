@@ -32,3 +32,14 @@ export const updateUser = (id, classes, history) => async (dispatch) => {
         console.log(error);
     }
 }
+
+export const getUser = async (id) => {
+    try
+    {
+        const { user } = await api.getUser(id).then(res => res.data);
+        console.log(user);
+    }
+    catch (error) {
+        console.log(error)
+    }
+}

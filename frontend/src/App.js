@@ -5,7 +5,7 @@ import Home from './components/Home';
 import Dashboard from './components/Dashboard';
 import Groups from './components/Groups';
 import Messages from './components/Messages';
-import Profile from './components/Profile';
+import Profile from './components/Profile/Profile';
 import Navbar from './components/Navbar/Navbar';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Auth from "./components/Auth/Auth";
