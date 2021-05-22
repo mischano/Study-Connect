@@ -12,8 +12,8 @@ const initialState = {
   name: '',
   numMembers: '',
   members: []
-};
-
+}; 
+ 
 export default function Groups() {
   const [open, setOpen] = React.useState(false);
   const [formData, setFormData] = useState(initialState)
