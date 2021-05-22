@@ -36,7 +36,6 @@ export default function Groups() {
 
   return (
     <div>
-
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
         Make a new Group
       </Button>
