@@ -18,3 +18,5 @@ export const updateUser = (id, updatedUser) => API.patch(`/user/${id}`, updatedU
 export const getUser = (id) => API.get(`/user/users/${id}`);
 
 export const getProfiles = () => API.get('/user/users');
+
+export const getGroup = (id) => API.get(`/group/${id}`);

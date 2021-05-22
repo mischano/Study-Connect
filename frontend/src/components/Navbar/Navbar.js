@@ -3,6 +3,9 @@ import '../../App.css';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Button } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import decode from 'jwt-decode';
 import logo from '.././Assets/BLACK.png';
 import * as api from '../../api/index';
@@ -16,13 +19,11 @@ import {
 } from './NavBarElements';
 
 const Navbar = () => {
-    const navStyle = { color: 'black' };
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
-    const [input, setInput] = useState('');
-    const [profile, addProfile] = useState([]);
-    const dispatch = useDispatch();
+    const [userName, setUserName] = useState([]);
     const history = useHistory();
     const location = useLocation();
+    const dispatch = useDispatch();
 
     const logout = () => {
         dispatch({ type: 'LOGOUT' });
@@ -39,31 +40,26 @@ const Navbar = () => {
 
             if (decodedToken.exp * 1000 < new Date().getTime()) logout();
         }
+        api.getProfiles().then(res => {
+            res.data.map(user => setUserName(arr => [...arr, user.name]))
+        })
 
         setUser(JSON.parse(localStorage.getItem('profile')))
+
     }, [location])
-    
-    // Gets user profiles from the database.
-    const getProfiles = async () => {
-        const profiles = await api.getProfiles().then(response => {
-            const data = response.data;
-            data.map(user => {
-               addProfile(profile.push(user.name))
-               console.log(user.name);
-            })
-            console.log(profile);
-        })
-        .catch(() => {
-            alert("error: Navbar.js -> line: 55");
-        })
-    }
-    
-    // Search Bar. Need to integrate the databse.
+
     const SearchBar = () => {
         return (
-           <div>
-              <input value={input} onInput={e => setInput(e.target.value)}/>
-           </div>
+            <div style={{ width: 300 }}>
+                <Autocomplete
+                    id="free-solo-demo"
+                    freeSolo
+                    options={userName.map((option) => option)}
+                    renderInput={(params) => (
+                        <TextField {...params} label="Search..." margin="normal" variant="outlined" />
+                    )}
+                />
+            </div>
         );
     }
 
@@ -74,7 +70,6 @@ const Navbar = () => {
                     <img id='logo' src={logo} alt='StudyConnect'></img>
                     {/*/*</NavLink><img src={require('./Assets/logo.svg')}*/}
                 </NavLink>
-                <Bars />
                 <NavMenu>
                     <NavLink to="/dashboard" activeStyle>Dashboard</NavLink>
                     <NavLink to="/groups" activeStyle>Groups</NavLink>
@@ -82,7 +77,7 @@ const Navbar = () => {
                     <NavLink to="/profile" activeStyle>
                         {user ? (user.result.name) : null}
                     </NavLink>
-                    <SearchBar/>
+                    <SearchBar />
                 </NavMenu>
                 <NavBtn>
                     {user ? (null) : <NavBtnLink to="/auth">Login</NavBtnLink>}
@@ -93,5 +88,4 @@ const Navbar = () => {
     );
 }
 
-
-export default Navbar
+export default Navbar;

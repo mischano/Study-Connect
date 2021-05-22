@@ -1,7 +1,10 @@
 import express from "express";
 
+import { getGroup } from '../controllers/group.js'
+
 const router = express.Router();
 
+router.get('/:id', getGroup);
 
 export default router;
 
