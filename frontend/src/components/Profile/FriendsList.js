@@ -1,62 +1,48 @@
-import { Grid, Button, makeStyles } from '@material-ui/core';
-import React, { useEffect, useState } from 'react';
-import mongoose from 'mongoose';
+import { Grid } from '@material-ui/core';
+import React, { useState } from 'react';
 import '../../App.css';
 import { getUser } from '../../actions/auth';
-import Box from '@material-ui/core/Box'
+import {Link} from 'react-router-dom';
 
 function fetchUser() {
-    if (JSON.parse(localStorage.getItem('profile'))) {
-        let user = (JSON.parse(localStorage.getItem('profile'))).result;
-        return user;
-    } else {
-        return null;
-    }
+   if (JSON.parse(localStorage.getItem('profile'))) {
+      let user = (JSON.parse(localStorage.getItem('profile'))).result;
+      return user;
+   } else {
+      return null;
+   }
 }
-function fetchFriends() {
-    let user = fetchUser();
-    if (user) {
-        let friends = user.friends;
-        return friends;
-    }
-}
-const useStyles = makeStyles((theme) => ({
-
-}));
 
 const FriendsList = () => {
-    const friends = useStyles();
-    let user = fetchUser();
-    const [users, setUsers] = useState([]);
+   let user = fetchUser();
+   const [users, setUsers] = useState([]);
 
-    const getFriends = async () => {
-        user.friends.map(async friend => {
-            await getUser(friend).then(res => {
-                setUsers(users.concat(res.name))
-            })
-        })
-    }
+   const getFriends = async () => {
+      
+      Promise.all(user.friends.map(async friend => {
+         return getUser(friend);
+      })).then(arr => setUsers(users => [...users, ...arr]))
+   }
+  
+   if(users.length === 0 && user.friends.length >= 1)
+      getFriends();
 
-    useEffect(() => {
-        getFriends();
-    }, [])
-
-    fetchFriends();
-
-    const reptiles = ["alligator", "snake", "lizard"];
-
-    const PrintStuff = () => {
-        console.log(users);
-    }
-        // <ol>
-        //     {reptiles.map((reptile) => (
-        //         <li>{reptile}</li>
-        //     ))}
-        // </ol>
-
-    return (
-        console.log(users)
-    );
+   return ( 
+      <Grid container className="friends" justify="center" alignItems="center">
+         <h2 className="sectionHeader">Your Friends</h2>
+         <Grid item>
+         <ul>
+         {users.map(friend => {
+            return <li> 
+               <Link to={`/profile/${friend._id}`} key={friend._id} >{friend.name}</Link> 
+               </li> 
+         })}
+      </ul>
+         </Grid>
+         <Grid container spacing={4} direction={'column'} justify="space-evenly">
+         </Grid>
+      </Grid>
+   );
 }
 
 export default FriendsList;
