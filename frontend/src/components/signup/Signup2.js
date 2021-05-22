@@ -26,7 +26,7 @@ function Signup2() {
 
     const sub = (event) => {
         classes.push(event)
-        setInputList(inputList.splice(-1))
+        setInputList(inputList.splice(-1, 1))
     }
 
     const handleSubmit = (e) => {
@@ -34,15 +34,6 @@ function Signup2() {
         dispatch(updateUser(user.result._id, classes, history))
     };
 
-    const getProfiles = async() => {
-        const profiles = await api.getProfiles().then(data => {
-            console.log(data);
-        })
-        .catch(() => {
-            alert('dip, we are caught :O');
-        })
-    }
-  
     return (
         <div>
             <div style={{display: 'inline-block', width:'100%'}}><a href="/"><img id='logo' src={logo} alt='StudyConnect'></img></a></div>
@@ -55,9 +46,6 @@ function Signup2() {
                 <Button className={Classes.addClass} onClick={onAddBtnClick} style={{float:'left'}}>Add another Class</Button>
                 <Button className={Classes.submit} onClick={handleSubmit} style={{float:'right'}}>
                     Continue
-                </Button>
-                <Button onClick={getProfiles}>
-                    Get Profiles
                 </Button>
             </div>
             <Grid className="classes">
