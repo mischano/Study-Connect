@@ -31,6 +31,7 @@ const Auth = () => {
         e.preventDefault();
 
         if(isSignup) {
+            (signup(formData, history))
             dispatch(signup(formData, history))
         }
 
@@ -61,7 +62,7 @@ const Auth = () => {
 
     const googleFailure = () =>
     {
-        console.log("Google sign in was unsuccessful");
+        alert("Google sign in was unsuccessful");
     };
 
     const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);

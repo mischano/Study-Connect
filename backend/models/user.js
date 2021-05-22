@@ -9,7 +9,8 @@ const userSchema = new mongoose.Schema({
    major: { type: String, required: true},
    gradDate: { type: String, required: true},
    friends: [{ type: String }],
-   classes: []
+   classes: [],
+   groups: [{ type: String }]
 });
 
 export default mongoose.model("User", userSchema);

@@ -16,7 +16,7 @@ export const signin = async (req, res) =>
 
         const isPasswordCorrect = await bcrypt.compare(password, existingUser.password);
 
-        if(!isPasswordCorrect) return res.stats(400).json({ message: "Invalid credentials"});
+        if(!isPasswordCorrect) return res.status(400).json({ message: "Invalid credentials"});
 
         const token = jwt.sign({ email: existingUser.email, id: existingUser._id}, 'test', { expiresIn: "1h"});
 
@@ -70,7 +70,7 @@ export const getUser = async (req, res) => {
     const { id: _id} = req.params;
 
     const user = await User.findOne({ _id: mongoose.Types.ObjectId(_id) });
-    res.json(user);
+    res.json({ user });
 }
 
 export const getProfiles = async (req, res) => {

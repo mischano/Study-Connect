@@ -40,4 +40,25 @@ export default makeStyles((theme)=> ({
         alignItems: 'center',
         padding: theme.spacing(2),
     },
+    root: {
+        minWidth: 275,
+        padding: 5,
+        backgroundColor: "white",
+        border: "1px solid blue",
+        width: "5%",
+        borderRadius: 20,
+        marginTop: theme.spacing(3),
+        marginLeft: theme.spacing(10)
+     },
+     title: {
+        fontSize: 15,
+        color: 'blue',
+        fontWeight: "fontWeightBold"
+     },
+     pos: {
+        marginBottom: 25,
+        fontSize: 11,
+        color: 'blue',
+        fontWeight: "fontWeightBold"
+     },
 }));

@@ -37,7 +37,7 @@ export const getUser = async (id) => {
     try
     {
         const { user } = await api.getUser(id).then(res => res.data);
-        console.log(user);
+        return user;
     }
     catch (error) {
         console.log(error)
