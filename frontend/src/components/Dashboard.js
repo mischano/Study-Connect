@@ -25,9 +25,9 @@ export default class Dashboard extends React.Component {
                   alignItems="stretch"
                   wrap="wrap">
                   <Grid item xs={12}> <h2 className="sectionHeader">Your Groups</h2></Grid>
-                  <Grid item xs={12} sm={4} spacing={1}> {groupCard()} </Grid>
-                  <Grid item xs={12} sm={4} spacing={1}> {groupCard()} </Grid>
-                  <Grid item xs={12} sm={4} spacing={1}> {groupCard()} </Grid>
+                  <Grid item xs={12} sm={4}> {groupCard()} </Grid>
+                  <Grid item xs={12} sm={4}> {groupCard()} </Grid>
+                  <Grid item xs={12} sm={4}> {groupCard()} </Grid>
                </Grid>
             </div>
 

@@ -83,7 +83,7 @@ const Profile = () => {
                   direction={'column'} justify="flex-start">
                   <Grid item xs={12}><h2 className="sectionHeader">Your Classes</h2></Grid>
                   {user.classes.map(course => (
-                     <Grid item xs={12} spacing={1}>
+                     <Grid item xs={12}>
                         {classCard(course)}
                      </Grid>
                   ))}

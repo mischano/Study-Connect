@@ -20,9 +20,9 @@ const Group = ({ match }) => {
          {group && (
             <>
                <h1> {group.name} </h1>
-               {group.members.map(friend => {
-                  return <li>
-                     <Link to={`/profile/${friend}`} key={friend._id} >{friend}</Link>
+               {group.members.map((friend, i) => {
+                  return <li key={i}>
+                     <Link to={`/profile/${friend}`} key={friend._id}>{friend}</Link>
                   </li>
                })}
             </>
