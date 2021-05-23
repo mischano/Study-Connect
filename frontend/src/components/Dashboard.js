@@ -24,7 +24,7 @@ export default class Dashboard extends React.Component
                spacing={1}
                direction = "row"
                justify="flex-start"
-               alignItems="center"
+               alignItems="stretch"
                wrap="wrap">
                <Grid item xs={12}> <h2 className="sectionHeader">Your Groups</h2></Grid>
                <Grid item xs={12} sm={4} spacing={1}> {groupCard()} </Grid>
@@ -38,7 +38,7 @@ export default class Dashboard extends React.Component
                spacing={1}
                direction = "row"
                justify="flex-start"
-               alignItems="center"
+               alignItems="stretch"
                wrap="wrap">
                <Grid item xs={12}> <h2 className="sectionHeader">Resources</h2></Grid>
                <Grid item xs={12} sm={3} spacing={0}>{resourceCard("https://success.calpoly.edu/", "Mustang Success", "Academic Services")} </Grid>
