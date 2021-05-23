@@ -63,7 +63,6 @@ const Profile = () => {
    let user = fetchUser();
    fetchClasses();
 
-
    return (
       <div>
          <div style={bannerTheme}>

@@ -2,6 +2,7 @@ import { Grid } from '@material-ui/core';
 import React, { useState } from 'react';
 import '../../App.css';
 import { getUser } from '../../actions/auth';
+import {Link} from 'react-router-dom';
 
 function fetchUser() {
    if (JSON.parse(localStorage.getItem('profile'))) {
@@ -20,7 +21,7 @@ const FriendsList = () => {
       
       Promise.all(user.friends.map(async friend => {
          return getUser(friend);
-      })).then(arr => arr.map(f => f.name)).then(arr => setUsers(users => [...users, ...arr]))
+      })).then(arr => setUsers(users => [...users, ...arr]))
    }
   
    if(users.length === 0 && user.friends.length >= 1)
@@ -32,7 +33,9 @@ const FriendsList = () => {
          <Grid item>
          <ul>
          {users.map(friend => {
-            return <div>{friend}</div>;
+            return <li> 
+               <Link to={`/profile/${friend._id}`} key={friend._id} >{friend.name}</Link> 
+               </li> 
          })}
       </ul>
          </Grid>

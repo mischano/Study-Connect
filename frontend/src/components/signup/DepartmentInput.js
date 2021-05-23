@@ -19,9 +19,6 @@ const DepartmentInput = ({handleChange}) => {
       const [value, setValue] = React.useState(options[0]);
 
       return (
-         <div>
-           <div>{`value: ${value !== null ? `'${value}'` : 'null'}`}</div>
-           <br />
            <Autocomplete
              value={value}
              onChange={(event, newValue) => {
@@ -30,10 +27,9 @@ const DepartmentInput = ({handleChange}) => {
              }}
              id="controllable-states-demo"
              options={options}
-             style={{ width: 300 }}
+             style={{ width: 200 }}
              renderInput={(params) => <TextField {...params} label="Departments" variant="outlined" required />}
            />
-         </div>
        );
 };
 
