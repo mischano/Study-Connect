@@ -7,35 +7,65 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import MakeGroup from './MakeGroup'
+import { makeGroup } from '../../actions/group';
+import { updateGroups } from '../../actions/auth';
+import { useDispatch } from 'react-redux';
+import { getGroup } from '../../actions/group';
+import {Link} from 'react-router-dom';
 
 const initialState = {
   name: '',
-  numMembers: '',
   members: []
 }; 
- 
+
+function fetchUser() {
+  if (JSON.parse(localStorage.getItem('profile'))) {
+     let user = (JSON.parse(localStorage.getItem('profile'))).result
+     return user;
+  } else {
+     return null;
+  }
+}
+
 export default function Groups() {
   const [open, setOpen] = React.useState(false);
   const [formData, setFormData] = useState(initialState)
+  const user = fetchUser();
+  const [groups, setGroups] = useState([]);
 
+  const getGroups = async () => {
+     
+     Promise.all(user.groups.map(async group => {
+        return getGroup(group);
+     })).then(arr => setGroups(groups => [...groups, ...arr]))
+  }
+ 
+  if(groups.length === 0 && user.groups.length >= 1)
+  {
+     getGroups();
+  }
+
+  const dispatch = useDispatch();
   const handleClickOpen = () => {
     setOpen(true);
   };
 
   const handleClose = () => {
     setOpen(false);
-    console.log(formData.members)
-    console.log(formData.name)
-    console.log(formData.numMembers)
+    makeGroup(formData).then(res => dispatch(updateGroups(user._id, [res.data])))
   };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    setFormData({ ...formData, numMembers: 1 + formData.members.length });
   };
 
   return (
     <div>
+      {groups.map(group => {
+            return <li> 
+               <Link to={`/groups/${group._id}`} key={group._id} >{group.name}</Link> 
+               </li> 
+         })}
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
         Make a new Group
       </Button>
