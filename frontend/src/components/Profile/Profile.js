@@ -109,7 +109,7 @@ const Profile = () => {
                   direction={'column'} justify="flex-start">
                   <Grid item xs={12}><h2 className="sectionHeader">Your Classes</h2></Grid>
                   {user.classes.map(course => (
-                     <Grid item xs={12} spacing={1}>
+                     <Grid item xs={12}>
                         {classCard(course)}
                      </Grid>
                   ))}
@@ -123,9 +123,9 @@ const Profile = () => {
                   alignItems="stretch"
                   wrap="wrap">
                   <Grid item xs={12}><h2 className="sectionHeader">Your Groups</h2></Grid>
-                  <Grid item xs={12} sm={6} spacing={1}> {groupCard()} </Grid>
-                  <Grid item xs={12} sm={6} spacing={1}> {groupCard()} </Grid>
-                  <Grid item xs={12} sm={6} spacing={1}> {groupCard()} </Grid>
+                  <Grid item xs={12} sm={6}> {groupCard()} </Grid>
+                  <Grid item xs={12} sm={6}> {groupCard()} </Grid>
+                  <Grid item xs={12} sm={6}> {groupCard()} </Grid>
                </Grid>
             </div>
             <div className="friends">

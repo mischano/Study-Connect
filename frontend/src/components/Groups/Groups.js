@@ -58,9 +58,9 @@ export default function Groups() {
 
    return (
       <div>
-         {groups.map(group => {
-            return <li>
-               <Link to={`/groups/${group._id}`} key={group._id} >{group.name}</Link>
+         {groups.map((group, i) => {
+            return <li key={i}>
+               <Link to={`/groups/${group._id}`} key={group._id}>{group.name}</Link>
             </li>
          })}
          <Button variant="outlined" color="primary" onClick={handleClickOpen}>

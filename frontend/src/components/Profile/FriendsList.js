@@ -31,8 +31,8 @@ const FriendsList = () => {
          <h2 className="sectionHeader">Your Friends</h2>
          <Grid item>
             <ul>
-               {users.map(friend => {
-                  return <li><Link to={`/profile/${friend._id}`} key={friend._id} >{friend.name}</Link></li>
+               {users.map((friend, i) => {
+                  return <li key={i}><Link to={`/profile/${friend._id}`} key={friend._id}>{friend.name}</Link></li>
                })}
             </ul>
          </Grid>
