@@ -26,7 +26,6 @@ function fetchUser() {
    }
 }
 
-/* update when classes route is working */
 function fetchClasses() {
    let user = fetchUser();
    if (user) {
@@ -35,31 +34,6 @@ function fetchClasses() {
    }
 }
 
-/*
-const useStyles = makeStyles((theme) => ({
-   root: {
-      minWidth: 275,
-      padding: 5,
-      backgroundColor: "white",
-      border: "1px solid blue",
-      width: "33%",
-      borderRadius: 20,
-      marginTop: theme.spacing(3),
-      marginLeft: theme.spacing(10)
-   },
-   title: {
-      fontSize: 25,
-      color: 'blue',
-      fontWeight: "fontWeightBold"
-   },
-   pos: {
-      marginBottom: 25,
-      fontSize: 20,
-      color: 'blue',
-      fontWeight: "fontWeightBold"
-   },
-}));
-*/
 
 /* placeholder group card */
 function groupCard(props) {
@@ -105,7 +79,7 @@ const Profile = () => {
 
          <div className="profileBody">
             <div className="classes">
-               <Grid container spacing={1}
+               <Grid container spacing={3}
                   direction={'column'} justify="flex-start">
                   <Grid item xs={12}><h2 className="sectionHeader">Your Classes</h2></Grid>
                   {user.classes.map(course => (
@@ -116,21 +90,21 @@ const Profile = () => {
                </Grid>
             </div>
             <div className='groups'>
-               <Grid container
+               <Grid container zeroMinWidth
                   spacing={1}
                   direction="row"
                   justify="flex-start"
                   alignItems="stretch"
-                  wrap="wrap">
+                  wrap="wrap" >
                   <Grid item xs={12}><h2 className="sectionHeader">Your Groups</h2></Grid>
-                  <Grid item xs={12} sm={6} spacing={1}> {groupCard()} </Grid>
-                  <Grid item xs={12} sm={6} spacing={1}> {groupCard()} </Grid>
-                  <Grid item xs={12} sm={6} spacing={1}> {groupCard()} </Grid>
+                  <Grid item xs={12} sm={6} md={4} spacing={1}> {groupCard()} </Grid>
+                  <Grid item xs={12} sm={6} md={4} spacing={1}> {groupCard()} </Grid>
+                  <Grid item xs={12} sm={6} md={4} spacing={1}> {groupCard()} </Grid>
                </Grid>
             </div>
             <div className="friends">
-               <FriendsList /></div>
-         </div>
+               <FriendsList/></div>
+         </div> 
       </div>
    );
 }

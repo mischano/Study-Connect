@@ -13,6 +13,21 @@ function fetchUser() {
    }
 }
 
+function friendCard(props){
+   const profileLink = '/profile/' + props._id;
+   return(
+      <a className="cardLink" href={profileLink}>
+         <div className="friendCard">
+            <div className='profilePhoto'></div>
+            <div className="friendInfo">
+               <h2>{props.name}</h2>
+               <p className="subTitle">{props.gradDate}, {props.major}</p>
+            </div>
+         </div>
+      </a>
+   )
+}
+
 const FriendsList = () => {
    let user = fetchUser();
    const [users, setUsers] = useState([]);
@@ -27,17 +42,16 @@ const FriendsList = () => {
       getFriends();
 
    return (
-      <Grid container className="friends" justify="center" alignItems="center">
-         <h2 className="sectionHeader">Your Friends</h2>
-         <Grid item>
-            <ul>
-               {users.map(friend => {
-                  return <li><Link to={`/profile/${friend._id}`} key={friend._id} >{friend.name}</Link></li>
-               })}
-            </ul>
-         </Grid>
-         <Grid container spacing={4} direction={'column'} justify="space-evenly">
-         </Grid>
+      <Grid container className="friends" 
+      spacing={1}
+      direction={'row'} 
+      justify="flex-start" 
+      alignItems="stretch">
+         <Grid item xs={12}><h2 className="sectionHeader">Your Friends</h2></Grid>
+            {users.map(friend => {
+               return ( 
+               <Grid item xs={12} s={4} spacing={2}>{friendCard(friend)}</Grid>
+            )})}
       </Grid>
    );
 }
