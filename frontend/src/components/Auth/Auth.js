@@ -6,68 +6,67 @@ import Input from './Input';
 import Icon from './icon';
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
-import { signin , signup } from '../../actions/auth';
+import { signin, signup } from '../../actions/auth';
 import logo from '../Assets/BLACK.png';
 import books from '../Assets/Books.jpg';
 
 const initialState = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-    major: '',
-    gradDate: '',
+   firstName: '',
+   lastName: '',
+   email: '',
+   password: '',
+   confirmPassword: '',
+   major: '',
+   gradDate: ''
 };
 
 
 const Auth = () => {
-    const classes = useStyles();
-    const [showPassword, setShowPassword] = useState(false);
-    const [isSignup, setIsSignup] = useState(false);
-    const [formData, setFormData] = useState(initialState);
-    const dispatch = useDispatch();
-    const history = useHistory();
+   const classes = useStyles();
+   const [showPassword, setShowPassword] = useState(false);
+   const [isSignup, setIsSignup] = useState(false);
+   const [formData, setFormData] = useState(initialState);
+   const dispatch = useDispatch();
+   const history = useHistory();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+   const handleSubmit = (e) => {
+      e.preventDefault();
 
-        if(isSignup) {
-            (signup(formData, history))
-            dispatch(signup(formData, history))
-        }
+      if (isSignup) {
+         (signup(formData, history));
+         dispatch(signup(formData, history));
+      }
 
-        else {
-            dispatch(signin(formData, history))
-        }
-    };
+      else {
+         dispatch(signin(formData, history));
+      }
+   };
 
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
+   const handleChange = (e) => {
+      setFormData({ ...formData, [e.target.name]: e.target.value });
+   };
 
-    const switchMode = () => {
-        setIsSignup((prevIsSignup) => !prevIsSignup);
-        setShowPassword(false);
-    };
+   const switchMode = () => {
+      setIsSignup((prevIsSignup) => !prevIsSignup);
+      setShowPassword(false);
+   };
 
-    const googleSuccess = async (res) => {
-       const result = res?.profileObj;
-       const token = res?.tokenId;
-       try {
-           dispatch({type: 'AUTH', data: { result, token}});
-           history.push('/dashboard');
-       } catch (error) {
-           console.log(error)
-       }
-    };
+   const googleSuccess = async (res) => {
+      const result = res?.profileObj;
+      const token = res?.tokenId;
+      try {
+         dispatch({ type: 'AUTH', data: { result, token } });
+         history.push('/dashboard');
+      } catch (error) {
+         console.log(error);
+      }
+   };
 
-    const googleFailure = () =>
-    {
-        alert("Google sign in was unsuccessful");
-    };
+   const googleFailure = () => {
+      alert("Google sign in was unsuccessful");
+   };
 
-    const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
+   const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
 
     const styles = {
         paperContainer: {

@@ -1,12 +1,12 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
 const groupSchema = new mongoose.Schema(
-    {
-        name: { type: String },
-        id: { type: String },
-        posts: [],
-        numMembers: { type: Number}
-    }
+   {
+      name: { type: String },
+      id: { type: String },
+      posts: [],
+      members: [{ type: String }]
+   }
 );
 
 export default mongoose.model("Group", groupSchema);
