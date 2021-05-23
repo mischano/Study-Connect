@@ -4,19 +4,18 @@ import {Checkbox, FormControl, FormControlLabel, FormLabel, FormGroup} from "@ma
 
 const WeekDayPicker = ({handleChange}) => {
 
-    const [Weekdays, setWeekdays] = useState([])
+    const [Weekdays, setWeekdays] = useState([]);
 
     //correct order of days
     const days = ["M", "T", "W", "R", "F"];
 
     useEffect(() => {
-       handleChange(Weekdays)
+       handleChange(Weekdays);
     }, [Weekdays])
 
 
     // removes the given day from the array
     function remove(arr, value) {
-
         return arr.filter(function(ele){
             return ele !== value;
         });
@@ -33,7 +32,7 @@ const WeekDayPicker = ({handleChange}) => {
     const getValue = (e) => {
         if(Weekdays.includes(e.target.value))
         {
-            setWeekdays(remove(Weekdays, e.target.value).sort(sortDays))
+            setWeekdays(remove(Weekdays, e.target.value).sort(sortDays));
         }
         else
         {

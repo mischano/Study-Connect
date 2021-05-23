@@ -4,8 +4,8 @@ const Schema = require("mongoose");
 const messageSchema = new mongoose.Schema({
     sender: { type: Schema.Types.ObjectId, ref: 'Profile' },
     content: String,
-    converstionId: { type: Schema.Types.ObjectId, ref: 'Conversation' },
-    created_at: {type: Date, default: Date.now},
+    conversationId: { type: Schema.Types.ObjectId, ref: 'Conversation' },
+    created_at: {type: Date, default: Date.now}
 });
 
 const Message = mongoose.model("Message", messageSchema);

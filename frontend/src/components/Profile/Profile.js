@@ -1,4 +1,5 @@
-import { Grid, Typography, CardContent, CardActions, Card, makeStyles, Container } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
+// import { makeStyles } from '@material-ui/core';
 import React from 'react';
 import FriendsList from './FriendsList';
 import '../../App.css';
@@ -7,13 +8,13 @@ const bannerTheme = {
    width: '100%',
    background: "linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://blog-www.pods.com/wp-content/uploads/2020/05/SF-Neighborhoods-Feature-photo-.jpg)",
    backgroundSize: 'cover',
-   padding: '2em',
+   padding: '2em'
 }
 
 const bannerInfoStyle = {
    direction: "row",
    justify: "center",
-   alignItems: "center",
+   alignItems: "center"
 }
 
 function fetchUser() {
@@ -34,6 +35,7 @@ function fetchClasses() {
    }
 }
 
+/*
 const useStyles = makeStyles((theme) => ({
    root: {
       minWidth: 275,
@@ -57,6 +59,7 @@ const useStyles = makeStyles((theme) => ({
       fontWeight: "fontWeightBold"
    },
 }));
+*/
 
 /* placeholder group card */
 function groupCard(props){
@@ -87,7 +90,6 @@ function classCard(props){
    )
 }
 const Profile = () => {
-   const classes = useStyles();
    let user = fetchUser();
    fetchClasses();
 

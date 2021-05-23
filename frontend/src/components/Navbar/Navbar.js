@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import '../../App.css';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Button } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import decode from 'jwt-decode';
@@ -12,7 +11,6 @@ import * as api from '../../api/index';
 import {
     Nav,
     NavLink,
-    Bars,
     NavMenu,
     NavBtn,
     NavBtnLink
@@ -41,11 +39,9 @@ const Navbar = () => {
             if (decodedToken.exp * 1000 < new Date().getTime()) logout();
         }
         api.getProfiles().then(res => {
-            res.data.map(user => setUserName(arr => [...arr, user.name]))
+            res.data.map(user => setUserName(arr => [...arr, user.name]));
         })
-
-        setUser(JSON.parse(localStorage.getItem('profile')))
-
+        setUser(JSON.parse(localStorage.getItem('profile')));
     }, [location])
 
     const SearchBar = () => {

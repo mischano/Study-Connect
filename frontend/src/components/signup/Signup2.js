@@ -1,13 +1,12 @@
 import React, { useState} from 'react';
 import '../../App.css';
-import ClassAdd from './ClassAdd'
+import ClassAdd from './ClassAdd';
 import { Button, Grid, Card, CardContent, Typography } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
-import { updateUser } from '../../actions/auth';
+import { updateClasses } from '../../actions/auth';
 import { useHistory } from 'react-router-dom'
 import useStyles from "./styles";
 import logo from '../Assets/BLACK.png';
-import * as api from '../../api/index';
 
 function Signup2() {
     const [inputList, setInputList] = useState([]);
@@ -25,13 +24,13 @@ function Signup2() {
     };
 
     const sub = (event) => {
-        classes.push(event)
-        setInputList(inputList.splice(-1, 1))
+        classes.push(event);
+        setInputList(inputList.splice(-1, 1));
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(updateUser(user.result._id, classes, history))
+        dispatch(updateClasses(user.result._id, classes, history));
     };
 
     return (
