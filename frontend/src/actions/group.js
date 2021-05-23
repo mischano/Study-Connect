@@ -10,3 +10,12 @@ export const getGroup = async (id) => {
         console.log(error)
     }
 }
+
+export const makeGroup = async (formData) => {
+    try {
+        const data = await api.makeGroup(formData);
+        return data;
+    } catch (error) {
+        console.log(error);
+    }
+}

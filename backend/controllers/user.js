@@ -49,7 +49,7 @@ export const signup = async (req, res) => {
     }
 }
 
-export const updateUser = async (req, res) => {
+export const updateClasses = async (req, res) => {
     const { id: _id} = req.params;
 
     const classes = req.body;
@@ -61,6 +61,23 @@ export const updateUser = async (req, res) => {
     else
     {
         var updatedUser = await User.findByIdAndUpdate(_id, {$push: {"classes" : classes}}, { new: true});
+    }
+
+    res.json(updatedUser);
+}
+
+export const updateGroups = async (req, res) => {
+    const { id: _id} = req.params;
+
+    const groups = req.body;
+
+    if(!mongoose.Types.ObjectId.isValid(_id))
+    {
+        return res.status(404).send('No user with that id');
+    }
+    else
+    {
+        var updatedUser = await User.findByIdAndUpdate(_id, {$push: {"groups" : groups}}, { new: true});
     }
 
     res.json(updatedUser);

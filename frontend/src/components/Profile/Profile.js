@@ -73,36 +73,29 @@ const Profile = () => {
                </div>
             </Grid>
          </div>
-         <Grid className="classes">
+
+         <div className = "profileBody">
+            <div className="classes">
             <h2 className="sectionHeader">Your Classes</h2>
-            <Grid container spacing={4} direction={'column'} justify="space-evenly">
+            <Grid container spacing={2} direction={'column'} justify="space-evenly">
                {user.classes.map(course => (
-                  <Card className={classes.root} border={1}>
-                     <CardContent>
-                        <Grid container direction={'row'}>
-                           <Grid item xs={4}>
-                              <Typography className={classes.title} color="textSecondary" gutterBottom>
-                                 {course.department + " " + course.number}
-                              </Typography>
-                           </Grid>
-                        <Grid item xs={5}>
-                           <Typography className={classes.title} color="textSecondary">
-                              {course.startTime + "-" + course.endTime}
-                           </Typography>
-                        </Grid>
-                        <Grid item xs={2}>
-                           <Typography className={classes.title} color="textSecondary">
-                              {course.weekDays}
-                           </Typography>
-                        </Grid>
-                        </Grid>
-                     </CardContent>
-                  </Card>
+                  <div className='classCard'>
+                              <h2 className='courseTitle'>{course.department + " " + course.number}</h2>
+                              <div className ='classInfo'>
+                              <p className='subTitle'>{course.startTime + "-" + course.endTime}</p>
+                              <p className='subTitle'>{course.weekDays}</p>
+                              </div>
+                  </div>
                ))}
             </Grid>
-            <h2 className="sectionHeader">Your Groups</h2>
-         </Grid>
-         <FriendsList/>
+            </div>
+            <div className='groups'>
+               <h2 className="sectionHeader">Your Groups</h2>
+               <p>Lorem ipsum dolor amet</p>
+            </div>
+         <div className="friends">
+         <FriendsList/></div>
+         </div>
       </div>
    );
 }

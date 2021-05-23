@@ -45,3 +45,5 @@ app.listen(PORT, () => console.log(`Server running on PORT ${PORT}`));
 //app.use(conversationRouter);
 //app.use(messageRouter);
 //app.use(profileRouter);
+
+export default db;

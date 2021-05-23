@@ -1,4 +1,4 @@
-import {ADDCLASS, AUTH} from '../constants/actionTypes.js'
+import {ADDCLASS, ADDGROUP, AUTH} from '../constants/actionTypes.js'
 
 import * as api from '../api/index.js'
 
@@ -23,11 +23,20 @@ export const signup = (formData, history) => async (dispatch) => {
     }
 }
 
-export const updateUser = (id, classes, history) => async (dispatch) => {
+export const updateClasses = (id, classes, history) => async (dispatch) => {
     try {
-        await api.updateUser(id, classes);
+        await api.updateClasses(id, classes);
         dispatch({ type: ADDCLASS, data : classes});
         history.push('/dashboard')
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const updateGroups = (id, groups) => async (dispatch) => {
+    try {
+        await api.updateGroups(id, groups);
+        dispatch({ type: ADDGROUP, data : groups});
     } catch (error) {
         console.log(error);
     }
