@@ -4,10 +4,6 @@ import '../App.css';
 
 export default class Dashboard extends React.Component
 {
-   constructor(props) {
-      super(props);
-   }
-
    render() {
       return (
       <div>
@@ -59,8 +55,7 @@ function getStudyTip(){
                Instead of studying for a long block of time, break it into shorter sessions with frequent 
                breaks in between to refresh and refocus.`            
    let tips = [tip1,tip2];
-   const randomTip = tips[Math.floor(Math.random() * tips.length)];
-   return randomTip;
+   return tips[Math.floor(Math.random() * tips.length)];
 }
 
 function getGreeting(){
@@ -89,7 +84,7 @@ function getGreeting(){
 /* update when database can be accessed with group schema*/
 function groupCard(props){
    return(
-      <a className="cardLink" href="">
+      // <a className="cardLink" href="">
       <div className="card">
          <div className="cardTitle">
             <h2>CHEM126 Lab Group</h2>
@@ -98,7 +93,7 @@ function groupCard(props){
             <p>32 members</p>
          </div>       
       </div>
-      </a>
+      // </a>
    )
 }
 

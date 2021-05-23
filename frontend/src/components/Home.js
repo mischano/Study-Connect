@@ -1,17 +1,13 @@
 import React from 'react';
 import '../App.css';
-import { Link } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
 import logo from './Assets/WHITE.png';
-
-
 
 const styling = {
    position: 'fixed',
    background: "linear-gradient( rgba(0, 100, 148, 0.7), rgba(0, 100, 148, 0.7) ), url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2700&q=80')",
    backgroundSize: 'cover',
    height: '100%',
-   width:'100%',
+   width:'100%'
 }
 
 const contentStyle = {
@@ -23,16 +19,11 @@ const contentStyle = {
    left:'50%', 
    transform:'translate(-50%,-50%)',
    filter: 'drop-shadow(0 0 0.75rem rgb(0,0,0,0.4))'
-
 }
 
 
 export default class Home extends React.Component
 {
-   constructor(props) {
-      super(props);
-   }
-
    render() {
       return (
          <div style={styling}>

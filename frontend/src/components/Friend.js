@@ -1,8 +1,7 @@
-
 import React, { useEffect, useState } from 'react';
 import '../App.css';
 import { getUser } from '../actions/auth';
-import { Grid, Typography, CardContent, CardActions, Card, makeStyles, Container } from '@material-ui/core';
+import { Grid, Typography, CardContent, Card, makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -32,14 +31,14 @@ const Friend = ({ match }) => {
     const [friend, setFriend] = useState(null);
     const classes = useStyles();
     const getFriend = async () => {
-       const user = await getUser(match.params.id)
+       const user = await getUser(match.params.id);
        setFriend(user);
     }
 
     useEffect(() => 
     {
         getFriend();
-    }, []);
+    });
 
     return (
       <div>

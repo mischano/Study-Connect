@@ -16,7 +16,7 @@ const initialState = {
     password: '',
     confirmPassword: '',
     major: '',
-    gradDate: '',
+    gradDate: ''
 };
 
 const Auth = () => {
@@ -31,12 +31,12 @@ const Auth = () => {
         e.preventDefault();
 
         if(isSignup) {
-            (signup(formData, history))
-            dispatch(signup(formData, history))
+            (signup(formData, history));
+            dispatch(signup(formData, history));
         }
 
         else {
-            dispatch(signin(formData, history))
+            dispatch(signin(formData, history));
         }
     };
 
@@ -56,7 +56,7 @@ const Auth = () => {
            dispatch({type: 'AUTH', data: { result, token}});
            history.push('/dashboard');
        } catch (error) {
-           console.log(error)
+           console.log(error);
        }
     };
 

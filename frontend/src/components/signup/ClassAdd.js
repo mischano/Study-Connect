@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import '../../App.css';
-import {Button, Grid, Paper, TextField, Checkbox} from "@material-ui/core";
+import {Button, Grid, Paper, TextField } from "@material-ui/core";
 import DepartmentInput from "./DepartmentInput";
 import useStyles from "./styles";
 import WeekDayPicker from './WeekDayPicker'
 
-  const intitialState = {
+  const initialState = {
     department: '',
     number: '',
     startTime: "07:30",
@@ -15,7 +15,7 @@ import WeekDayPicker from './WeekDayPicker'
 
 const ClassAdd = ({onSubmit}) =>
 {
-    const [formData, setFormData] = useState(intitialState);
+    const [formData, setFormData] = useState(initialState);
     const Classes = useStyles();
 
     const handleChange = (e) => {
@@ -33,7 +33,7 @@ const ClassAdd = ({onSubmit}) =>
                 <form onSubmit={handleSubmit}>
                     <Grid container spacing={2}>
                         <Grid item xs={6} md={4}>
-                            <DepartmentInput handleChange={e => setFormData({...formData, ["department"]: e})}/>
+                            <DepartmentInput handleChange={e => setFormData({...formData, "department": e})}/>
                         </Grid>
                         <Grid item xs={6}md={4}>
                             <TextField required 
@@ -63,7 +63,7 @@ const ClassAdd = ({onSubmit}) =>
                                        fullWidth/>
                         </Grid>
                         <Grid item xs={12} align="center">
-                        <WeekDayPicker handleChange={e => setFormData({...formData, ["weekDays"]: e})}/>
+                        <WeekDayPicker handleChange={e => setFormData({...formData, "weekDays": e})}/>
                         </Grid>
                         <Grid item xs={12} align="center">
                             <Button className={Classes.confirm} type="submit">

@@ -1,6 +1,6 @@
 import React, { useState} from 'react';
 import '../../App.css';
-import ClassAdd from './ClassAdd'
+import ClassAdd from './ClassAdd';
 import { Button, Grid, Card, CardContent, Typography } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import { updateClasses } from '../../actions/auth';
@@ -24,13 +24,13 @@ function Signup2() {
     };
 
     const sub = (event) => {
-        classes.push(event)
-        setInputList(inputList.splice(-1, 1))
+        classes.push(event);
+        setInputList(inputList.splice(-1, 1));
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(updateClasses(user.result._id, classes, history))
+        dispatch(updateClasses(user.result._id, classes, history));
     };
 
     return (

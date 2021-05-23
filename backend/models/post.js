@@ -9,7 +9,7 @@ const postSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    created_at: {type: Date, default: new Date()},
+    created_at: {type: Date, default: new Date()}
 });
 
 const Post = mongoose.model("Post", postSchema);

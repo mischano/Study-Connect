@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React from 'react';
 import '../../App.css';
 import { TextField } from "@material-ui/core";
 import Autocomplete from '@material-ui/lab/Autocomplete';
@@ -15,7 +15,6 @@ const DepartmentInput = ({handleChange}) => {
       'MU', 'NR', 'PHIL', 'PEM', 'PEW', 'PSC', 'PHYS', 'POLS', 'PSY', 'RPTA', 'RELS',
       'SCM', 'SOC', 'SS', 'SPAN', 'SPED', 'STAT', 'SIE', 'TH', 'UNIV', "WVIT", "WGS",
       "WLC"]
-
       const [value, setValue] = React.useState(options[0]);
 
       return (

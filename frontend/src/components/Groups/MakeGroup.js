@@ -1,4 +1,3 @@
-import { Grid } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
 import '../../App.css';
 import { getUser } from '../../actions/auth';
@@ -34,16 +33,16 @@ const MakeGroup = ({handleChange}) => {
       
       Promise.all(user.friends.map(async friend => {
          return getUser(friend);
-      })).then(arr => setUsers(users => [...users, ...arr]))
+      })).then(arr => setUsers(users => [...users, ...arr]));
    }
   
     useEffect(() => 
     {
-        getFriends()
-    }, [])
+        getFriends();
+    });
 
     var userList = [];
-    userList = users.map(friend => friend)
+    userList = users.map(friend => friend);
 
    return ( 
     <div className={classes.root}>

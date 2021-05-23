@@ -1,4 +1,4 @@
-import * as api from '../api/index.js'
+import * as api from '../api/index.js';
 
 export const getGroup = async (id) => {
     try
@@ -7,10 +7,9 @@ export const getGroup = async (id) => {
         return group;
     }
     catch (error) {
-        console.log(error)
+        console.log(error);
     }
 }
-
 export const makeGroup = async (formData) => {
     try {
         const data = await api.makeGroup(formData);

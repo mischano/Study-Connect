@@ -18,7 +18,6 @@ const FriendsList = () => {
    const [users, setUsers] = useState([]);
 
    const getFriends = async () => {
-      
       Promise.all(user.friends.map(async friend => {
          return getUser(friend);
       })).then(arr => setUsers(users => [...users, ...arr]))

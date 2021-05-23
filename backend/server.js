@@ -1,4 +1,3 @@
-
 import express from "express";
 import mongoose from "mongoose";
 import bodyParser from 'body-parser';
@@ -36,7 +35,7 @@ db.on('error', err => {
 });
 
 app.get('/', (req, res) => {
-    res.send('Hello World!')
+    res.send('Hello World!');
 })
 
 app.listen(PORT, () => console.log(`Server running on PORT ${PORT}`));

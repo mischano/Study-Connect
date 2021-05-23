@@ -6,7 +6,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import MakeGroup from './MakeGroup'
+import MakeGroup from './MakeGroup';
 import { makeGroup } from '../../actions/group';
 import { updateGroups } from '../../actions/auth';
 import { useDispatch } from 'react-redux';
@@ -20,7 +20,7 @@ const initialState = {
 
 function fetchUser() {
   if (JSON.parse(localStorage.getItem('profile'))) {
-     let user = (JSON.parse(localStorage.getItem('profile'))).result
+     let user = (JSON.parse(localStorage.getItem('profile'))).result;
      return user;
   } else {
      return null;
@@ -29,7 +29,7 @@ function fetchUser() {
 
 export default function Groups() {
   const [open, setOpen] = React.useState(false);
-  const [formData, setFormData] = useState(initialState)
+  const [formData, setFormData] = useState(initialState);
   const user = fetchUser();
   const [groups, setGroups] = useState([]);
 
@@ -37,7 +37,7 @@ export default function Groups() {
      
      Promise.all(user.groups.map(async group => {
         return getGroup(group);
-     })).then(arr => setGroups(groups => [...groups, ...arr]))
+     })).then(arr => setGroups(groups => [...groups, ...arr]));
   }
  
   if(groups.length === 0 && user.groups.length >= 1)
@@ -52,7 +52,7 @@ export default function Groups() {
 
   const handleClose = () => {
     setOpen(false);
-    makeGroup(formData).then(res => dispatch(updateGroups(user._id, [res.data])))
+    makeGroup(formData).then(res => dispatch(updateGroups(user._id, [res.data])));
   };
 
   const handleChange = (e) => {

@@ -7,14 +7,14 @@ const Group = ({ match }) => {
   const [group, setGroup] = useState(null);
   
   const fetchGroup = async () => {
-     const user = await getGroup(match.params.id)
+     const user = await getGroup(match.params.id);
      setGroup(user);
   }
 
   useEffect(() => 
   {
       fetchGroup();
-  }, []);
+  });
 
   return (
     <div>
