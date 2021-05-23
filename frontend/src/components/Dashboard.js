@@ -6,12 +6,14 @@ export default class Dashboard extends React.Component {
    render() {
       return (
          <div>
-            <div className="topBanner">
-               <h1 className="mainPageTitle"> Dashboard </h1>
-               <div className="bannerBlurb">
-                  <h2 id="greeting">{getGreeting()}</h2>
-                  <h4 id="didYouKnow">Did you know...</h4>
-                  <p id="studyTip">{getStudyTip()}</p>
+            <div>
+               <div className="topBanner">
+                  <h1 className="mainPageTitle"> Dashboard </h1>
+                  <div className="bannerBlurb">
+                     <h2 id="greeting">{getGreeting()}</h2>
+                     <h4 id="didYouKnow">Did you know...</h4>
+                     <p id="studyTip">{getStudyTip()}</p>
+                  </div>
                </div>
             </div>
             <div className="groups">
@@ -19,12 +21,12 @@ export default class Dashboard extends React.Component {
                   spacing={1}
                   direction="row"
                   justify="flex-start"
-                  alignItems="center"
+                  alignItems="stretch"
                   wrap="wrap">
                   <Grid item xs={12}> <h2 className="sectionHeader">Your Groups</h2></Grid>
-                  <Grid item xs={12} sm={4}> {groupCard()} </Grid>
-                  <Grid item xs={12} sm={4}> {groupCard()} </Grid>
-                  <Grid item xs={12} sm={4}> {groupCard()} </Grid>
+                  <Grid item xs={12} sm={4} spacing={1}> {groupCard()} </Grid>
+                  <Grid item xs={12} sm={4} spacing={1}> {groupCard()} </Grid>
+                  <Grid item xs={12} sm={4} spacing={1}> {groupCard()} </Grid>
                </Grid>
             </div>
 
@@ -33,12 +35,12 @@ export default class Dashboard extends React.Component {
                   spacing={1}
                   direction="row"
                   justify="flex-start"
-                  alignItems="center"
+                  alignItems="stretch"
                   wrap="wrap">
                   <Grid item xs={12}> <h2 className="sectionHeader">Resources</h2></Grid>
-                  <Grid item xs={12} sm={3}>{resourceCard("https://success.calpoly.edu/", "Mustang Success", "Academic Services")} </Grid>
-                  <Grid item xs={12} sm={3}>{resourceCard("https://careerservices.calpoly.edu/", "Career Services", "Career Development")} </Grid>
-                  <Grid item xs={12} sm={3}>{resourceCard("https://basicneeds.calpoly.edu/calfresh", "CalFresh", "Health and Wellbeing")} </Grid>
+                  <Grid item xs={12} sm={3} spacing={0}>{resourceCard("https://success.calpoly.edu/", "Mustang Success", "Academic Services")} </Grid>
+                  <Grid item xs={12} sm={3} spacing={0}>{resourceCard("https://careerservices.calpoly.edu/", "Career Services", "Career Development")} </Grid>
+                  <Grid item xs={12} sm={3} spacing={0}>{resourceCard("https://basicneeds.calpoly.edu/calfresh", "CalFresh", "Health and Wellbeing")} </Grid>
                </Grid>
             </div>
          </div>

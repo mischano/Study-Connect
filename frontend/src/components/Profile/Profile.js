@@ -61,6 +61,33 @@ const useStyles = makeStyles((theme) => ({
 }));
 */
 
+/* placeholder group card */
+function groupCard(props) {
+   return (
+      <a className="cardLink" href="">
+         <div className="card">
+            <div className="cardTitle">
+               <h2>CHEM126 Lab Group</h2>
+            </div>
+            <div className="subTitle">
+               <p>32 members</p>
+            </div>
+         </div>
+      </a>
+   )
+}
+
+function classCard(props) {
+   return (
+      <div className='classCard'>
+         <h2 className="courseTitle">{props.department + " " + props.number}</h2>
+         <div className="classInfo">
+            <p className='subTitle'>{props.startTime + "-" + props.endTime}</p>
+            <p className='subTitle'>{props.weekDays}</p>
+         </div>
+      </div>
+   )
+}
 const Profile = () => {
    let user = fetchUser();
    fetchClasses();
@@ -78,22 +105,28 @@ const Profile = () => {
 
          <div className="profileBody">
             <div className="classes">
-               <h2 className="sectionHeader">Your Classes</h2>
-               <Grid container spacing={2} direction={'column'} justify="space-evenly">
+               <Grid container spacing={1}
+                  direction={'column'} justify="flex-start">
+                  <Grid item xs={12}><h2 className="sectionHeader">Your Classes</h2></Grid>
                   {user.classes.map(course => (
-                     <div className='classCard'>
-                        <h2 className='courseTitle'>{course.department + " " + course.number}</h2>
-                        <div className='classInfo'>
-                           <p className='subTitle'>{course.startTime + "-" + course.endTime}</p>
-                           <p className='subTitle'>{course.weekDays}</p>
-                        </div>
-                     </div>
+                     <Grid item xs={12} spacing={1}>
+                        {classCard(course)}
+                     </Grid>
                   ))}
                </Grid>
             </div>
             <div className='groups'>
-               <h2 className="sectionHeader">Your Groups</h2>
-               <p>Lorem ipsum dolor amet</p>
+               <Grid container
+                  spacing={1}
+                  direction="row"
+                  justify="flex-start"
+                  alignItems="stretch"
+                  wrap="wrap">
+                  <Grid item xs={12}><h2 className="sectionHeader">Your Groups</h2></Grid>
+                  <Grid item xs={12} sm={6} spacing={1}> {groupCard()} </Grid>
+                  <Grid item xs={12} sm={6} spacing={1}> {groupCard()} </Grid>
+                  <Grid item xs={12} sm={6} spacing={1}> {groupCard()} </Grid>
+               </Grid>
             </div>
             <div className="friends">
                <FriendsList /></div>

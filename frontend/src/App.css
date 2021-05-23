@@ -97,6 +97,8 @@
   padding:3em;
   margin: 0 1em 0 1em;
   border-radius: 1em;
+  filter: drop-shadow(0 0 0.75rem rgb(0,0,0,0.3));
+  height: 100%;
 }
 
 .cardTitle, .subTitle{
@@ -149,11 +151,9 @@
 /* profile page styles */
 
 .classCard{
-  display: inline;
   background-color: #006494;
-  margin: 0.75em 2em;
   padding: 1.5em;
-  max-width: 30em;
+  margin: 0 1em;
   border-radius: 1em;
   filter: drop-shadow(0 0 0.75rem rgb(0,0,0,0.3));
 }
@@ -207,29 +207,12 @@
     
   }
 
-  /*
-  .nav-links {
-    width: 40%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    list-style: none;
-    color: white;
-    
- }
-
- nav {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  min-height: 10vh;
-  background: rgb(73, 79, 82);
-  color: white;
-}
-
-*/
 .sectionHeader{
   width: 100%;
+}
+
+.resources{
+  margin: 1em;
 }
 
 
