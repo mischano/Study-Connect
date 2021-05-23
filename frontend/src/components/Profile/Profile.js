@@ -76,27 +76,27 @@ const Profile = () => {
             </Grid>
          </div>
 
-         <div className = "profileBody">
+         <div className="profileBody">
             <div className="classes">
-            <h2 className="sectionHeader">Your Classes</h2>
-            <Grid container spacing={2} direction={'column'} justify="space-evenly">
-               {user.classes.map(course => (
-                  <div className='classCard'>
-                              <h2 className='courseTitle'>{course.department + " " + course.number}</h2>
-                              <div className ='classInfo'>
-                              <p className='subTitle'>{course.startTime + "-" + course.endTime}</p>
-                              <p className='subTitle'>{course.weekDays}</p>
-                              </div>
-                  </div>
-               ))}
-            </Grid>
+               <h2 className="sectionHeader">Your Classes</h2>
+               <Grid container spacing={2} direction={'column'} justify="space-evenly">
+                  {user.classes.map(course => (
+                     <div className='classCard'>
+                        <h2 className='courseTitle'>{course.department + " " + course.number}</h2>
+                        <div className='classInfo'>
+                           <p className='subTitle'>{course.startTime + "-" + course.endTime}</p>
+                           <p className='subTitle'>{course.weekDays}</p>
+                        </div>
+                     </div>
+                  ))}
+               </Grid>
             </div>
             <div className='groups'>
                <h2 className="sectionHeader">Your Groups</h2>
                <p>Lorem ipsum dolor amet</p>
             </div>
-         <div className="friends">
-         <FriendsList/></div>
+            <div className="friends">
+               <FriendsList /></div>
          </div>
       </div>
    );

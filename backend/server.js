@@ -10,7 +10,7 @@ const app = express();
 
 const PORT = 5000;
 
-app.use(bodyParser.json({ limit: "30mb", extended: true}));
+app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(cors());
 app.use('/user', userRouter);
 app.use('/group', groupRouter);
@@ -26,16 +26,16 @@ mongoose.connect(
 const db = mongoose.connection;
 
 db.once('open', _ => {
-    console.log('Database connected...');
+   console.log('Database connected...');
 });
 
 
 db.on('error', err => {
-    console.error('Database connection error...', err);
+   console.error('Database connection error...', err);
 });
 
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+   res.send('Hello World!');
 })
 
 app.listen(PORT, () => console.log(`Server running on PORT ${PORT}`));

@@ -16,54 +16,52 @@ function fetchUser() {
 }
 
 const useStyles = makeStyles((theme) => ({
-    root: {
+   root: {
       width: 500,
       '& > * + *': {
-        marginTop: theme.spacing(3),
+         marginTop: theme.spacing(3),
       },
-    },
-  }));
+   },
+}));
 
-const MakeGroup = ({handleChange}) => {
+const MakeGroup = ({ handleChange }) => {
    let user = fetchUser();
    const [users, setUsers] = useState([]);
    const classes = useStyles();
 
    const getFriends = async () => {
-      
       Promise.all(user.friends.map(async friend => {
          return getUser(friend);
       })).then(arr => setUsers(users => [...users, ...arr]));
    }
-  
-    useEffect(() => 
-    {
-        getFriends();
-    });
 
-    var userList = [];
-    userList = users.map(friend => friend);
+   useEffect(() => {
+      getFriends();
+   });
 
-   return ( 
-    <div className={classes.root}>
-    <Autocomplete
-      multiple
-      id="tags-standard"
-      options={userList}
-      onChange={(event, newValue) => {
-        handleChange(newValue.map(friend => friend._id))
-      }}
-      getOptionLabel={(option) => option.name}
-      renderInput={(params) => (
-        <TextField
-          {...params}
-          variant="standard"
-          label="Friends"
-          placeholder="Friends"
-        />
-      )}
-    />
- </div>
+   var userList = [];
+   userList = users.map(friend => friend);
+
+   return (
+      <div className={classes.root}>
+         <Autocomplete
+            multiple
+            id="tags-standard"
+            options={userList}
+            onChange={(event, newValue) => {
+               handleChange(newValue.map(friend => friend._id))
+            }}
+            getOptionLabel={(option) => option.name}
+            renderInput={(params) => (
+               <TextField
+                  {...params}
+                  variant="standard"
+                  label="Friends"
+                  placeholder="Friends"
+               />
+            )}
+         />
+      </div>
    );
 }
 

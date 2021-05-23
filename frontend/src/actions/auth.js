@@ -1,49 +1,55 @@
-import {ADDCLASS, ADDGROUP, AUTH} from '../constants/actionTypes.js';
+import { ADDCLASS, ADDGROUP, AUTH } from '../constants/actionTypes.js';
 import * as api from '../api/index.js'
 
 export const signin = (formData, history) => async (dispatch) => {
-    try {
-        const { data } = await api.signIn(formData);
+   try {
+      const { data } = await api.signIn(formData);
 
-        dispatch({ type: AUTH, data});
-        history.push('/dashboard');
-    } catch (error) {
-        console.log(error);
-    }
+      dispatch({ type: AUTH, data });
+      history.push('/dashboard');
+   } catch (error) {
+      console.log(error);
+   }
 }
 export const signup = (formData, history) => async (dispatch) => {
-    try {
-        const { data } = await api.signUp(formData);
-        dispatch({ type: AUTH, data});
-        history.push('/signup2');
-    } catch (error) {
-        console.log(error);
-    }
+   try {
+      const { data } = await api.signUp(formData);
+      dispatch({ type: AUTH, data });
+      history.push('/signup2');
+   } catch (error) {
+      console.log(error);
+   }
 }
 export const updateClasses = (id, classes, history) => async (dispatch) => {
-    try {
-        await api.updateClasses(id, classes);
-        dispatch({ type: ADDCLASS, data : classes});
-        history.push('/dashboard');
-    } catch (error) {
-        console.log(error);
-    }
+   try {
+      await api.updateClasses(id, classes);
+      dispatch({ type: ADDCLASS, data: classes });
+      history.push('/dashboard');
+   } catch (error) {
+      console.log(error);
+   }
 }
 export const updateGroups = (id, groups) => async (dispatch) => {
-    try {
-        await api.updateGroups(id, groups);
-        dispatch({ type: ADDGROUP, data : groups});
-    } catch (error) {
-        console.log(error);
-    }
+   try {
+      await api.updateGroups(id, groups);
+      dispatch({ type: ADDGROUP, data: groups });
+   } catch (error) {
+      console.log(error);
+   }
 }
 export const getUser = async (id) => {
-    try
-    {
-        const { user } = await api.getUser(id).then(res => res.data);
-        return user;
-    }
-    catch (error) {
-        console.log(error)
-    }
+   try {
+      const { user } = await api.getUser(id).then(res => res.data);
+      return user;
+   }
+   catch (error) {
+      console.log(error)
+   }
+}
+export const sendFriendReq = async (formData) => {
+   try {
+      return await api.sendFriendReq(formData);
+   } catch (error) {
+      console.log(error);
+   }
 }
