@@ -84,15 +84,14 @@ export const getProfiles = async (req, res) => {
    }
 }
 
-export const sendFriendReq = async (req, res) => {
-   const { requester, recipient, status } = req.body;
-   var friendReqs = db.collection("friendReqs");
+export const updateFriends = async (req, res) => {
+   const { id: _id } = req.params;
+   const friends = req.body;
 
-   try {
-      const friendReq = await friendReqs.insertOne({ requester, recipient, status });
-
-      res.json(friendReq.insertedId);
-   } catch (error) {
-      res.status(500).json({ message: 'Something went wrong' });
+   if (!mongoose.Types.ObjectId.isValid(_id)) {
+      return res.status(404).send('No user with that id');
+   } else {
+      var updatedUser = await User.findByIdAndUpdate(_id, { $push: { "friends": friends } }, { new : true });
    }
+   res.json(updatedUser);
 }

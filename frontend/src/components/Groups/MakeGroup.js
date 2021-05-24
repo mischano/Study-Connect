@@ -37,7 +37,7 @@ const MakeGroup = ({ handleChange }) => {
 
    useEffect(() => {
       getFriends();
-   });
+   }, []);
 
    var userList = [];
    userList = users.map(friend => friend);

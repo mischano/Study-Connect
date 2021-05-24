@@ -7,7 +7,7 @@ import Groups from './components/Groups/Groups';
 import Messages from './components/Messages';
 import Profile from './components/Profile/Profile';
 import Navbar from './components/Navbar/Navbar';
-import Friend from './components/Friend';
+import OtherUser from './components/OtherUser';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Auth from "./components/Auth/Auth";
 import Group from "./components/Groups/Group"
@@ -25,7 +25,7 @@ function App() {
                <Route path="/groups" exact component={Groups} />
                <Route path="/messages" exact component={Messages} />
                <Route path="/profile" exact component={Profile} />
-               <Route path="/profile/:id" exact component={Friend} />
+               <Route path="/profile/:id" exact component={OtherUser} />
                <Route path="/groups/:id" exact component={Group} />
             </div>
          </Switch>

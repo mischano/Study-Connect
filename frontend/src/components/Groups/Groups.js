@@ -7,10 +7,10 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import MakeGroup from './MakeGroup';
-import { makeGroup, getGroup } from '../../actions/group';
+import { makeGroup } from '../../actions/group';
 import { updateGroups } from '../../actions/auth';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import  GroupsList from './GroupsList'
 
 const initialState = {
    name: '',
@@ -30,43 +30,36 @@ export default function Groups() {
    const [open, setOpen] = React.useState(false);
    const [formData, setFormData] = useState(initialState);
    const user = fetchUser();
-   const [groups, setGroups] = useState([]);
-
-   const getGroups = async () => {
-      Promise.all(user.groups.map(async group => {
-         return getGroup(group);
-      })).then(arr => setGroups(groups => [...groups, ...arr]));
-   }
-
-   if (groups.length === 0 && user.groups.length >= 1) {
-      getGroups();
-   }
-
    const dispatch = useDispatch();
+
+
    const handleClickOpen = () => {
       setOpen(true);
    };
 
-   const handleClose = () => {
+   // cancel making the group
+   const handleCancel = () => {
       setOpen(false);
-      makeGroup(formData).then(res => dispatch(updateGroups(user._id, [res.data])));
    };
 
+   //submit the group
+   //make a new group and updates the users list of groups
+   const handleSubmit = () => {
+      setOpen(false);
+      makeGroup(formData).then(res => dispatch(updateGroups(user._id, [res.data])))
+   };
+
+   // update the form data
    const handleChange = (e) => {
       setFormData({ ...formData, [e.target.name]: e.target.value });
    };
 
    return (
       <div>
-         {groups.map((group, i) => {
-            return <li key={i}>
-               <Link to={`/groups/${group._id}`} key={group._id}>{group.name}</Link>
-            </li>
-         })}
          <Button variant="outlined" color="primary" onClick={handleClickOpen}>
             Make a new Group
       </Button>
-         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+         <Dialog open={open} onClose={handleCancel} aria-labelledby="form-dialog-title">
             <DialogTitle id="form-dialog-title">Group Form</DialogTitle>
             <DialogContent>
                <DialogContentText>
@@ -84,14 +77,15 @@ export default function Groups() {
                <MakeGroup handleChange={e => setFormData({ ...formData, "members": e })} />
             </DialogContent>
             <DialogActions>
-               <Button onClick={handleClose} color="primary">
+               <Button onClick={handleCancel} color="primary">
                   Cancel
           </Button>
-               <Button onClick={handleClose} color="primary">
+               <Button onClick={handleSubmit} color="primary">
                   Make Group
           </Button>
             </DialogActions>
          </Dialog>
+         <GroupsList/>
       </div>
    );
 }

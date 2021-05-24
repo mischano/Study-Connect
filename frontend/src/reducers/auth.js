@@ -1,6 +1,7 @@
-import { AUTH, LOGOUT, ADDCLASS, ADDGROUP } from '../constants/actionTypes';
+import { AUTH, LOGOUT, ADDCLASS, ADDGROUP, ADDFRIEND } from '../constants/actionTypes';
 
 const authReducer = (state = { authData: null }, action) => {
+   const user = JSON.parse(localStorage.getItem('profile'));
    switch (action.type) {
       case AUTH:
          localStorage.setItem('profile', JSON.stringify({ ...action?.data }));
@@ -11,15 +12,18 @@ const authReducer = (state = { authData: null }, action) => {
          return { ...state, authData: action?.data };
 
       case ADDCLASS:
-         const user = JSON.parse(localStorage.getItem('profile'));
          user.result.classes = user.result.classes.concat(action?.data);
          localStorage.setItem('profile', JSON.stringify(user));
          return { ...state, authData: action?.data };
 
       case ADDGROUP:
-         const person = JSON.parse(localStorage.getItem('profile'));
-         person.result.groups = person.result.groups.concat(action?.data);
-         localStorage.setItem('profile', JSON.stringify(person));
+         user.result.groups = user.result.groups.concat(action?.data);
+         localStorage.setItem('profile', JSON.stringify(user));
+         return { ...state, authData: action?.data };
+
+      case ADDFRIEND:
+         user.result.friends = user.result.friends.concat(action?.data);
+         localStorage.setItem('profile', JSON.stringify(user));
          return { ...state, authData: action?.data };
 
       default:

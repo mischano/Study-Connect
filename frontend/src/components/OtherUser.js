@@ -9,16 +9,16 @@ const initialState = {
    recipient: '',
    status: 1
 }
+*/
 
 function fetchUser() {
-  if (JSON.parse(localStorage.getItem('profile'))) {
-     let user = (JSON.parse(localStorage.getItem('profile'))).result;
-     return user;
-  } else {
-     return null;
-  }
+   if (JSON.parse(localStorage.getItem('profile'))) {
+      let user = (JSON.parse(localStorage.getItem('profile'))).result;
+      return user;
+   } else {
+      return null;
+   }
 }
-*/
 
 const useStyles = makeStyles((theme) => ({
    root: {
@@ -44,36 +44,39 @@ const useStyles = makeStyles((theme) => ({
    },
 }));
 
-const Friend = ({ match }) => {
-   const [friend, setFriend] = useState(null);
-   // const [formData, setFormData] = useState(initialState);
+const OtherUser = ({ match }) => {
+   const [otherUser, setOtherUser] = useState(null);
    const classes = useStyles();
 
-   const getFriend = async () => {
-      const user = await getUser(match.params.id);
-      setFriend(user);
-   }
-   /*
-   const sendReq = () => {
-      sendFriendReq(formData);
-   }
-   */
-
    useEffect(() => {
-      getFriend();
-   });
+      getOtherUser();
+   }, []);
+
+   const getOtherUser = async () => {
+      const user = await getUser(match.params.id);
+      setOtherUser(user);
+   }
+   const ReqButton = () => {
+      const friends = fetchUser().friends;
+
+      return (!friends.includes(otherUser._id) ?
+         <Button onClick={sendReq}>Add Friend</Button> : null);
+   }
+   const sendReq = () => {
+      console.log("Request sent!");
+   }
 
    return (
       <div>
-         {friend && (
+         {otherUser && (
             <>
-               <h1> {friend.name} </h1>
-               <h1> {friend.major}</h1>
-               <h1> {friend.gradDate}</h1>
+               <h1> {otherUser.name} </h1>
+               <h1> {otherUser.major}</h1>
+               <h1> {otherUser.gradDate}</h1>
                <Grid className="classes">
                   <h2 className="sectionHeader">Classes</h2>
                   <Grid container spacing={4} direction={'column'} justify="space-evenly">
-                     {friend.classes.map(course => (
+                     {otherUser.classes.map(course => (
                         <Card className={classes.root} border={1}>
                            <CardContent>
                               <Grid container direction={'row'}>
@@ -98,10 +101,11 @@ const Friend = ({ match }) => {
                      ))}
                   </Grid>
                </Grid>
+               <ReqButton />
             </>
          )}
       </div>
    );
 }
 
-export default Friend;
+export default OtherUser;

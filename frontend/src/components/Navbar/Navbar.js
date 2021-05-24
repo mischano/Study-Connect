@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../../App.css';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useLocation, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Button } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
@@ -18,7 +18,8 @@ import {
 
 const Navbar = () => {
    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
-   const [userName, setUserName] = useState([]);
+   const [autoCompleteVal, setAutoCompleteVal] = useState(null);
+   const [users, setUsers] = useState([]);
    const history = useHistory();
    const location = useLocation();
    const dispatch = useDispatch();
@@ -39,7 +40,7 @@ const Navbar = () => {
          if (decodedToken.exp * 1000 < new Date().getTime()) logout();
       }
       api.getProfiles().then(res => {
-         res.data.map(user => setUserName(arr => [...arr, user.name]));
+         res.data.map(person => setUsers(arr => [...arr, person]));
       })
       setUser(JSON.parse(localStorage.getItem('profile')));
    }, [location])
@@ -48,11 +49,25 @@ const Navbar = () => {
       return (
          <div style={{ width: 300 }}>
             <Autocomplete
-               id="free-solo-demo"
-               freeSolo
-               options={userName.map((option) => option)}
+               value={autoCompleteVal}
+               id="users-search"
+               options={users.map((option) => option.name)}
+               onChange={(e, newval) => {
+                  setAutoCompleteVal(newval);
+                  console.log(newval);
+               }}
                renderInput={(params) => (
-                  <TextField {...params} label="Search..." margin="normal" variant="outlined" />
+                  <TextField
+                     {...params} 
+                     label="Search..." 
+                     margin="normal" 
+                     variant="outlined" 
+                     onKeyDown={e => {
+                        if (e.key === 13) {
+                           console.log("hi");
+                        }
+                     }}
+                  />
                )}
             />
          </div>
