@@ -6,7 +6,7 @@ import {
    getUser,
    getProfiles,
    updateGroups,
-   sendFriendReq
+   updateFriends
 } from '../controllers/user.js';
 
 const router = express.Router();
@@ -17,6 +17,6 @@ router.patch('/:id', updateClasses);
 router.get('/users/:id', getUser);
 router.get('/users', getProfiles);
 router.patch('/groups/:id', updateGroups);
-router.get('/friendreqs', sendFriendReq);
+router.patch('/friends/:id', updateFriends);
 
 export default router;

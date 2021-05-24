@@ -12,12 +12,12 @@ const initialState = {
 */
 
 function fetchUser() {
-  if (JSON.parse(localStorage.getItem('profile'))) {
-     let user = (JSON.parse(localStorage.getItem('profile'))).result;
-     return user;
-  } else {
-     return null;
-  }
+   if (JSON.parse(localStorage.getItem('profile'))) {
+      let user = (JSON.parse(localStorage.getItem('profile'))).result;
+      return user;
+   } else {
+      return null;
+   }
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -48,29 +48,27 @@ const OtherUser = ({ match }) => {
    const [otherUser, setOtherUser] = useState(null);
    const classes = useStyles();
 
+   useEffect(() => {
+      getOtherUser();
+   }, []);
+
    const getOtherUser = async () => {
       const user = await getUser(match.params.id);
       setOtherUser(user);
    }
-   const isFriend = () => {
-      const user_id = getOtherUser().id;
+   const ReqButton = () => {
       const friends = fetchUser().friends;
 
-      return (user_id in friends);
+      return (!friends.includes(otherUser._id) ?
+         <Button onClick={sendReq}>Add Friend</Button> : null);
    }
-   /*
    const sendReq = () => {
-      sendFriendReq(formData);
+      console.log("Request sent!");
    }
-   */
-
-   useEffect(() => {
-      getOtherUser();
-   });
 
    return (
       <div>
-         {otherUser && isFriend && (
+         {otherUser && (
             <>
                <h1> {otherUser.name} </h1>
                <h1> {otherUser.major}</h1>
@@ -103,6 +101,7 @@ const OtherUser = ({ match }) => {
                      ))}
                   </Grid>
                </Grid>
+               <ReqButton />
             </>
          )}
       </div>
