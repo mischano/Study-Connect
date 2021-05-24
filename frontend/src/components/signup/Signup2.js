@@ -14,6 +14,8 @@ function Signup2() {
    const dispatch = useDispatch();
    const history = useHistory();
    const Classes = useStyles();
+
+   const [btnDisabled, setBtnDisabled] = useState(false);
    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
    const onAddBtnClick = event => {
@@ -21,11 +23,13 @@ function Signup2() {
          <Grid item>
             <ClassAdd onSubmit={event => sub(event)} key={inputList.length} />
          </Grid>));
+         setBtnDisabled(true);
    };
 
    const sub = (event) => {
       classes.push(event);
       setInputList(inputList.splice(-1, 1));
+      setBtnDisabled(false);
    }
 
    const handleSubmit = (e) => {
@@ -87,7 +91,7 @@ function Signup2() {
             {/* buttons */}
             <Box pb={1.5}>
             <div style={{ margin: '1.5em auto', padding: '1em 0em', maxWidth: '50em' }}>
-               <Button className={Classes.addClass} onClick={onAddBtnClick} style={{ float: 'left', border: '2px solid', borderColor: '#E67350'}}>Add a Class</Button>
+               <Button className={Classes.addClass} disabled={btnDisabled} onClick={onAddBtnClick} style={{ float: 'left', border: '2px solid', borderColor: '#E67350'}}>Add a Class</Button>
                <Button className={Classes.submit} onClick={handleSubmit} style={{ float: 'right' }}>Continue</Button>
             </div>
             </Box>
