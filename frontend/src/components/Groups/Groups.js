@@ -11,11 +11,7 @@ import { makeGroup } from '../../actions/group';
 import { updateGroups } from '../../actions/auth';
 import { useDispatch } from 'react-redux';
 import  GroupsList from './GroupsList'
-
-const initialState = {
-   name: '',
-   members: []
-};
+import * as api from '../../api/index';
 
 function fetchUser() {
    if (JSON.parse(localStorage.getItem('profile'))) {
@@ -26,12 +22,16 @@ function fetchUser() {
    }
 }
 
+const initialState = {
+   name: '',
+   members: []
+};
+
 export default function Groups() {
    const [open, setOpen] = React.useState(false);
    const [formData, setFormData] = useState(initialState);
    const user = fetchUser();
    const dispatch = useDispatch();
-
 
    const handleClickOpen = () => {
       setOpen(true);
@@ -46,13 +46,18 @@ export default function Groups() {
    //make a new group and updates the users list of groups
    const handleSubmit = () => {
       setOpen(false);
-      makeGroup(formData).then(res => dispatch(updateGroups(user._id, [res.data])))
+      makeGroup(formData).then(res => updateMembers(res.data));
    };
 
    // update the form data
    const handleChange = (e) => {
       setFormData({ ...formData, [e.target.name]: e.target.value });
    };
+
+   const updateMembers = (group) => {
+      dispatch(updateGroups(user._id, [group]))
+      formData.members.forEach(mem => api.updateGroups(mem, [group]));
+   }
 
    return (
       <div>

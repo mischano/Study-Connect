@@ -1,9 +1,13 @@
-import { Grid } from '@material-ui/core';
+import { Grid, withStyles } from '@material-ui/core';
 // import { makeStyles } from '@material-ui/core';
 import React from 'react';
 import FriendsList from './FriendsList';
 import '../../App.css';
 import { classCard } from '../Cards'
+
+import { Button } from '@material-ui/core';
+import EditIcon from '@material-ui/icons/Edit';
+import { teal } from '@material-ui/core/colors';
 
 const bannerTheme = {
    width: '100%',
@@ -53,6 +57,19 @@ function groupCard(props) {
 }
 
 
+const CustomButton = withStyles((theme) => ({
+    root: {
+        fontSize: 12,
+        fontStyle: 'italic',
+        font: 'Apple Color Emoji',
+        color: theme.palette.getContrastText(teal[700]),
+        backgroundColor: teal[700],
+        '&:hover': {
+            backgroundColor: teal[800],
+        },
+    },
+}))(Button);
+
 const Profile = () => {
    let user = fetchUser();
    fetchClasses();
@@ -64,6 +81,9 @@ const Profile = () => {
                <div className='profileBanner' style={{ margin: 'auto' }}>
                   <h2>{user.name}</h2>
                   <h4>{user.gradDate}, {user.major}</h4>
+                  <CustomButton variant="outlined" startIcon={<EditIcon />} >
+                    Edit Profile
+                  </CustomButton>
                </div>
             </Grid>
          </div>
