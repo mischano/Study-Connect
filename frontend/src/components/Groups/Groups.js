@@ -13,7 +13,6 @@ import { useDispatch } from 'react-redux';
 import  GroupsList from './GroupsList'
 import * as api from '../../api/index';
 
-
 function fetchUser() {
    if (JSON.parse(localStorage.getItem('profile'))) {
       let user = (JSON.parse(localStorage.getItem('profile'))).result;
@@ -53,7 +52,6 @@ export default function Groups() {
    // update the form data
    const handleChange = (e) => {
       setFormData({ ...formData, [e.target.name]: e.target.value });
-      console.log(formData)
    };
 
    const updateMembers = (group) => {
