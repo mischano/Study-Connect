@@ -1,4 +1,4 @@
-import { ADDCLASS, ADDGROUP, AUTH } from '../constants/actionTypes.js';
+import { ADDCLASS, ADDFRIEND, ADDGROUP, AUTH } from '../constants/actionTypes.js';
 import * as api from '../api/index.js'
 
 export const signin = (formData, history) => async (dispatch) => {
@@ -46,9 +46,10 @@ export const getUser = async (id) => {
       console.log(error)
    }
 }
-export const sendFriendReq = async (formData) => {
+export const updateFriends = (id, friends) => async (dispatch) => {
    try {
-      return await api.sendFriendReq(formData);
+      await api.updateFriends(id, friends);
+      dispatch({ type: ADDFRIEND, data: friends });
    } catch (error) {
       console.log(error);
    }
