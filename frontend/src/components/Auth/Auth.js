@@ -72,7 +72,6 @@ const Auth = () => {
             height: '100vh',
             width: '100%',
             background: "linear-gradient( rgba(0, 100, 148, 0.7), rgba(0, 100, 148, 0.7) ), url('https://images.unsplash.com/photo-1600195077077-7c815f540a3d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=936&q=80')",
-            // background: `url(${books})`,,
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
@@ -84,9 +83,10 @@ const Auth = () => {
             padding: '25px'
         }
     };
-
+    
     return (
         <Grid container>
+            {/* Left side of screen with image and text */}
             <Grid item xs={12} sm={5}>
                 <div style={styles.container}>
                     <div style={styles.picture}>
@@ -103,7 +103,7 @@ const Auth = () => {
                 </div>
             </Grid>
             
-
+            {/* Right side of screen with log-in stuff */}
             <Grid item xs={12} sm={7}>
                 <Container component="main" maxWidth="xs">
                     <Paper className={classes.paper} elevation={0}>
@@ -154,7 +154,6 @@ const Auth = () => {
                             </Grid>
                         </form>
                     </Paper>
-                    {/* </div> */}
                 </Container>
         </Grid>
         </Grid>
