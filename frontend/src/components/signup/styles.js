@@ -1,31 +1,47 @@
+import { Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
    submit: {
       border: 0,
-      borderRadius: 20,
+      borderRadius: 40,
       boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-      background: 'darkorange',
+      background: '#E67350',
       color: 'white',
       height: 48,
-      justifyContent: 'center'
+      justifyContent: 'center',
+      padding: '0 20px',
+      fontWeight: 'Bold',
+
+      '&:hover': { 
+         backgroundColor: '#E6592E',
+         color: 'white',
+         boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+      },
    },
+
    addClass: {
-      border: 0,
-      borderRadius: 20,
+      borderRadius: 40,
       boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-      background: 'darkblue',
-      color: 'white',
+      color: '#E6592E',
       height: 48,
-      padding: '0 30px',
+      padding: '0 20px',
+      fontWeight: 'Bold',
+
+      '&:hover': { 
+            borderColor: '#E6592E',
+            color: '#E6592E',
+            boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+      },
    },
+
    form: {
       width: '100%', // Fix IE 11 issue.
       marginTop: theme.spacing(3),
    },
    confirm: {
       border: 0,
-      borderRadius: 8,
+      borderRadius: 40,
       boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
       background: 'blue',
       color: 'white',
@@ -39,26 +55,49 @@ export default makeStyles((theme) => ({
       flexDirection: 'column',
       alignItems: 'center',
       padding: theme.spacing(2),
+      borderRadius: 8,
    },
    root: {
-      minWidth: 275,
-      padding: 5,
-      backgroundColor: "white",
-      border: "1px solid blue",
-      width: "5%",
+      backgroundColor: "#fff",
+      border: "2px solid",
+      borderColor: "#006494",
       borderRadius: 20,
       marginTop: theme.spacing(3),
-      marginLeft: theme.spacing(10)
+      width: "100%",
    },
+   
    title: {
-      fontSize: 15,
-      color: 'blue',
-      fontWeight: "fontWeightBold"
+      color: '#041923',
+      fontWeight: "Bold"
    },
-   pos: {
-      marginBottom: 25,
-      fontSize: 11,
-      color: 'blue',
-      fontWeight: "fontWeightBold"
+
+   text: {
+      color: '#041923',
    },
+
+   introParagraph: { 
+      width: '80%',
+      padding: 10,
+      paddingTop: 80, 
+      color: 'white',
+   }, 
+
+   h4: {
+      marginBottom: theme.spacing(3),
+   },
+
+   image: { 
+      position: 'fixed',
+   },
+
+   container: { 
+      paddingLeft: 100,
+      paddingRight: 100,
+      marginTop: theme.spacing(8),
+   },
+
+   heading:{ 
+      paddingBottom: '10px',
+   },
+
 }));
