@@ -85,10 +85,12 @@ function Signup2() {
                </Grid>
 
             {/* buttons */}
+            <Box pb={1.5}>
             <div style={{ margin: '1.5em auto', padding: '1em 0em', maxWidth: '50em' }}>
                <Button className={Classes.addClass} onClick={onAddBtnClick} style={{ float: 'left', border: '2px solid', borderColor: '#E67350'}}>Add a Class</Button>
                <Button className={Classes.submit} onClick={handleSubmit} style={{ float: 'right' }}>Continue</Button>
             </div>
+            </Box>
 
             {/* classes */}
             <Grid className="classes">
