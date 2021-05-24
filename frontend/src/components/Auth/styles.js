@@ -33,6 +33,8 @@ export default makeStyles((theme) => ({
         background: '#E67350',
         color: 'white',
         height: 48,
+        fontWeight: 'Bold',
+
         
         '&:hover': { 
             backgroundColor: '#E6592E',
@@ -43,6 +45,7 @@ export default makeStyles((theme) => ({
     googleButton: {
         marginBottom: theme.spacing(2),
         height: 48,
+        fontWeight: 'Bold',
     },
 
     introParagraph: { 
