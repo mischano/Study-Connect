@@ -92,22 +92,22 @@ function Signup2() {
 
             {/* classes */}
             <Grid className="classes">
-               <Grid container spacing={2} direction={'row'} justify="center" alignItems="center">
+               <Grid container direction={'row'} justify="left" alignItems="right">
                   {classes.map(course => (
                      <Card className={Classes.root} border={1}>
                         <CardContent>
                            <Grid container direction={'column'} alignItems="left">
-                              <Grid item xs={12}>
+                              <Grid item xs={4}>
                                  <Typography variant="h6" className={Classes.title} color="textSecondary" gutterBottom>
                                     {course.department + " " + course.number}
                                  </Typography>
                               </Grid>
-                              <Grid item xs={12}>
+                              <Grid item xs={4}>
                                  <Typography className={Classes.text} color="textSecondary">
                                     {course.startTime + "-" + course.endTime}
                                  </Typography>
                               </Grid>
-                              <Grid item xs={12}>
+                              <Grid item xs={4}>
                                  <Typography className={Classes.text} color="textSecondary">
                                     {course.weekDays}
                                  </Typography>
