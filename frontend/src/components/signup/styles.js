@@ -39,18 +39,22 @@ export default makeStyles((theme) => ({
       width: '100%', // Fix IE 11 issue.
       marginTop: theme.spacing(3),
    },
-   confirm: {
+   continue: {
       border: 0,
       borderRadius: 40,
-      boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-      background: 'blue',
+      boxShadow: '0 3px 5px 2px rgba(0,0,0, .3)',
+      background: '#006494',
       color: 'white',
       height: 48,
       padding: '0 30px',
+
+      '&:hover': { 
+         background: '#00547A',
+      },
    },
 
    paper: {
-      marginTop: theme.spacing(8),
+      marginTop: theme.spacing(2),
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
