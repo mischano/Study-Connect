@@ -3,6 +3,7 @@ import { Grid } from '@material-ui/core';
 import React from 'react';
 import FriendsList from './FriendsList';
 import '../../App.css';
+import { classCard } from '../Cards'
 
 const bannerTheme = {
    width: '100%',
@@ -51,17 +52,7 @@ function groupCard(props) {
    )
 }
 
-function classCard(props) {
-   return (
-      <div className='classCard'>
-         <h2 className="courseTitle">{props.department + " " + props.number}</h2>
-         <div className="classInfo">
-            <p className='subTitle'>{props.startTime + "-" + props.endTime}</p>
-            <p className='subTitle'>{props.weekDays}</p>
-         </div>
-      </div>
-   )
-}
+
 const Profile = () => {
    let user = fetchUser();
    fetchClasses();

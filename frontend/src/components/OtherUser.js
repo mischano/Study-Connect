@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../App.css';
 import { getUser, sendFriendReq } from '../actions/auth';
 import { Button, Grid, Typography, CardContent, Card, makeStyles } from '@material-ui/core';
+import { classCard } from './Cards'
 
 /*
 const initialState = {
@@ -77,27 +78,9 @@ const OtherUser = ({ match }) => {
                   <h2 className="sectionHeader">Classes</h2>
                   <Grid container spacing={4} direction={'column'} justify="space-evenly">
                      {otherUser.classes.map(course => (
-                        <Card className={classes.root} border={1}>
-                           <CardContent>
-                              <Grid container direction={'row'}>
-                                 <Grid item xs={4}>
-                                    <Typography className={classes.title} color="textSecondary" gutterBottom>
-                                       {course.department + " " + course.number}
-                                    </Typography>
-                                 </Grid>
-                                 <Grid item xs={5}>
-                                    <Typography className={classes.title} color="textSecondary">
-                                       {course.startTime + "-" + course.endTime}
-                                    </Typography>
-                                 </Grid>
-                                 <Grid item xs={2}>
-                                    <Typography className={classes.title} color="textSecondary">
-                                       {course.weekDays}
-                                    </Typography>
-                                 </Grid>
-                              </Grid>
-                           </CardContent>
-                        </Card>
+                        <Grid item xs={12}>
+                        {classCard(course)}
+                        </Grid>
                      ))}
                   </Grid>
                </Grid>
