@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { getGroup } from '../../actions/group'
 import { Link } from 'react-router-dom';
-import { Card } from '@material-ui/core';
+import { Grid, Card } from '@material-ui/core';
+import {groupCard} from '../Cards'
 
 function fetchUser() {
    if (JSON.parse(localStorage.getItem('profile'))) {
@@ -28,24 +29,18 @@ export default function GroupsList() {
       getGroups();
    }, [groups])
 
-   //potential group card
-   function groupCard(link, name) {
-    return (
-        <Link to={link}>
-         <Card>
-          <Card text={name}/>
-         </Card>
-        </Link>
-    )
- }
+
     // render the groups to the screen
    return (
-      <div>
-         {groups.map((group, i) => {
-            return <li key={i}>
-               <Link to={`/groups/${group._id}`} key={group._id}>{group.name}</Link>
-            </li>
-         })}
-    </div>
+      <div className="groups">
+               <Grid container spacing={2}
+                  direction={'row'} justify="flex-start" alignItems="stretch">
+                  {groups.map(group => (
+                     <Grid item xs={12} sm={6} md={3}spacing={1}>
+                        {groupCard(group)}
+                     </Grid>
+                  ))}
+               </Grid>
+            </div>
    );
 }

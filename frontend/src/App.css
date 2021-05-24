@@ -111,6 +111,31 @@
   font-size: 1em;
 }
 
+.standardButton{
+  max-width: 25em;
+  margin: 1em;
+  padding: 0.5em 1.25em;
+  border: 3px solid #6d7868;
+  border-radius: 5em;
+  transition: 0.3s;
+}
+
+.standardButton h3{
+  font-weight: bold;
+  font-size: 1em;
+  color: #6d7868;
+}
+
+.standardButton:hover{
+  background-color: #6d7868;
+  cursor: pointer;
+}
+
+.standardButton:hover h3{
+  color: #f5f5f5;
+}
+
+
 /*
 //////////////////////////////////////
 //// ----- HOMEPAGE STYLES ----- ////
@@ -257,6 +282,17 @@
   margin-left: 1em;
 }
 
+/* II. Group Cards */
+
+.groupCard{
+  background-color: #006494;
+  padding: 1.5em;
+  margin: 0 1em;
+  border-radius: 1em;
+  filter: drop-shadow(0 0 0.75rem rgb(0,0,0,0.3));
+  height: 100%;
+  
+}
 
 /*
 //////////////////////////////////////
@@ -284,16 +320,14 @@
 
   .heroImg{
     grid-column: 1 / 2;
-    width: 70%;
+    width: 80%;
     margin: auto;
   }
 
   .bannerBlurb{
     grid-column: 2/3;
   }
-.sectionHeader{
-  width: 100%;
-}
+
 
 .resources{
   margin: 1em;

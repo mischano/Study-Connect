@@ -61,9 +61,18 @@ export default function Groups() {
 
    return (
       <div>
-         <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-            Make a new Group
-      </Button>
+         <div className="topBanner">
+         <h1 className="mainPageTitle" style={{marginBottom:"1em"}}> Groups </h1>
+         <img className = "heroImg" style ={{margin: '2em 1em'}} src = "https://www.pinclipart.com/picdir/big/348-3485456_package-going-with-friends-flat-design-student-clipart.png" alt="A group of friends with books and backpacks."></img>
+            <div className="bannerBlurb">
+               <h2 id="greeting">Better together.</h2>
+               <p id="studyTip">From group projects to groups of friends, this is your space to work, share, schedule, and most importantly, succeed.</p>
+            </div>
+          </div>
+          <h2 className="sectionHeader" style={{float: 'left'}}>Your Groups</h2>
+            <div className="standardButton" onClick={handleClickOpen} style={{float: 'right'}}>
+                  <h3>Create New Group</h3>
+            </div>
          <Dialog open={open} onClose={handleCancel} aria-labelledby="form-dialog-title">
             <DialogTitle id="form-dialog-title">Group Form</DialogTitle>
             <DialogContent>

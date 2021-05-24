@@ -24,3 +24,18 @@ export function friendCard(props){
        </div>
     )
  }
+
+ export function groupCard(props){
+   const groupLink = '/groups/' + props._id;
+   const numMembers = props.members.length;
+   return(
+      <a className="cardLink" href={groupLink}>
+         <div className="groupCard">
+            <div className="groupInfo">
+               <h2>{props.name}</h2>
+               <p className="subTitle">{numMembers} members</p>
+            </div>
+         </div>
+      </a>
+   )
+}

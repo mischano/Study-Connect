@@ -101,7 +101,7 @@ const Profile = () => {
                </Grid>
             </div>
             <div className='groups'>
-               <Grid container zeroMinWidth
+               <Grid container
                   spacing={1}
                   direction="row"
                   justify="flex-start"
