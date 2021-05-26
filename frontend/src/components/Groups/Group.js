@@ -12,21 +12,21 @@ const Group = ({ match }) => {
       const g = await getGroup(match.params.id);
       setGroup(g);
    }
- 
+
    useEffect(() => {
       fetchGroup()
    }, []);
 
    //gets the members of the groups from database
    const getMembers = async () => {
-    Promise.all(group.members.map(async mem => {
-       return getUser(mem);
-    })).then(arr => setMembers(mems => [...mems, ...arr]))
- }
+      Promise.all(group.members.map(async mem => {
+         return getUser(mem);
+      })).then(arr => setMembers(mems => [...mems, ...arr]))
+   }
 
- // call get members
- if(group !== null && group.members.length !== 0 && members.length === 0)
-    getMembers();
+   // call get members
+   if (group !== null && group.members.length !== 0 && members.length === 0)
+      getMembers();
 
    return (
       <div>

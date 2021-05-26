@@ -13,3 +13,10 @@ export const sendFriendReq = async (req, res) => {
       res.status(500).json({ message: 'Something went wrong' });
    }
 }
+
+export const getFriendReqs = async (req, res) => {
+   const { id: _id } = req.params;
+   const reqs = await FriendReq.find( { recipient: _id });
+
+   res.json({ reqs });
+}
