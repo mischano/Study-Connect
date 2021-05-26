@@ -27,6 +27,6 @@ export const makeGroup = (formData) => API.post('/group/groups', formData);
 
 export const sendFriendReq = (formData) => API.post('/friends/reqs', formData);
 
-export const getFriendReqs = (id) => API.get(`/)
+export const getFriendReqs = (id) => API.get(`/friends/reqs/${id}`, id);
 
-export const updateFriends = (id, updatedUser) => API.patch(`user/friends/${id}`, updatedUser);
+export const updateFriends = (id, updatedUser) => API.patch(`/user/friends/${id}`, updatedUser);

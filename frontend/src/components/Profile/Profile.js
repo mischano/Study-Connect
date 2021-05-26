@@ -54,18 +54,6 @@ function groupCard(props) {
     )
 }
 
-function classCard(props) {
-    return (
-        <div className='classCard'>
-            <h2 className="courseTitle">{props.department + " " + props.number}</h2>
-            <div className="classInfo">
-                <p className='subTitle'>{props.startTime + "-" + props.endTime}</p>
-                <p className='subTitle'>{props.weekDays}</p>
-            </div>
-        </div>
-    )
-}
-
 const Profile = () => {
     const [clickEdit, setClickEdit] = useState(false);
     let user = fetchUser();
