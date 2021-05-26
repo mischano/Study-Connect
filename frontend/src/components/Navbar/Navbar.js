@@ -52,9 +52,10 @@ const Navbar = () => {
                value={autoCompleteVal}
                id="users-search"
                options={users.map((option) => option.name)}
-               onChange={(e, newval) => {
-                  setAutoCompleteVal(newval);
-                  console.log(newval);
+               onChange={(e, newVal) => {
+                  setAutoCompleteVal(newVal);
+                  console.log(newVal);
+                  console.log(autoCompleteVal);
                }}
                renderInput={(params) => (
                   <TextField
