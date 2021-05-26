@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import '../App.css';
-import { getUser, sendFriendReq } from '../actions/auth';
+import { getUser } from '../actions/auth';
 import { Button, Grid, Typography, CardContent, Card, makeStyles } from '@material-ui/core';
-import { classCard } from './Cards'
+import { classCard } from './Cards';
+import { sendFriendReq } from '../actions/friendreqs';
+import * as api from '../api/index';
 
-/*
 const initialState = {
-   requester: fetchUser().name,
+   requester: '',
    recipient: '',
    status: 1
 }
-*/
 
 function fetchUser() {
    if (JSON.parse(localStorage.getItem('profile'))) {
@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
 
 const OtherUser = ({ match }) => {
    const [otherUser, setOtherUser] = useState(null);
-   const classes = useStyles();
+   const friends = fetchUser().friends;
 
    useEffect(() => {
       getOtherUser();
@@ -57,14 +57,8 @@ const OtherUser = ({ match }) => {
       const user = await getUser(match.params.id);
       setOtherUser(user);
    }
-   const ReqButton = () => {
-      const friends = fetchUser().friends;
-
-      return (!friends.includes(otherUser._id) ?
-         <Button onClick={sendReq}>Add Friend</Button> : null);
-   }
-   const sendReq = () => {
-      console.log("Request sent!");
+   const sendReq = async () => {
+      sendFriendReq({ requester: fetchUser()._id, recipient: otherUser._id, status: 1});
    }
 
    return (
@@ -74,17 +68,18 @@ const OtherUser = ({ match }) => {
                <h1> {otherUser.name} </h1>
                <h1> {otherUser.major}</h1>
                <h1> {otherUser.gradDate}</h1>
+               {!friends.includes(otherUser._id) ?
+                  <Button onClick={sendReq}>Add Friend!</Button> : null}
                <Grid className="classes">
                   <h2 className="sectionHeader">Classes</h2>
                   <Grid container spacing={4} direction={'column'} justify="space-evenly">
                      {otherUser.classes.map(course => (
                         <Grid item xs={12}>
-                        {classCard(course)}
+                           {classCard(course)}
                         </Grid>
                      ))}
                   </Grid>
                </Grid>
-               <ReqButton />
             </>
          )}
       </div>

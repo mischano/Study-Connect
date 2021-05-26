@@ -58,12 +58,12 @@ const Navbar = () => {
                }}
                renderInput={(params) => (
                   <TextField
-                     {...params} 
-                     label="Search..." 
-                     margin="normal" 
-                     variant="outlined" 
+                     {...params}
+                     label="Search..."
+                     margin="normal"
+                     variant="outlined"
                      onKeyDown={e => {
-                        if (e.key === "Enter"){
+                        if (e.key === "Enter") {
                            window.location.assign(`/profile/${autoCompleteVal._id}`);
                         }
                      }}

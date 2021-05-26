@@ -10,7 +10,7 @@ const friendReqSchema = new mongoose.Schema({
       required: true
    },
    status: {
-      type: int, // where 1 = requested, 2 = accepted, 3 = rejected
+      type: Number, // where 1 = requested, 2 = accepted, 3 = rejected
       required: true
    }
 });
