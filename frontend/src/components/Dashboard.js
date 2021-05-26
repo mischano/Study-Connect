@@ -9,6 +9,7 @@ export default class Dashboard extends React.Component {
             <div>
                <div className="topBanner">
                   <h1 className="mainPageTitle"> Dashboard </h1>
+                  <img className = "heroImg" src = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Books_with_Apple_Flat_Icon_Vector.svg/1200px-Books_with_Apple_Flat_Icon_Vector.svg.png" alt="Image of books"></img>
                   <div className="bannerBlurb">
                      <h2 id="greeting">{getGreeting()}</h2>
                      <h4 id="didYouKnow">Did you know...</h4>
@@ -38,9 +39,9 @@ export default class Dashboard extends React.Component {
                   alignItems="stretch"
                   wrap="wrap">
                   <Grid item xs={12}> <h2 className="sectionHeader">Resources</h2></Grid>
-                  <Grid item xs={12} sm={3}>{resourceCard("https://success.calpoly.edu/", "Mustang Success", "Academic Services")} </Grid>
-                  <Grid item xs={12} sm={3}>{resourceCard("https://careerservices.calpoly.edu/", "Career Services", "Career Development")} </Grid>
-                  <Grid item xs={12} sm={3}>{resourceCard("https://basicneeds.calpoly.edu/calfresh", "CalFresh", "Health and Wellbeing")} </Grid>
+                  <Grid item xs={12} sm={4} spacing={1}>{resourceCard("https://success.calpoly.edu/", "Mustang Success", "Academic Services")} </Grid>
+                  <Grid item xs={12} sm={4} spacing={1}>{resourceCard("https://careerservices.calpoly.edu/", "Career Services", "Career Development")} </Grid>
+                  <Grid item xs={12} sm={4} spacing={1}>{resourceCard("https://basicneeds.calpoly.edu/calfresh", "CalFresh", "Health and Wellbeing")} </Grid>
                </Grid>
             </div>
          </div>

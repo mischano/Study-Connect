@@ -5,6 +5,7 @@ import cors from 'cors';
 
 import groupRouter from './routes/groupRoutes.js';
 import userRouter from './routes/userRoutes.js';
+import friendReqRouter from './routes/friendReqRoutes.js';
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(cors());
 app.use('/user', userRouter);
 app.use('/group', groupRouter);
+app.use('/friends', friendReqRouter);
 
 mongoose.connect(
    "mongodb+srv://StudyConnectUser:srcAVv$vq!7Lvfr@studyconnect.dscne.mongodb.net/StudyConnect?retryWrites=true&w=majority",

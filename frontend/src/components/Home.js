@@ -29,7 +29,7 @@ export default class Home extends React.Component {
             <div className='homeNav'>
                <img id='logo' src={logo} alt='StudyConnect'></img>
                <a href='/auth' style={{ color: '#F2F0F0' }}>
-                  <div id='homeNavButton' className="callToAction">
+                  <div id='homeNavButton' className="mainCTA">
                      <h3>Login + Sign Up</h3>
                   </div>
                </a>
@@ -40,7 +40,7 @@ export default class Home extends React.Component {
                   <p id='homeBlurb'>StudyConnect is here to take the headache out of group
                   work. Schedule meetings, study together, and more.</p>
                   <a href='/auth' style={{ color: '#F2F0F0' }}>
-                     <div className="callToAction">
+                     <div className="mainCTA">
                         <h3>Get Started for Free</h3>
                      </div>
                   </a>

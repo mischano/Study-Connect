@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import '../../App.css';
 import { getUser } from '../../actions/auth';
 import { Link } from 'react-router-dom';
+import { friendCard } from '../Cards'
 
 function fetchUser() {
    if (JSON.parse(localStorage.getItem('profile'))) {
@@ -27,17 +28,17 @@ const FriendsList = () => {
       getFriends();
 
    return (
-      <Grid container className="friends" justify="center" alignItems="center">
-         <h2 className="sectionHeader">Your Friends</h2>
-         <Grid item>
-            <ul>
-               {users.map((friend, i) => {
-                  return <li key={i}><Link to={`/profile/${friend._id}`} key={friend._id}>{friend.name}</Link></li>
-               })}
-            </ul>
-         </Grid>
-         <Grid container spacing={4} direction={'column'} justify="space-evenly">
-         </Grid>
+      <Grid container className="friends" 
+      spacing={1}
+      direction={'row'} 
+      justify="flex-start" 
+      alignItems="stretch"
+      wrap="wrap">
+         <Grid item xs={12}><h2 className="sectionHeader">Your Friends</h2></Grid>
+            {users.map(friend => {
+               return ( 
+               <Grid item xs={12} sm ={6} spacing={1}>{friendCard(friend)}</Grid>
+            )})}
       </Grid>
    );
 }

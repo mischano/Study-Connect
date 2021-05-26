@@ -11,11 +11,7 @@ import { makeGroup } from '../../actions/group';
 import { updateGroups } from '../../actions/auth';
 import { useDispatch } from 'react-redux';
 import  GroupsList from './GroupsList'
-
-const initialState = {
-   name: '',
-   members: []
-};
+import * as api from '../../api/index';
 
 function fetchUser() {
    if (JSON.parse(localStorage.getItem('profile'))) {
@@ -26,12 +22,16 @@ function fetchUser() {
    }
 }
 
+const initialState = {
+   name: '',
+   members: []
+};
+
 export default function Groups() {
    const [open, setOpen] = React.useState(false);
    const [formData, setFormData] = useState(initialState);
    const user = fetchUser();
    const dispatch = useDispatch();
-
 
    const handleClickOpen = () => {
       setOpen(true);
@@ -46,7 +46,7 @@ export default function Groups() {
    //make a new group and updates the users list of groups
    const handleSubmit = () => {
       setOpen(false);
-      makeGroup(formData).then(res => dispatch(updateGroups(user._id, [res.data])))
+      makeGroup(formData).then(res => updateMembers(res.data));
    };
 
    // update the form data
@@ -54,11 +54,25 @@ export default function Groups() {
       setFormData({ ...formData, [e.target.name]: e.target.value });
    };
 
+   const updateMembers = (group) => {
+      dispatch(updateGroups(user._id, [group]))
+      formData.members.forEach(mem => api.updateGroups(mem, [group]));
+   }
+
    return (
       <div>
-         <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-            Make a new Group
-      </Button>
+         <div className="topBanner">
+         <h1 className="mainPageTitle" style={{marginBottom:"1em"}}> Groups </h1>
+         <img className = "heroImg" style ={{margin: '2em 1em'}} src = "https://www.pinclipart.com/picdir/big/348-3485456_package-going-with-friends-flat-design-student-clipart.png" alt="A group of friends with books and backpacks."></img>
+            <div className="bannerBlurb">
+               <h2 id="greeting">Better together.</h2>
+               <p id="studyTip">From group projects to groups of friends, this is your space to work, share, schedule, and most importantly, succeed.</p>
+            </div>
+          </div>
+          <h2 className="sectionHeader" style={{float: 'left'}}>Your Groups</h2>
+            <div className="standardButton" onClick={handleClickOpen} style={{float: 'right'}}>
+                  <h3>Create New Group</h3>
+            </div>
          <Dialog open={open} onClose={handleCancel} aria-labelledby="form-dialog-title">
             <DialogTitle id="form-dialog-title">Group Form</DialogTitle>
             <DialogContent>

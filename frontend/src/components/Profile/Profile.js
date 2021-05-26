@@ -2,6 +2,9 @@ import { Grid } from '@material-ui/core';
 import React, { useState } from 'react';
 import FriendsList from './FriendsList';
 import '../../App.css';
+import { classCard } from '../Cards'
+
+import { Button } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import { CustomButton, EditProfile } from './EditProfile';
 
@@ -27,7 +30,6 @@ function fetchUser() {
     }
 }
 
-/* update when classes route is working */
 function fetchClasses() {
     let user = fetchUser();
     if (user) {

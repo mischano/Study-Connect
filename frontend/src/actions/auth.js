@@ -8,16 +8,17 @@ export const signin = (formData, history) => async (dispatch) => {
       dispatch({ type: AUTH, data });
       history.push('/dashboard');
    } catch (error) {
-      console.log(error);
+      alert(error.response.data.message);
    }
 }
+
 export const signup = (formData, history) => async (dispatch) => {
    try {
       const { data } = await api.signUp(formData);
       dispatch({ type: AUTH, data });
       history.push('/signup2');
    } catch (error) {
-      console.log(error);
+      alert(error.response.data.message);
    }
 }
 export const updateClasses = (id, classes, history) => async (dispatch) => {

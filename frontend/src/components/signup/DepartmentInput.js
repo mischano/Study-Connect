@@ -26,7 +26,6 @@ const DepartmentInput = ({ handleChange }) => {
          }}
          id="controllable-states-demo"
          options={options}
-         style={{ width: 200 }}
          renderInput={(params) => <TextField {...params} label="Departments" variant="outlined" required />}
       />
    );

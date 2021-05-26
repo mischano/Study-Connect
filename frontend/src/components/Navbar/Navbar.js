@@ -51,20 +51,20 @@ const Navbar = () => {
             <Autocomplete
                value={autoCompleteVal}
                id="users-search"
-               options={users.map((option) => option.name)}
-               onChange={(e, newval) => {
-                  setAutoCompleteVal(newval);
-                  console.log(newval);
+               options={users}
+               getOptionLabel={(option) => option.name}
+               onChange={(e, newVal) => {
+                  setAutoCompleteVal(newVal);
                }}
                renderInput={(params) => (
                   <TextField
-                     {...params} 
-                     label="Search..." 
-                     margin="normal" 
-                     variant="outlined" 
+                     {...params}
+                     label="Search..."
+                     margin="normal"
+                     variant="outlined"
                      onKeyDown={e => {
-                        if (e.key === 13) {
-                           console.log("hi");
+                        if (e.key === "Enter") {
+                           window.location.assign(`/profile/${autoCompleteVal._id}`);
                         }
                      }}
                   />

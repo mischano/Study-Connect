@@ -31,10 +31,14 @@ const ClassAdd = ({ onSubmit }) => {
          <Paper className={Classes.paper} elevation={3}>
             <form onSubmit={handleSubmit}>
                <Grid container spacing={2}>
-                  <Grid item xs={6} md={4}>
+
+                  {/* Department */}
+                  <Grid item xs={6}>
                      <DepartmentInput handleChange={e => setFormData({ ...formData, "department": e })} />
                   </Grid>
-                  <Grid item xs={6} md={4}>
+
+                  {/* Class Number */}
+                  <Grid item xs={6} >
                      <TextField required
                         name="number"
                         label="Course number"
@@ -42,33 +46,41 @@ const ClassAdd = ({ onSubmit }) => {
                         variant="outlined"
                         fullWidth />
                   </Grid>
-                  <Grid item xs={6} md={2}>
+
+                  {/* Start Time */}
+                  <Grid item xs={6}>
                      <TextField required name="startTime" id="time"
                         label="Start Time"
                         type="time"
                         variant="outlined"
-                        defaultValue="07:30"
+                        defaultValue="00:10"
                         onChange={handleChange}
                         fullWidth />
                   </Grid>
-                  <Grid item xs={6} md={2}>
+
+                  {/* End Time */}
+                  <Grid item xs={6}>
                      <TextField required name="endTime"
                         id="time"
                         label="End Time"
                         type="time"
-                        defaultValue="07:30"
+                        defaultValue="00:00"
                         variant="outlined"
                         onChange={handleChange}
                         fullWidth />
                   </Grid>
+
+
+                  {/* Date Picker */}
                   <Grid item xs={12} align="center">
                      <WeekDayPicker handleChange={e => setFormData({ ...formData, "weekDays": e })} />
                   </Grid>
+
+                  {/* Submit */}
                   <Grid item xs={12} align="center">
-                     <Button className={Classes.confirm} type="submit">
-                        Submit
-                            </Button>
+                     <Button className={Classes.continue} type="submit">Submit</Button>
                   </Grid>
+
                </Grid>
             </form>
          </Paper>
