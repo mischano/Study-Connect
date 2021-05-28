@@ -42,12 +42,14 @@ const Notif = () => {
       }
    }, [open]);
 
+   useEffect(() => {
+      fetchFriendReqs();
+   }, []);
+
    const fetchFriendReqs = async () => {
-      const allReqs = await getFriendReqs(fetchUser()._id);
+      const allReqs = await getFriendReqs(fetchUser()._id).then(res => console.log(res));
       setReqs(allReqs);
    }
-   if (reqs.length === 0)
-      fetchFriendReqs();
 
    return (
       <div>
