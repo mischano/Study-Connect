@@ -7,3 +7,11 @@ export const sendFriendReq = async (formData) => {
       console.log(error);
    }
 }
+
+export const getFriendReqs = async (id) => {
+   try {
+      const { reqs } = await api.getFriendReqs(id).then(res => res.data);
+   } catch (error) {
+      console.log(error);
+   }
+}
