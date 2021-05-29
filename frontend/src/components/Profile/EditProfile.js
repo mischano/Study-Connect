@@ -1,16 +1,42 @@
 import React, { useState } from 'react';
-import { Grid, makeStyles, withStyles } from '@material-ui/core';
-import { teal } from '@material-ui/core/colors';
-import { Button } from '@material-ui/core';
+import { editName, editMajor } from '../../actions/auth';
+import { useDispatch } from 'react-redux';
+import { withStyles } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import UserAvatar from './UserAvatar';
+
+import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import Box from '@material-ui/core/Box';
+import IconButton from '@material-ui/core/IconButton';
+import SaveIcon from '@material-ui/icons/Save';
+import CancelIcon from '@material-ui/icons/Cancel';
+import { teal } from '@material-ui/core/colors';
 
-const CustomButton = withStyles((theme) => ({
+function fetchUser() {
+    if (JSON.parse(localStorage.getItem('profile'))) {
+        let user = (JSON.parse(localStorage.getItem('profile'))).result;
+        return user;
+    } else {
+        return null;
+    }
+}
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        '& > *': {
+            margin: theme.spacing(1),
+        },
+    },
+    input: {
+        display: 'none',
+    },
+}));
+
+const CustomEditButton = withStyles((theme) => ({
     root: {
         fontSize: 12,
         fontStyle: 'italic',
@@ -20,18 +46,56 @@ const CustomButton = withStyles((theme) => ({
         '&:hover': {
             backgroundColor: teal[800],
         },
+        size: {
+            fontStyle: 'normal',
+        },
     },
 }))(Button);
 
-const CustomTextField = withStyles((theme) => ({
+const CustomUploadButton = () => {
+    const classes = useStyles();
+
+    return (
+        <div className={classes.root}>
+            <input
+                accept="image/*"
+                className={classes.input}
+                id="contained-button-file"
+                multiple
+                type="file"
+            />
+            <label htmlFor="contained-button-file">
+                <IconButton color="primary" aria-label="upload picture" component="span">
+                    <UserAvatar />
+                </IconButton>
+            </label>
+        </div>
+    );
+}
+
+const InputTextField = withStyles({
     root: {
-        width: 300,
+        '& input:valid + fieldset': {
+            borderColor: 'tile',
+            borderWidth: 1,
+        },
+        '& input:invalid + fieldset': {
+            borderColor: 'red',
+            borderWidth: 1,
+        },
+        '& input:valid:focus + fieldset': {
+            borderLeftWidth: 4,
+            borderColor: 'green',
+            padding: '4px !important', // override inline-style
+        },
     },
-    // helperText:"First Name",
-}))(TextField);
+})(TextField)
 
 const EditProfile = () => {
     const [open, setOpen] = useState(true);
+    const user = fetchUser();
+    const dispatch = useDispatch();
+    const classes = useStyles();
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -39,25 +103,64 @@ const EditProfile = () => {
 
     const handleClose = () => {
         setOpen(false);
+        dispatch(editName(user._id, { data: "Aziz Aminovich" }));
+        dispatch(editMajor(user._id, { data: "Guard" }));
     }
+
     return (
         <React.Fragment>
             <Dialog open={open} onClose={handleClose} fullWidth>
-                <DialogTitle id="form-dialog-title">Edit Account</DialogTitle>
-                <DialogContent>
-                    <CustomTextField label="First Name" type="firstName" id="f" autoFocus />
-                </ DialogContent>
-                <DialogContent>
-                    <CustomTextField label="Last Name" type="lastName" id="l" autoFocus />
-                </ DialogContent>
-                <DialogContent>
-                    <CustomTextField label="Email Address" type="email" id="e" autoFocus />
-                </ DialogContent>
+                <DialogTitle id="form-dialog-title" align='center'>
+                    <CustomUploadButton />
+                </DialogTitle>
+                <form className={classes.root} noValidate>
+                    <DialogContent>
+                        <InputTextField
+                            className={classes.margin}
+                            label="Full Name"
+                            required
+                            variant="outlined"
+                            defaultValue={user.name}
+                            id="validation-outlined-input"
+                        />
+                    </DialogContent>
+                    <DialogContent>
+                        <InputTextField
+                            className={classes.margin}
+                            label="Email Address"
+                            required
+                            variant="outlined"
+                            defaultValue={user.email}
+                            id="validation-outlined-input"
+                        />
+                    </DialogContent>
+                    <DialogContent>
+                        <InputTextField
+                            className={classes.margin}
+                            label="Major"
+                            required
+                            variant="outlined"
+                            defaultValue={user.major}
+                            id="validation-outlined-input"
+                        />
+                    </DialogContent>
+                    <DialogContent>
+                        <InputTextField
+                            className={classes.margin}
+                            label="Graduation Date"
+                            required
+                            variant="outlined"
+                            defaultValue={user.gradDate}
+                            id="validation-outlined-input"
+                        />
+                    </DialogContent>
+                </form>
+
                 <DialogActions>
-                    <Button onClick={handleClose} color="primary">
+                    <Button onClick={handleClose} variant="contained" size="small" color="primary" startIcon={<CancelIcon/>}>
                         Cancel
-                            </Button>
-                    <Button onClick={handleClose} color="primary">
+                    </Button>
+                    <Button onClick={handleClose} variant="contained" size="small" color="primary" startIcon={<SaveIcon/>}>
                         Save Changes
                     </Button>
                 </DialogActions>
@@ -69,5 +172,5 @@ const EditProfile = () => {
 
 export {
     EditProfile,
-    CustomButton
+    CustomEditButton
 };

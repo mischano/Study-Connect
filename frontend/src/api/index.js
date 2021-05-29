@@ -28,3 +28,7 @@ export const makeGroup = (formData) => API.post('/group/groups', formData);
 export const sendFriendReq = (formData) => API.post('/friends/reqs', formData);
 
 export const updateFriends = (id, updatedUser) => API.patch(`user/friends/${id}`, updatedUser);
+
+export const editName = (id, updateName) => API.patch(`/user/user/${id}`, updateName);
+
+export const editMajor = (id, updateMajor) => API.patch(`/user/user/${id}`, updateMajor);
