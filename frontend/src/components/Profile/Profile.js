@@ -1,18 +1,17 @@
-import { Grid } from '@material-ui/core';
 import React, { useState } from 'react';
-import FriendsList from './FriendsList';
-import '../../App.css';
-import { classCard } from '../Cards'
-
-import { Button } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
-import { CustomButton, EditProfile } from './EditProfile';
+import { CustomEditButton, EditProfile } from './EditProfile';
+import UserAvatar from './UserAvatar';
+import FriendsList from './FriendsList';
+import { classCard } from '../Cards'
+import '../../App.css';
 
 const bannerTheme = {
     width: '100%',
     background: "linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://blog-www.pods.com/wp-content/uploads/2020/05/SF-Neighborhoods-Feature-photo-.jpg)",
     backgroundSize: 'cover',
-    padding: '2em'
+    padding: '.5em'
 }
 
 const bannerInfoStyle = {
@@ -39,7 +38,7 @@ function fetchClasses() {
 }
 
 /* placeholder group card */
-function groupCard(props) {
+function groupCard() {
     return (
         <a className="cardLink" href="">
             <div className="card">
@@ -53,31 +52,53 @@ function groupCard(props) {
         </a>
     )
 }
+/*
+const CustomButton = withStyles((theme) => ({
+    root: {
+        fontSize: 12,
+        fontStyle: 'italic',
+        font: 'Apple Color Emoji',
+        color: theme.palette.getContrastText(teal[700]),
+        backgroundColor: teal[700],
+        '&:hover': {
+            backgroundColor: teal[800],
+        },
+    },
+}))(Button);
+*/
 
 const Profile = () => {
     const [clickEdit, setClickEdit] = useState(false);
     let user = fetchUser();
     fetchClasses();
 
-
-    const handleEditButtonClick = () => {
+    const handleCustomEditButtonClick = () => {
         setClickEdit((prevVal) => !prevVal);
         // setClickEdit(true);
     }
-
     return (
         <div>
             <div style={bannerTheme}>
                 <Grid container style={bannerInfoStyle}>
+                    <Grid item container display="flex" direction="row" justify="center">
+                        <UserAvatar />
+                    </Grid>
                     <div className='profileBanner' style={{ margin: 'auto' }}>
                         <h2>{user.name}</h2>
                         <h4>{user.gradDate}, {user.major}</h4>
-                        <CustomButton variant="outlined" startIcon={<EditIcon />}
-                            onClick={
-                                handleEditButtonClick
-                            }>
-                            Edit Profile
-                        </CustomButton>
+                        <Grid
+                            container
+                            display="flex"
+                            direction="row"
+                            justify="center"
+                        >
+                            <CustomEditButton variant="outlined" startIcon={<EditIcon />}
+                                onClick={
+                                    handleCustomEditButtonClick
+                                }>
+                                Edit Profile
+                            </CustomEditButton>
+                        </Grid>
                         {clickEdit && (<EditProfile />)}
                     </div>
                 </Grid>

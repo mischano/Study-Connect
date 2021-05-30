@@ -51,7 +51,10 @@ const Notif = () => {
       .then(allReqs => setReqs(allReqs))
       .then(res => console.log(res));
    }
-
+   /*
+   if (reqs.length === 0)
+      fetchFriendReqs();
+   */
    return (
       <div>
          <Button onClick={handleClickOpen}>Notifications</Button>

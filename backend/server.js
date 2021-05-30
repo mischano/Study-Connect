@@ -5,6 +5,7 @@ import cors from 'cors';
 
 import groupRouter from './routes/groupRoutes.js';
 import userRouter from './routes/userRoutes.js';
+import postRouter from './routes/postRoutes.js'
 import friendReqRouter from './routes/friendReqRoutes.js';
 
 const app = express();
@@ -15,6 +16,7 @@ app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(cors());
 app.use('/user', userRouter);
 app.use('/group', groupRouter);
+app.use('/post', postRouter);
 app.use('/friends', friendReqRouter);
 
 mongoose.connect(
@@ -41,10 +43,5 @@ app.get('/', (req, res) => {
 })
 
 app.listen(PORT, () => console.log(`Server running on PORT ${PORT}`));
-
-//app.use(classRouter);
-//app.use(conversationRouter);
-//app.use(messageRouter);
-//app.use(profileRouter);
 
 export default db;

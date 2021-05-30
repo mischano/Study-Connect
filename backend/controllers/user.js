@@ -65,6 +65,20 @@ export const updateGroups = async (req, res) => {
    res.json(updatedUser);
 }
 
+export const leaveGroup = async (req, res) => {
+   const { id: _id } = req.params;
+   const group = req.body;
+
+   if (!mongoose.Types.ObjectId.isValid(_id)) {
+      return res.status(404).send('No user with that id'); 
+   }
+   else {
+      var updatedUser = await User.findByIdAndUpdate(_id, { $pull: { groups: { $in: [group.data] } } },
+         { new: true });
+   }
+   res.json(updatedUser);
+}
+
 export const getUser = async (req, res) => {
    const { id: _id } = req.params;
    const user = await User.findOne({ _id: mongoose.Types.ObjectId(_id) });
@@ -94,4 +108,29 @@ export const updateFriends = async (req, res) => {
       var updatedUser = await User.findByIdAndUpdate(_id, { $push: { "friends": friends } }, { new : true });
    }
    res.json(updatedUser);
+}
+
+export const editName = async (req, res) => {
+    const { id: _id } = req.params;
+    const newName = req.body.data;
+    
+    if (!mongoose.Types.ObjectId.isValid(_id)) {
+        return res.status(404).send('No user with that id');
+    } else {
+        var updatedUser = await User.findByIdAndUpdate(_id, { name: newName  }, { new : true });
+    }
+    res.json(updatedUser);
+}
+
+export const editMajor = async (req, res) => {
+    const { id: _id } = req.params;
+    const newMajor = req.body.data;
+    console.log("editMajor");
+
+    if (!mongoose.Types.ObjectId.isValid(_id)) {
+        return res.status(404).send('No user with that id');
+    } else {
+        var updateMajor = await User.findByIdAndUpdate(_id, { major: newMajor  }, { new : true });
+    }
+    res.json(updateMajor);
 }

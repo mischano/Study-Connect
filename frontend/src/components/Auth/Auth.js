@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {Button, Paper, Grid, Typography, Container, Box} from '@material-ui/core';
 import {GoogleLogin} from 'react-google-login';
 import useStyles from './styles';
@@ -18,7 +18,6 @@ const initialState = {
    major: '',
    gradDate: ''
 };
-
 
 const Auth = () => {
    const classes = useStyles();
