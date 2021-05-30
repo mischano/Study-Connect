@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { Button } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import Notif from './Notif';
 import decode from 'jwt-decode';
 import logo from '.././Assets/BLACK.png';
 import * as api from '../../api/index';
@@ -58,12 +59,12 @@ const Navbar = () => {
                }}
                renderInput={(params) => (
                   <TextField
-                     {...params} 
-                     label="Search..." 
-                     margin="normal" 
-                     variant="outlined" 
+                     {...params}
+                     label="Search..."
+                     margin="normal"
+                     variant="outlined"
                      onKeyDown={e => {
-                        if (e.key === "Enter"){
+                        if (e.key === "Enter") {
                            window.location.assign(`/profile/${autoCompleteVal._id}`);
                         }
                      }}
@@ -84,7 +85,7 @@ const Navbar = () => {
             <NavMenu>
                <NavLink to="/dashboard">Dashboard</NavLink>
                <NavLink to="/groups">Groups</NavLink>
-               <NavLink to="/messages">Messages</NavLink>
+               <Notif/>
                <NavLink to="/profile">
                   {user ? (user.result.name) : null}
                </NavLink>

@@ -35,9 +35,16 @@ export const removeMember = (id, updatedGroup) => API.patch(`group/members/leave
 
 export const updateFriends = (id, updatedUser) => API.patch(`user/friends/${id}`, updatedUser);
 
+export const getFriendReqs = (id) => API.get(`/friends/reqs/${id}`, id);
+
 export const getPost = (id) => API.get(`/post/${id}`);
 
 export const makePost = (formData) => API.post('/post/posts', formData);
 
 export const updateComments = (id, updatedPost) => API.patch(`post/comments/${id}`, updatedPost);
 
+export const sendFriendReq = (formData) => API.post('/friends/reqs', formData);
+
+export const editName = (id, updateName) => API.patch(`/user/user/${id}`, updateName);
+
+export const editMajor = (id, updateMajor) => API.patch(`/user/user/${id}`, updateMajor);

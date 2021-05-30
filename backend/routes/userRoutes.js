@@ -7,7 +7,9 @@ import {
    getProfiles,
    updateGroups,
    updateFriends,
-   leaveGroup
+   leaveGroup,
+   editName,
+   editMajor,
 } from '../controllers/user.js';
 
 const router = express.Router();
@@ -20,5 +22,7 @@ router.get('/users', getProfiles);
 router.patch('/groups/:id', updateGroups);
 router.patch('/friends/:id', updateFriends);
 router.patch('/groups/leave/:id', leaveGroup);
+router.patch('/user/:id', editName);
+router.patch('/user/:id', editMajor);
 
 export default router;
