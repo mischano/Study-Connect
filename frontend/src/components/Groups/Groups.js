@@ -6,7 +6,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import MakeGroup from './MakeGroup';
+import InviteToGroup from './InviteToGroup';
 import { makeGroup } from '../../actions/group';
 import { updateGroups } from '../../actions/auth';
 import { useDispatch } from 'react-redux';
@@ -22,15 +22,17 @@ function fetchUser() {
    }
 }
 
-const initialState = {
-   name: '',
-   members: []
-};
-
 export default function Groups() {
+
+   const user = fetchUser();
+
+   const initialState = {
+      name: '',
+      members: [user._id]
+   };
+   
    const [open, setOpen] = React.useState(false);
    const [formData, setFormData] = useState(initialState);
-   const user = fetchUser();
    const dispatch = useDispatch();
 
    const handleClickOpen = () => {
@@ -43,7 +45,7 @@ export default function Groups() {
    };
 
    //submit the group
-   //make a new group and updates the users list of groups
+   //make a new group and adds members to the group
    const handleSubmit = () => {
       setOpen(false);
       makeGroup(formData).then(res => updateMembers(res.data));
@@ -54,6 +56,7 @@ export default function Groups() {
       setFormData({ ...formData, [e.target.name]: e.target.value });
    };
 
+   // add the group to all of the members groups, and the user
    const updateMembers = (group) => {
       dispatch(updateGroups(user._id, [group]))
       formData.members.forEach(mem => api.updateGroups(mem, [group]));
@@ -88,7 +91,7 @@ export default function Groups() {
                   label="Group name"
                   fullWidth
                />
-               <MakeGroup handleChange={e => setFormData({ ...formData, "members": e })} />
+               <InviteToGroup handleChange={e => setFormData({ ...formData, "members": formData.members.concat(e) })} />
             </DialogContent>
             <DialogActions>
                <Button onClick={handleCancel} color="primary">

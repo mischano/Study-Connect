@@ -9,9 +9,37 @@ export const getGroup = async (id) => {
       console.log(error);
    }
 }
+
 export const makeGroup = async (formData) => {
    try {
       return await api.makeGroup(formData);
+   } catch (error) {
+      console.log(error);
+   }
+}
+
+export const updatePosts = async (id, post)  => {
+   try {
+      await api.updatePosts(id, post);
+
+   } catch (error) {
+      console.log(error);
+   }
+}
+
+export const updateMembers = async (id, members)  => {
+   try {
+      await api.updateMembers(id, members);
+
+   } catch (error) {
+      console.log(error);
+   }
+}
+
+export const removeMember = async (id, members)  => {
+   try {
+      await api.removeMember(id, members);
+
    } catch (error) {
       console.log(error);
    }

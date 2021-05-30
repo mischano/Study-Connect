@@ -56,7 +56,6 @@ function groupCard(props) {
    )
 }
 
-
 const CustomButton = withStyles((theme) => ({
     root: {
         fontSize: 12,

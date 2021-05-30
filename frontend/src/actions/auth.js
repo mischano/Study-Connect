@@ -1,4 +1,4 @@
-import { ADDCLASS, ADDFRIEND, ADDGROUP, AUTH } from '../constants/actionTypes.js';
+import { ADDCLASS, ADDFRIEND, ADDGROUP, AUTH, LEAVEGROUP } from '../constants/actionTypes.js';
 import * as api from '../api/index.js'
 
 export const signin = (formData, history) => async (dispatch) => {
@@ -21,6 +21,7 @@ export const signup = (formData, history) => async (dispatch) => {
       alert(error.response.data.message);
    }
 }
+
 export const updateClasses = (id, classes, history) => async (dispatch) => {
    try {
       await api.updateClasses(id, classes);
@@ -30,6 +31,7 @@ export const updateClasses = (id, classes, history) => async (dispatch) => {
       console.log(error);
    }
 }
+
 export const updateGroups = (id, groups) => async (dispatch) => {
    try {
       await api.updateGroups(id, groups);
@@ -38,6 +40,18 @@ export const updateGroups = (id, groups) => async (dispatch) => {
       console.log(error);
    }
 }
+
+export const leaveGroup = (id, group, history) => async (dispatch) => {
+   try {
+      const user = await api.leaveGroup(id, group);
+      console.log(user.data);
+      dispatch({ type: LEAVEGROUP, data: group.data });
+      history.push('/groups');
+   } catch (error) {
+      console.log(error);
+   }
+}
+
 export const getUser = async (id) => {
    try {
       const { user } = await api.getUser(id).then(res => res.data);

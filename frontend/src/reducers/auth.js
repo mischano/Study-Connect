@@ -1,4 +1,4 @@
-import { AUTH, LOGOUT, ADDCLASS, ADDGROUP, ADDFRIEND } from '../constants/actionTypes';
+import { AUTH, LOGOUT, ADDCLASS, ADDGROUP, ADDFRIEND, LEAVEGROUP } from '../constants/actionTypes';
 
 const authReducer = (state = { authData: null }, action) => {
    const user = JSON.parse(localStorage.getItem('profile'));
@@ -23,6 +23,11 @@ const authReducer = (state = { authData: null }, action) => {
 
       case ADDFRIEND:
          user.result.friends = user.result.friends.concat(action?.data);
+         localStorage.setItem('profile', JSON.stringify(user));
+         return { ...state, authData: action?.data };
+
+      case LEAVEGROUP:
+         user.result.groups = user.result.groups.filter(group => group !== action?.data)
          localStorage.setItem('profile', JSON.stringify(user));
          return { ...state, authData: action?.data };
 
