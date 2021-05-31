@@ -1,6 +1,6 @@
 import {
     ADDCLASS, ADDFRIEND, ADDGROUP, AUTH, EDITNAME,
-    EDITMAJOR, EDITEMAIL, LEAVEGROUP
+    EDITMAJOR, LEAVEGROUP
 } from '../constants/actionTypes.js';
 import * as api from '../api/index.js'
 
@@ -78,7 +78,7 @@ export const editName = (id, name) => async (dispatch) => {
         await api.editName(id, name);
         dispatch({ type: EDITNAME, data: name.data });
     } catch (error) {
-        console.log("Error: frontend -> src -> actions -> auth.js: line 64");
+        console.log("Error: frontend -> src -> actions -> auth.js: line 81");
     }
 }
 
@@ -87,6 +87,6 @@ export const editMajor = (id, major) => async (dispatch) => {
         await api.editMajor(id, major);
         dispatch({ type: EDITMAJOR, data: major.data });
     } catch (error) {
-        console.log("Error: frontend -> src -> actions -> auth.js: line 73");
+        console.log("Error: frontend -> src -> actions -> auth.js: line 90");
     }
 }

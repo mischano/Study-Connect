@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { editName, editMajor } from '../../actions/auth';
 import { useDispatch } from 'react-redux';
 import { withStyles } from '@material-ui/core';
@@ -96,17 +96,22 @@ const EditProfile = () => {
     const user = fetchUser();
     const dispatch = useDispatch();
     const classes = useStyles();
+    
+    const nameRef = useRef('');
+    const majorRef = useRef('');
+    const gradRef = useRef('');
 
-    const handleClickOpen = () => {
-        setOpen(true);
+    const handleSave = () => {
+        setOpen(false);
+        console.log(nameRef.current.value);
+        dispatch(editName(user._id, { data: nameRef.current.value }));
+        dispatch(editMajor(user._id, { data: majorRef.current.value }));
     }
 
     const handleClose = () => {
         setOpen(false);
-        dispatch(editName(user._id, { data: "Aziz Aminovich" }));
-        dispatch(editMajor(user._id, { data: "Guard" }));
     }
-
+    
     return (
         <React.Fragment>
             <Dialog open={open} onClose={handleClose} fullWidth>
@@ -122,6 +127,7 @@ const EditProfile = () => {
                             variant="outlined"
                             defaultValue={user.name}
                             id="validation-outlined-input"
+                            inputRef={nameRef}
                         />
                     </DialogContent>
                     <DialogContent>
@@ -142,6 +148,7 @@ const EditProfile = () => {
                             variant="outlined"
                             defaultValue={user.major}
                             id="validation-outlined-input"
+                            inputRef={majorRef}
                         />
                     </DialogContent>
                     <DialogContent>
@@ -152,6 +159,7 @@ const EditProfile = () => {
                             variant="outlined"
                             defaultValue={user.gradDate}
                             id="validation-outlined-input"
+                            inputRef={gradRef}
                         />
                     </DialogContent>
                 </form>
@@ -160,7 +168,7 @@ const EditProfile = () => {
                     <Button onClick={handleClose} variant="contained" size="small" color="primary" startIcon={<CancelIcon/>}>
                         Cancel
                     </Button>
-                    <Button onClick={handleClose} variant="contained" size="small" color="primary" startIcon={<SaveIcon/>}>
+                    <Button onClick={handleSave} variant="contained" size="small" color="primary" startIcon={<SaveIcon/>}>
                         Save Changes
                     </Button>
                 </DialogActions>

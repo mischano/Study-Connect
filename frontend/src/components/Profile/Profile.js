@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useImperativeHandle, useState } from 'react';
 import { Grid } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import { CustomEditButton, EditProfile } from './EditProfile';
@@ -53,30 +53,15 @@ function groupCard() {
     )
 }
 
-/*
-const CustomButton = withStyles((theme) => ({
-    root: {
-        fontSize: 12,
-        fontStyle: 'italic',
-        font: 'Apple Color Emoji',
-        color: theme.palette.getContrastText(teal[700]),
-        backgroundColor: teal[700],
-        '&:hover': {
-            backgroundColor: teal[800],
-        },
-    },
-}))(Button);
-*/
-
 const Profile = () => {
     const [clickEdit, setClickEdit] = useState(false);
     let user = fetchUser();
     fetchClasses();
 
-    const handleCustomEditButtonClick = () => {
+    const hanleCustomButtonState = () => {
         setClickEdit((prevVal) => !prevVal);
-        // setClickEdit(true);
     }
+    
     return (
         <div>
             <div style={bannerTheme}>
@@ -95,12 +80,17 @@ const Profile = () => {
                         >
                             <CustomEditButton variant="outlined" startIcon={<EditIcon />}
                                 onClick={
-                                    handleCustomEditButtonClick
+                                    hanleCustomButtonState
                                 }>
                                 Edit Profile
                             </CustomEditButton>
+                            {clickEdit && (
+                                <>
+                                <EditProfile />
+                                <hanleCustomButtonState />
+                                </>
+                            )}
                         </Grid>
-                        {clickEdit && (<EditProfile />)}
                     </div>
                 </Grid>
             </div>
@@ -133,7 +123,6 @@ const Profile = () => {
                 <div className="friends">
                     <FriendsList />
                 </div>
-                {clickEdit && (<EditProfile />)}
             </div>
         </div>
     );
