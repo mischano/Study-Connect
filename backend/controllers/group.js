@@ -60,4 +60,17 @@ export const removeMember = async (req, res) => {
    res.json(updatedGroup);
 }
 
+export const getGroups = async (req, res) => {
+   const groups = await Group.find({});
+
+   try {
+      res.send(groups);
+   } catch (error) {
+      res.stats(500).json({ message: 'Error in backend: controllers -> user.js' });
+   }
+   finally {
+      console.log(groups);
+   }
+}
+
 

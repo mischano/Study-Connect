@@ -93,9 +93,6 @@ export const getProfiles = async (req, res) => {
    } catch (error) {
       res.stats(500).json({ message: 'Error in backend: controllers -> user.js' });
    }
-   finally {
-      console.log(profiles);
-   }
 }
 
 export const updateFriends = async (req, res) => {

@@ -12,6 +12,7 @@ import { updateGroups } from '../../actions/auth';
 import { useDispatch } from 'react-redux';
 import  GroupsList from './GroupsList'
 import * as api from '../../api/index';
+import GroupSearch from './GroupSearch'
 
 function fetchUser() {
    if (JSON.parse(localStorage.getItem('profile'))) {
@@ -76,6 +77,7 @@ export default function Groups() {
             <div className="standardButton" onClick={handleClickOpen} style={{float: 'right'}}>
                   <h3>Create New Group</h3>
             </div>
+            <GroupSearch/>
          <Dialog open={open} onClose={handleCancel} aria-labelledby="form-dialog-title">
             <DialogTitle id="form-dialog-title">Group Form</DialogTitle>
             <DialogContent>

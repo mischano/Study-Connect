@@ -33,6 +33,8 @@ export const updateMembers = (id, updatedGroup) => API.patch(`group/members/${id
 
 export const removeMember = (id, updatedGroup) => API.patch(`group/members/leave/${id}`, updatedGroup);
 
+export const getGroups = () => API.get('/group/all');
+
 export const updateFriends = (id, updatedUser) => API.patch(`user/friends/${id}`, updatedUser);
 
 export const getFriendReqs = (id) => API.get(`/friends/reqs/${id}`, id);
