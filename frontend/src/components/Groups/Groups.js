@@ -60,7 +60,7 @@ export default function Groups() {
    // add the group to all of the members groups, and the user
    const updateMembers = (group) => {
       dispatch(updateGroups(user._id, [group]))
-      formData.members.forEach(mem => api.updateGroups(mem, [group]));
+      formData.members.filter(mem => mem !== user._id).forEach(mem => api.updateGroups(mem, [group]));
    }
 
    return (
