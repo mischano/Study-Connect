@@ -16,7 +16,11 @@ export const sendFriendReq = async (req, res) => {
 
 export const getFriendReqs = async (req, res) => {
    const { id: _id } = req.params;
-   const reqs = await FriendReq.find( { recipient: _id });
-
-   res.json({ reqs });
+   try {
+      console.log("hi");
+      const reqs = await FriendReq.find( { recipient: _id });
+      res.json(reqs);
+   } catch (error) {
+      console.log(error);
+   }
 }

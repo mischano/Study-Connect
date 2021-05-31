@@ -35,6 +35,8 @@ const Notif = () => {
 
    useEffect(() => {
       if (open) {
+         getFriendReqs(fetchUser()._id)
+         .then(res => console.log(res));
          const { current: descriptionElement } = descriptionElementRef;
          if (descriptionElement !== null) {
             descriptionElement.focus();
@@ -42,19 +44,13 @@ const Notif = () => {
       }
    }, [open]);
 
-   useEffect(() => {
-      fetchFriendReqs();
-   }, []);
-
+   /*
    const fetchFriendReqs = async () => {
       await getFriendReqs(fetchUser()._id)
       .then(allReqs => setReqs(allReqs))
-      .then(res => console.log(res));
-   }
-   /*
-   if (reqs.length === 0)
-      fetchFriendReqs();
-   */
+      .then(console.log(reqs));
+   }*/
+   
    return (
       <div>
          <Button onClick={handleClickOpen}>Notifications</Button>

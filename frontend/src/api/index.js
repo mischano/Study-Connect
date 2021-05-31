@@ -35,7 +35,7 @@ export const removeMember = (id, updatedGroup) => API.patch(`group/members/leave
 
 export const updateFriends = (id, updatedUser) => API.patch(`user/friends/${id}`, updatedUser);
 
-export const getFriendReqs = (id) => API.get(`/friends/reqs/${id}`, id);
+export const getFriendReqs = (id) => API.get(`/friends/reqs/${id}`);
 
 export const getPost = (id) => API.get(`/post/${id}`);
 
