@@ -36,20 +36,13 @@ const Notif = () => {
    useEffect(() => {
       if (open) {
          getFriendReqs(fetchUser()._id)
-         .then(res => console.log(res));
+         .then(allReqs => setReqs(allReqs))
          const { current: descriptionElement } = descriptionElementRef;
          if (descriptionElement !== null) {
             descriptionElement.focus();
          }
       }
    }, [open]);
-
-   /*
-   const fetchFriendReqs = async () => {
-      await getFriendReqs(fetchUser()._id)
-      .then(allReqs => setReqs(allReqs))
-      .then(console.log(reqs));
-   }*/
    
    return (
       <div>

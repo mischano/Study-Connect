@@ -16,16 +16,6 @@ import SaveIcon from '@material-ui/icons/Save';
 import CancelIcon from '@material-ui/icons/Cancel';
 import { teal } from '@material-ui/core/colors';
 
-const user = fetchUser();
-const initialState = {
-    name: user.name,
-    email: user.email,
-    major: user.major,
-    gradDate: user.gradDate,
-    bio: user.bio
-};
-
-
 function fetchUser() {
     if (JSON.parse(localStorage.getItem('profile'))) {
         let user = (JSON.parse(localStorage.getItem('profile'))).result;
@@ -103,6 +93,15 @@ const InputTextField = withStyles({
 
 
 const EditProfile = () => {
+   const user = fetchUser();
+   const initialState = ({
+         name: user.name,
+         email: user.email,
+         major: user.major,
+         gradDate: user.gradDate,
+         bio: user.bio
+      });
+
     const [open, setOpen] = useState(true);
     const dispatch = useDispatch();
     const classes = useStyles();
