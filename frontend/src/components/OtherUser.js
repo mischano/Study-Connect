@@ -4,6 +4,7 @@ import { getUser } from '../actions/auth';
 import { Button, Grid, Typography, CardContent, Card, makeStyles } from '@material-ui/core';
 import { classCard } from './Cards';
 import { sendFriendReq } from '../actions/friendreqs';
+import { getAvailableTimes } from './ScheduleMatch';
 import * as api from '../api/index';
 
 const initialState = {
@@ -60,6 +61,9 @@ const OtherUser = ({ match }) => {
    const sendReq = async () => {
       sendFriendReq({ requester: fetchUser()._id, recipient: otherUser._id, status: 1});
    }
+   const showSchedule = (cur, other) => {
+      getAvailableTimes([cur, other]);
+   }
 
    return (
       <div>
@@ -68,6 +72,7 @@ const OtherUser = ({ match }) => {
                <h1> {otherUser.name} </h1>
                <h1> {otherUser.major}</h1>
                <h1> {otherUser.gradDate}</h1>
+               <Button onClick={showSchedule(fetchUser(), otherUser)}>Schedule</Button>
                {!friends.includes(otherUser._id) ?
                   <Button onClick={sendReq}>Add Friend!</Button> : null}
                <Grid className="classes">
