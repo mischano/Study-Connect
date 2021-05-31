@@ -19,7 +19,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\""
+    "test": "echo \"No tests specified\""
   },
   "repository": {
     "type": "git",
