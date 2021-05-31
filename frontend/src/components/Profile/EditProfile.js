@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { editName, editMajor } from '../../actions/auth';
+import { editProfile } from '../../actions/auth';
 import { useDispatch } from 'react-redux';
 import { withStyles } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -15,6 +15,16 @@ import IconButton from '@material-ui/core/IconButton';
 import SaveIcon from '@material-ui/icons/Save';
 import CancelIcon from '@material-ui/icons/Cancel';
 import { teal } from '@material-ui/core/colors';
+
+const user = fetchUser();
+const initialState = {
+    name: user.name,
+    email: user.email,
+    major: user.major,
+    gradDate: user.gradDate,
+    bio: user.bio
+};
+
 
 function fetchUser() {
     if (JSON.parse(localStorage.getItem('profile'))) {
@@ -91,27 +101,25 @@ const InputTextField = withStyles({
     },
 })(TextField)
 
+
 const EditProfile = () => {
     const [open, setOpen] = useState(true);
-    const user = fetchUser();
     const dispatch = useDispatch();
     const classes = useStyles();
-    
-    const nameRef = useRef('');
-    const majorRef = useRef('');
-    const gradRef = useRef('');
+    const [formData, setFormData] = useState(initialState);
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
 
     const handleSave = () => {
         setOpen(false);
-        console.log(nameRef.current.value);
-        dispatch(editName(user._id, { data: nameRef.current.value }));
-        dispatch(editMajor(user._id, { data: majorRef.current.value }));
+        dispatch(editProfile(user._id, formData ));
     }
-
     const handleClose = () => {
         setOpen(false);
     }
-    
+
     return (
         <React.Fragment>
             <Dialog open={open} onClose={handleClose} fullWidth>
@@ -126,8 +134,8 @@ const EditProfile = () => {
                             required
                             variant="outlined"
                             defaultValue={user.name}
-                            id="validation-outlined-input"
-                            inputRef={nameRef}
+                            name="name"
+                            onChange={handleChange}
                         />
                     </DialogContent>
                     <DialogContent>
@@ -137,7 +145,8 @@ const EditProfile = () => {
                             required
                             variant="outlined"
                             defaultValue={user.email}
-                            id="validation-outlined-input"
+                            name="email"
+                            onChange={handleChange}
                         />
                     </DialogContent>
                     <DialogContent>
@@ -147,8 +156,8 @@ const EditProfile = () => {
                             required
                             variant="outlined"
                             defaultValue={user.major}
-                            id="validation-outlined-input"
-                            inputRef={majorRef}
+                            name="major"
+                            onChange={handleChange}
                         />
                     </DialogContent>
                     <DialogContent>
@@ -158,17 +167,17 @@ const EditProfile = () => {
                             required
                             variant="outlined"
                             defaultValue={user.gradDate}
-                            id="validation-outlined-input"
-                            inputRef={gradRef}
+                            name="gradDate"
+                            onChange={handleChange}
                         />
                     </DialogContent>
                 </form>
 
                 <DialogActions>
-                    <Button onClick={handleClose} variant="contained" size="small" color="primary" startIcon={<CancelIcon/>}>
+                    <Button onClick={handleClose} variant="contained" size="small" color="primary" startIcon={<CancelIcon />}>
                         Cancel
                     </Button>
-                    <Button onClick={handleSave} variant="contained" size="small" color="primary" startIcon={<SaveIcon/>}>
+                    <Button onClick={handleSave} variant="contained" size="small" color="primary" startIcon={<SaveIcon />}>
                         Save Changes
                     </Button>
                 </DialogActions>

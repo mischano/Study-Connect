@@ -45,6 +45,4 @@ export const updateComments = (id, updatedPost) => API.patch(`post/comments/${id
 
 export const sendFriendReq = (formData) => API.post('/friends/reqs', formData);
 
-export const editName = (id, updateName) => API.patch(`/user/user/${id}`, updateName);
-
-export const editMajor = (id, updateMajor) => API.patch(`/user/users/${id}`, updateMajor);
+export const editProfile = (id, updatedProfile) => API.patch(`/user/user/${id}`, updatedProfile);
