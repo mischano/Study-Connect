@@ -33,8 +33,6 @@ export const updateMembers = (id, updatedGroup) => API.patch(`group/members/${id
 
 export const removeMember = (id, updatedGroup) => API.patch(`group/members/leave/${id}`, updatedGroup);
 
-export const getGroups = () => API.get('/group/all');
-
 export const updateFriends = (id, updatedUser) => API.patch(`user/friends/${id}`, updatedUser);
 
 export const getFriendReqs = (id) => API.get(`/friends/reqs/${id}`, id);
@@ -50,3 +48,5 @@ export const sendFriendReq = (formData) => API.post('/friends/reqs', formData);
 export const editName = (id, updateName) => API.patch(`/user/user/${id}`, updateName);
 
 export const editMajor = (id, updateMajor) => API.patch(`/user/user/${id}`, updateMajor);
+
+export const getAllGroups = () => API.get('group/groups/all');

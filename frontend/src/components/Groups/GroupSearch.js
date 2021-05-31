@@ -11,9 +11,9 @@ const GroupSearch = () => {
     const [groups, setGroups] = useState([]);
 
     useEffect(() => {
-        api.getGroups().then(res => {
-            res.data.map(group => setGroups(arr => [...arr, group]));
-     })}, [])
+      api.getAllGroups().then(res => {
+         res.data.map(person => setGroups(arr => [...arr, person]));
+      })}, [])
 
     return (
        <div style={{ width: 300 }}>
