@@ -12,6 +12,7 @@ import { updateGroups } from '../../actions/auth';
 import { useDispatch } from 'react-redux';
 import  GroupsList from './GroupsList'
 import * as api from '../../api/index';
+import GroupSearch from './GroupSearch'
 
 function fetchUser() {
    if (JSON.parse(localStorage.getItem('profile'))) {
@@ -64,6 +65,7 @@ export default function Groups() {
 
    return (
       <div>
+         <GroupSearch/>
          <div className="topBanner">
          <h1 className="mainPageTitle" style={{marginBottom:"1em"}}> Groups </h1>
          <img className = "heroImg" style ={{margin: '2em 1em'}} src = "https://www.pinclipart.com/picdir/big/348-3485456_package-going-with-friends-flat-design-student-clipart.png" alt="A group of friends with books and backpacks."></img>
@@ -76,6 +78,7 @@ export default function Groups() {
             <div className="standardButton" onClick={handleClickOpen} style={{float: 'right'}}>
                   <h3>Create New Group</h3>
             </div>
+   
          <Dialog open={open} onClose={handleCancel} aria-labelledby="form-dialog-title">
             <DialogTitle id="form-dialog-title">Group Form</DialogTitle>
             <DialogContent>

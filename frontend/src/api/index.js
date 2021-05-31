@@ -46,3 +46,5 @@ export const updateComments = (id, updatedPost) => API.patch(`post/comments/${id
 export const sendFriendReq = (formData) => API.post('/friends/reqs', formData);
 
 export const editProfile = (id, updatedProfile) => API.patch(`/user/user/${id}`, updatedProfile);
+
+export const getAllGroups = () => API.get('group/groups/all');
