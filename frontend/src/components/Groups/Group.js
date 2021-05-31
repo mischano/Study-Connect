@@ -10,6 +10,10 @@ import PostForm from './Post'
 import Invite from './Invite'
 import { updateComments } from '../../actions/post';
 import LeaveGroup from './LeaveGroup'
+import { updateGroups } from '../../actions/auth';
+import { useDispatch } from 'react-redux';
+import { updateMembers } from '../../actions/group'
+import * as api from '../../api/index';
 
 const Group = ({ match }) => {
 
@@ -24,7 +28,8 @@ const Group = ({ match }) => {
    };
 
    const classes = useStyles();
-
+   const dispatch = useDispatch();
+   
    function fetchUser() {
       if (JSON.parse(localStorage.getItem('profile'))) {
          let user = (JSON.parse(localStorage.getItem('profile'))).result
@@ -45,6 +50,9 @@ const Group = ({ match }) => {
 
    //holds a local copy of the posts
    const [posts, setPosts] = useState([]);
+
+   //const member, or not a member
+   const [member, setMember] = useState(false);
 
    // fetches the group from the database
    const fetchGroup = () => {
@@ -70,6 +78,8 @@ const Group = ({ match }) => {
       members.map(mem => {
          getUser(mem).then(res => setMembers(prev => [...prev, res]))
       })
+      members.forEach(mem => api.updateGroups(mem, [match.params.id]));
+
    }
 
    // fetches the group on startup
@@ -122,15 +132,23 @@ const Group = ({ match }) => {
       makePost(post).then(res => updatePostList(res.data));
    };
 
+   const handleClick = () => {
+      dispatch(updateGroups(fetchUser()._id, [match.params.id]));
+      updateMembers(match.params.id, [fetchUser()._id])
+      setMember(true);
+   }
+
    // retrieve all the posts and members from the database by id on startup
-   if (group !== null && members.length === 0 && posts.length === 0) {
+   if (group !== null && members.length === 0 && posts.length === 0 && !member) {
       getMembers();
       getPosts();
+      if(group.members.includes((fetchUser()._id)))
+         setMember(true);
    }
 
    return (
       <div>
-         <Grid align='center'>
+         {member && <Grid align='center'>
             <Grid item xs={12} sm={6} md={3} spacing={1}>
                <form onSubmit={addPost}>
                   <Paper elevation={3} className={classes.paper}>
@@ -154,14 +172,15 @@ const Group = ({ match }) => {
                   </Paper>
                </form>
             </Grid>
-         </Grid>
+         </Grid>}
          {group && (
             <>
                {/* group name */}
                <h1> {group.name} </h1>
 
                {/*Link to the logged in user's profile */}
-               <Link to={'/profile'}> {fetchUser().name}  </Link>
+
+               {member && <Link to={'/profile'}> {fetchUser().name}  </Link>}
 
                {/*list of the members of group, excluding the current user */}
                {members.filter(mem => mem._id !== fetchUser()._id).map((mem, i) => {
@@ -170,14 +189,21 @@ const Group = ({ match }) => {
                   </li>
                })}
                {/* use of invite component to invite members */}
+
+               {member && 
+               <>
                <Invite group={match.params.id} pushMembers={addMembers} />
-               <LeaveGroup group={match.params.id} />
+               <LeaveGroup group={match.params.id} 
+               />
+               </>}
+               {!member && 
+               <Button onClick={handleClick}> Join group </Button>}
                <Grid Container align='center' spacing={1}>
 
                   {/*Array of posts, formated using Post.js*/}
-                  {posts.map((post, i) => {
+                  {member && (posts.map((post, i) => {
                      return <PostForm postComment={pushComments} post={post} />
-                  })}
+                  }))}
                </Grid>
             </>
          )}
