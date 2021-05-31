@@ -3,10 +3,15 @@ node_js:
 - 14.15.4
 cache: npm 
 
+install:
+  - npm ci
+
+script:
+  - npm run test
+
 deploy:
   provider: pages
   skip-cleanup: true
   github-token: $GITHUB_TOKEN
-  local_dir: build
   on:
     branch: master
