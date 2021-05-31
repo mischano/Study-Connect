@@ -110,11 +110,10 @@ export const updateFriends = async (req, res) => {
    res.json(updatedUser);
 }
 
+/*
 export const editName = async (req, res) => {
     const { id: _id } = req.params;
     const newName = req.body.data;
-    console.log("from editName");
-    console.log(newName);
 
     if (!mongoose.Types.ObjectId.isValid(_id)) {
         return res.status(404).send('No user with that id');
@@ -127,7 +126,6 @@ export const editName = async (req, res) => {
 export const editMajor = async (req, res) => {
     const { id: _id } = req.params;
     const newMajor = req.body.data;
-    console.log("from editMajor");
 
     if (!mongoose.Types.ObjectId.isValid(_id)) {
         return res.status(404).send('No user with that id');
@@ -135,4 +133,25 @@ export const editMajor = async (req, res) => {
         var updateMajor = await User.findByIdAndUpdate(_id, { major: newMajor  }, { new : true });
     }
     res.json(updateMajor);
+}
+*/
+
+export const editProfile = async (req, res) => {
+    const { id: _id } = req.params;
+    const newName = req.body.name;
+    const newEmail = req.body.email;
+    const newMajor = req.body.major;
+    const newGradDate = req.body.gradDate;
+    // const newBio = req.body.bio;
+    
+    if (!mongoose.Types.ObjectId.isValid(_id)) {
+        return res.status(404).send('No user with that id');
+    } else {
+        var updateProfile = await User.findByIdAndUpdate(_id, 
+         { name: newName,
+           email: newEmail,
+           major: newMajor,
+           gradDate: newGradDate }, { new : true });
+    }
+    res.json(updateProfile);
 }

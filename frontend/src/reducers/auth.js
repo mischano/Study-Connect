@@ -1,6 +1,6 @@
 import {
     AUTH, LOGOUT, ADDCLASS, ADDGROUP,
-    ADDFRIEND, EDITNAME, EDITMAJOR, LEAVEGROUP
+    ADDFRIEND, EDITPROFILE, LEAVEGROUP
 } from '../constants/actionTypes';
 
 const authReducer = (state = { authData: null }, action) => {
@@ -29,13 +29,13 @@ const authReducer = (state = { authData: null }, action) => {
             localStorage.setItem('profile', JSON.stringify(user));
             return { ...state, authData: action?.data };
 
-        case EDITNAME:
-            user.result.name = action?.data;
-            localStorage.setItem('profile', JSON.stringify(user));
-            return { ...state, authData: action?.data };
+        case EDITPROFILE:
+            user.result.name = action?.data.name;
+            user.result.email = action?.data.email;
+            user.result.major = action?.data.major;
+            user.result.gradDate = action?.data.gradDate;
+            user.result.bio = action?.data.bio;
 
-        case EDITMAJOR:
-            user.result.major = action?.data;
             localStorage.setItem('profile', JSON.stringify(user));
             return { ...state, authData: action?.data };
 

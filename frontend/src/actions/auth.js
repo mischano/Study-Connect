@@ -1,6 +1,5 @@
 import {
-    ADDCLASS, ADDFRIEND, ADDGROUP, AUTH, EDITNAME,
-    EDITMAJOR, LEAVEGROUP
+    ADDCLASS, ADDFRIEND, ADDGROUP, AUTH, EDITPROFILE, LEAVEGROUP
 } from '../constants/actionTypes.js';
 import * as api from '../api/index.js'
 
@@ -73,20 +72,11 @@ export const updateFriends = (id, friends) => async (dispatch) => {
     }
 }
 
-export const editName = (id, name) => async (dispatch) => {
+export const editProfile = (id, formData) => async (dispatch) => {
     try {
-        await api.editName(id, name);
-        dispatch({ type: EDITNAME, data: name.data });
+        await api.editProfile(id, formData);
+        dispatch({ type: EDITPROFILE, data: formData });
     } catch (error) {
-        console.log("Error: frontend -> src -> actions -> auth.js: line 81");
-    }
-}
-
-export const editMajor = (id, major) => async (dispatch) => {
-    try {
-        await api.editMajor(id, major);
-        dispatch({ type: EDITMAJOR, data: major.data });
-    } catch (error) {
-        console.log("Error: frontend -> src -> actions -> auth.js: line 90");
+        console.log(error);
     }
 }
