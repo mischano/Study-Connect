@@ -3,13 +3,6 @@ node_js:
 - 14.15.4
 cache: npm 
 
-install:
-  - npm install
-
-script:
-  - make test
-  - npm run build
-
 deploy:
   provider: pages
   skip-cleanup: true
