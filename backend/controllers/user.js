@@ -30,7 +30,7 @@ export const signup = async (req, res) => {
       const hashedPassword = await bcrypt.hash(password, 12);
 
       let result;
-      result = await User.create({ email, password: hashedPassword, name: `${firstName} ${lastName}`, major: major, gradDate: gradDate });
+      result = await User.create({ email, password: hashedPassword, name: `${firstName} ${lastName}`, major: major, gradDate: gradDate, bio: "" });
 
       const token = jwt.sign({ email: result.email, id: result._id }, 'test', { expiresIn: "1h" });
       res.status(200).json({ result: result, token });
@@ -94,7 +94,7 @@ export const getProfiles = async (req, res) => {
       res.stats(500).json({ message: 'Error in backend: controllers -> user.js' });
    }
    finally {
-      console.log(profiles);
+      // console.log(profiles);
    }
 }
 
@@ -113,7 +113,9 @@ export const updateFriends = async (req, res) => {
 export const editName = async (req, res) => {
     const { id: _id } = req.params;
     const newName = req.body.data;
-    
+    console.log("from editName");
+    console.log(newName);
+
     if (!mongoose.Types.ObjectId.isValid(_id)) {
         return res.status(404).send('No user with that id');
     } else {
@@ -125,7 +127,7 @@ export const editName = async (req, res) => {
 export const editMajor = async (req, res) => {
     const { id: _id } = req.params;
     const newMajor = req.body.data;
-    console.log("editMajor");
+    console.log("from editMajor");
 
     if (!mongoose.Types.ObjectId.isValid(_id)) {
         return res.status(404).send('No user with that id');

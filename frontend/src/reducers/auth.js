@@ -1,6 +1,6 @@
 import {
     AUTH, LOGOUT, ADDCLASS, ADDGROUP,
-    ADDFRIEND, EDITNAME, EDITMAJOR, EDITEMAIL, LEAVEGROUP
+    ADDFRIEND, EDITNAME, EDITMAJOR, LEAVEGROUP
 } from '../constants/actionTypes';
 
 const authReducer = (state = { authData: null }, action) => {
