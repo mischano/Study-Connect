@@ -60,7 +60,7 @@ const Profile = () => {
     let user = fetchUser();
     fetchClasses();
 
-    const hanleCustomButtonState = () => {
+    const handleCustomButtonState = () => {
         setClickEdit((prevVal) => !prevVal);
     }
     
@@ -82,14 +82,14 @@ const Profile = () => {
                         >
                             <CustomEditButton variant="outlined" startIcon={<EditIcon />}
                                 onClick={
-                                    hanleCustomButtonState
+                                    handleCustomButtonState
                                 }>
                                 Edit Profile
                             </CustomEditButton>
                             {clickEdit && (
                                 <>
                                 <EditProfile />
-                                <hanleCustomButtonState />
+                                <handleCustomButtonState />
                                 </>
                             )}
                         </Grid>

@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { Button } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import Notif from './Notif';
+import Notif from './Notif/Notif';
 import decode from 'jwt-decode';
 import logo from '.././Assets/BLACK.png';
 import * as api from '../../api/index';
