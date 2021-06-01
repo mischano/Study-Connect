@@ -61,7 +61,7 @@ const Navbar = () => {
                   <TextField
                      {...params}
                      label="Search..."
-                     margin="normal"
+                     margin="dense"
                      variant="outlined"
                      onKeyDown={e => {
                         if (e.key === "Enter") {

@@ -63,7 +63,7 @@ const Profile = () => {
     const handleCustomButtonState = () => {
         setClickEdit((prevVal) => !prevVal);
     }
-    
+
     return (
         <div>
             <div style={bannerTheme}>
@@ -72,7 +72,9 @@ const Profile = () => {
                         <UserAvatar />
                     </Grid>
                     <div className='profileBanner' style={{ margin: 'auto' }}>
-                        <h2>{user.name}</h2>
+                        <Grid container display="flex" direction="row" justify="center">
+                            <h2>{user.name}</h2>
+                        </Grid>
                         <h4>{user.gradDate}, {user.major}</h4>
                         <Grid
                             container
@@ -88,8 +90,8 @@ const Profile = () => {
                             </CustomEditButton>
                             {clickEdit && (
                                 <>
-                                <EditProfile />
-                                <handleCustomButtonState />
+                                    <EditProfile />
+                                    <handleCustomButtonState />
                                 </>
                             )}
                         </Grid>
