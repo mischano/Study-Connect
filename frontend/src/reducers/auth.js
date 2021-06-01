@@ -35,6 +35,7 @@ const authReducer = (state = { authData: null }, action) => {
             user.result.major = action?.data.major;
             user.result.gradDate = action?.data.gradDate;
             user.result.bio = action?.data.bio;
+            user.result.avatar = action?.data.avatar;
 
             localStorage.setItem('profile', JSON.stringify(user));
             return { ...state, authData: action?.data };

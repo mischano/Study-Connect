@@ -10,7 +10,8 @@ const userSchema = new mongoose.Schema({
    gradDate: { type: String, required: true },
    friends: [{ type: String }],
    classes: [],
-   groups: [{ type: String }]
+   groups: [{ type: String }],
+   avatar: {type: String},
 });
 
 export default mongoose.model("User", userSchema);
