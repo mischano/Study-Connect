@@ -13,6 +13,6 @@ const friendReqSchema = new mongoose.Schema({
       type: Number, // where 1 = requested, 2 = accepted, 3 = rejected
       required: true
    }
-});
+}, { collection : 'friendReqs' });
 
 export default mongoose.model("FriendReq", friendReqSchema);

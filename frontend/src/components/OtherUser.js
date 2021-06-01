@@ -1,17 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import '../App.css';
 import { getUser } from '../actions/auth';
-import { Button, Grid, Typography, CardContent, Card, makeStyles } from '@material-ui/core';
+import { Button, Grid, makeStyles } from '@material-ui/core';
 import { classCard } from './Cards';
 import { sendFriendReq } from '../actions/friendreqs';
 import { getAvailableTimes } from './ScheduleMatch';
 import * as api from '../api/index';
-
-const initialState = {
-   requester: '',
-   recipient: '',
-   status: 1
-}
 
 function fetchUser() {
    if (JSON.parse(localStorage.getItem('profile'))) {

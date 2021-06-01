@@ -1,4 +1,5 @@
 import FriendReq from '../models/friendReq.js';
+import User from '../models/user.js';
 import mongoose from 'mongoose';
 import db from '../server.js';
 
@@ -17,8 +18,9 @@ export const sendFriendReq = async (req, res) => {
 export const getFriendReqs = async (req, res) => {
    const { id: _id } = req.params;
    try {
-      const reqs = await FriendReq.find( { recipient: _id });
-      console.log(reqs);
+      const reqs = await FriendReq.find({ recipient: _id,
+                                          status: 1 });
+      res.json({ reqs });
    } catch (error) {
       console.log(error);
    }
