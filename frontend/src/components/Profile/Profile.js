@@ -1,7 +1,9 @@
 import React, { useEffect, useImperativeHandle, useState } from 'react';
 import { Grid } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
-import { CustomEditButton, EditProfile } from './EditProfile';
+// import { CustomEditButton, EditProfile } from './EditProfile';
+import { EditProfile } from './EditProfile';
+import { CustomEditButton } from './Styles';
 import UserAvatar from './UserAvatar';
 import FriendsList from './FriendsList';
 import { classCard } from '../Cards'

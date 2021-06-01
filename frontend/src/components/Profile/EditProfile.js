@@ -1,17 +1,13 @@
 import React, { useState } from 'react';
 import { editProfile } from '../../actions/auth';
 import { useDispatch } from 'react-redux';
-import FileBase from 'react-file-base64';
 import UserAvatar from './UserAvatar';
-import IconButton from '@material-ui/core/IconButton';
-import SaveIcon from '@material-ui/icons/Save';
-import CancelIcon from '@material-ui/icons/Cancel';
-import { teal } from '@material-ui/core/colors';
+import { useStyles, CustomEditButton, InputTextField } from './Styles';
+import { Save, Cancel } from '@material-ui/icons';
 import {
-    withStyles, makeStyles, Button, TextField, Dialog,
-    DialogActions, DialogTitle, DialogContent
+    Button, Dialog, DialogActions, DialogTitle,
+    DialogContent, IconButton
 } from '@material-ui/core';
-
 
 function fetchUser() {
     if (JSON.parse(localStorage.getItem('profile'))) {
@@ -20,76 +16,6 @@ function fetchUser() {
     } else {
         return null;
     }
-}
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        '& > *': {
-            margin: theme.spacing(1),
-        },
-    },
-    input: {
-        display: 'none',
-    },
-}));
-
-const CustomEditButton = withStyles((theme) => ({
-    root: {
-        fontSize: 12,
-        fontStyle: 'italic',
-        font: 'Apple Color Emoji',
-        color: theme.palette.getContrastText(teal[700]),
-        backgroundColor: teal[700],
-        '&:hover': {
-            backgroundColor: teal[800],
-        },
-        size: {
-            fontStyle: 'normal',
-        },
-    },
-}))(Button);
-
-const InputTextField = withStyles({
-    root: {
-        '& input:valid + fieldset': {
-            borderColor: 'tile',
-            borderWidth: 1,
-        },
-        '& input:invalid + fieldset': {
-            borderColor: 'red',
-            borderWidth: 1,
-        },
-        '& input:valid:focus + fieldset': {
-            borderLeftWidth: 4,
-            borderColor: 'green',
-            padding: '4px !important', // override inline-style
-        },
-    },
-})(TextField)
-
-const CustomUploadButton = () => {
-    const classes = useStyles();
-
-    return (
-        <div className={classes.root}>
-            <input
-                accept="image/*"
-                className={classes.input}
-                id="contained-button-file"
-                multiple
-                type="file"
-            />
-            <label htmlFor="contained-button-file">
-                <IconButton
-                    color="primary"
-                    aria-label="upload picture"
-                    component="span"
-                >
-                    <UserAvatar />
-                </IconButton>
-            </label>
-        </div>
-    );
 }
 
 const EditProfile = () => {
@@ -103,10 +29,11 @@ const EditProfile = () => {
         avatar: user.avatar
     });
 
-    const [open, setOpen] = useState(true);
     const dispatch = useDispatch();
     const classes = useStyles();
+    const [open, setOpen] = useState(true);
     const [formData, setFormData] = useState(initialState);
+    const hiddenFileInput = React.useRef(null);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -119,28 +46,69 @@ const EditProfile = () => {
     const handleClose = () => {
         setOpen(false);
     }
-    
+
+    const handleClick = () => {
+        hiddenFileInput.current.click();
+    }
+
+    const CustomUploadButton = () => {
+        const classes = useStyles();
+        return (
+            <div className={classes.root}>
+                <label htmlFor="contained-button-file">
+                    <IconButton
+                        component="span"
+                        onClick={handleClick} >
+                        <UserAvatar />
+                    </IconButton>
+                </label>
+            </div>
+        );
+    }
+
+    const uploadImage = async (e) => {
+        const file = e.target.files[0];
+        const base64 = await convertBase64(file);
+        setFormData({ ...formData, avatar: base64 });
+    }
+
+    const convertBase64 = (file) => {
+        return new Promise((res, rej) => {
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(file);
+
+            fileReader.onload = () => {
+                res(fileReader.result);
+            };
+
+            fileReader.onerror = (error) => {
+                rej(error);
+            };
+        });
+    }
+
     return (
         <React.Fragment>
             <Dialog open={open} onClose={handleClose} fullWidth>
                 <DialogTitle id="form-dialog-title" align='center'>
-                    <UserAvatar />
-                    <div className={classes.fileInput}>
-                        <FileBase
-                            type="file"
-                            multiple={false}
-                            onDone={({ base64 }) =>
-                                setFormData({ ...formData, avatar: base64 })}
-                        />
-                    </div>
+                    <CustomUploadButton />
+                    <input
+                        type="file"
+                        style={{ display: 'none' }}
+                        ref={hiddenFileInput}
+                        onChange={(e) => {
+                            uploadImage(e);
+                        }}
+                    />
                 </DialogTitle>
                 <form className={classes.root} noValidate>
-                    <DialogContent>
+                    <DialogContent className={classes.stuff}>
                         <InputTextField
                             className={classes.margin}
                             label="Full Name"
                             required
                             variant="outlined"
+                            margin='dense'
                             defaultValue={user.name}
                             name="name"
                             onChange={handleChange}
@@ -152,6 +120,7 @@ const EditProfile = () => {
                             label="Email Address"
                             required
                             variant="outlined"
+                            margin='dense'
                             defaultValue={user.email}
                             name="email"
                             onChange={handleChange}
@@ -163,6 +132,7 @@ const EditProfile = () => {
                             label="Major"
                             required
                             variant="outlined"
+                            margin='dense'
                             defaultValue={user.major}
                             name="major"
                             onChange={handleChange}
@@ -174,18 +144,33 @@ const EditProfile = () => {
                             label="Graduation Date"
                             required
                             variant="outlined"
+                            margin='dense'
                             defaultValue={user.gradDate}
                             name="gradDate"
+                            onChange={handleChange}
+                        />
+                    </DialogContent>
+                    <DialogContent>
+                        <InputTextField
+                            className={classes.margin}
+                            margin='dense'
+                            multiline
+                            fullWidth
+                            label="Bio" 
+                            required
+                            variant="outlined"
+                            defaultValue={user.bio.trim() == "" ? "" : `${user.bio}`}
+                            name="bio"
                             onChange={handleChange}
                         />
                     </DialogContent>
                 </form>
 
                 <DialogActions>
-                    <Button onClick={handleClose} variant="contained" size="small" color="primary" startIcon={<CancelIcon />}>
+                    <Button onClick={handleClose} variant="contained" size="small" color="primary" startIcon={<Cancel />}>
                         Cancel
                     </Button>
-                    <Button onClick={handleSave} variant="contained" size="small" color="primary" startIcon={<SaveIcon />}>
+                    <Button onClick={handleSave} variant="contained" size="small" color="primary" startIcon={<Save />}>
                         Save Changes
                     </Button>
                 </DialogActions>
