@@ -1,7 +1,15 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
-import { deepOrange, deepPurple } from '@material-ui/core/colors';
+
+function fetchUser() {
+    if (JSON.parse(localStorage.getItem('profile'))) {
+        let user = (JSON.parse(localStorage.getItem('profile'))).result;
+        return user;
+    } else {
+        return null;
+    }
+}
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -14,22 +22,16 @@ const useStyles = makeStyles((theme) => ({
         width: theme.spacing(13),
         height: theme.spacing(13),
     },
-    orange: {
-        color: theme.palette.getContrastText(deepOrange[500]),
-        backgroundColor: deepOrange[500],
-    },
-    purple: {
-        color: theme.palette.getContrastText(deepPurple[500]),
-        backgroundColor: deepPurple[500],
-    },
 }));
 
 export default function LetterAvatars() {
+    const user = fetchUser();
     const classes = useStyles();
-
+    
     return (
         <div className={classes.root}>
-            <Avatar className={classes.large}>N</Avatar>
+            <Avatar className={classes.large} src={user.avatar || 'https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png'}>
+            </Avatar>
         </div>
     );
 }
