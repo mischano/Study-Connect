@@ -29,7 +29,7 @@ export default function Groups() {
 
    const initialState = {
       name: '',
-      members: [user._id]
+      members: []
    };
    
    const [open, setOpen] = React.useState(false);
@@ -49,7 +49,11 @@ export default function Groups() {
    //make a new group and adds members to the group
    const handleSubmit = () => {
       setOpen(false);
+      const data = formData;
+      data.members.push(fetchUser()._id)
+      setFormData(data);
       makeGroup(formData).then(res => updateMembers(res.data));
+      setFormData(initialState);
    };
 
    // update the form data
@@ -60,7 +64,8 @@ export default function Groups() {
    // add the group to all of the members groups, and the user
    const updateMembers = (group) => {
       dispatch(updateGroups(user._id, [group]))
-      formData.members.filter(mem => mem !== user._id).forEach(mem => api.updateGroups(mem, [group]));
+      if(formData.members.length > 1)
+         formData.members.filter(mem => mem !== user._id).forEach(mem => api.updateGroups(mem, [group]));
    }
 
    return (
@@ -94,7 +99,7 @@ export default function Groups() {
                   label="Group name"
                   fullWidth
                />
-               <InviteToGroup handleChange={e => setFormData({ ...formData, "members": formData.members.concat(e) })} />
+               <InviteToGroup handleChange={e => setFormData({ ...formData, "members": e })} />
             </DialogContent>
             <DialogActions>
                <Button onClick={handleCancel} color="primary">

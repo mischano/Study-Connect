@@ -43,7 +43,7 @@ export default function Invite({ group, pushMembers }) {
           <DialogContentText>
             Invite your friends
           </DialogContentText>
-            <InviteToGroup handleChange={e => setMembers(...members, e)}/>
+            <InviteToGroup handleChange={e => setMembers(e)}/>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCancel} color="primary">

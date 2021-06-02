@@ -42,12 +42,6 @@ export default makeStyles((theme) => ({
         },
     },
 
-    googleButton: {
-        marginBottom: theme.spacing(2),
-        height: 48,
-        fontWeight: 'Bold',
-    },
-
     introParagraph: { 
         width: '80%',
         padding: 10,
