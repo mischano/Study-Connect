@@ -156,7 +156,7 @@ const EditProfile = () => {
                             margin='dense'
                             multiline
                             fullWidth
-                            label="Bio" 
+                            label="Bio"
                             required
                             variant="outlined"
                             defaultValue={user.bio.trim() == "" ? "" : `${user.bio}`}

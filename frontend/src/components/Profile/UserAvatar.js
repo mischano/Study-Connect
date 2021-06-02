@@ -20,8 +20,9 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     large: {
-        width: theme.spacing(13),
-        height: theme.spacing(13),
+        width: theme.spacing(16),
+        height: theme.spacing(16),
+        border: '0.2px solid lightgray',
     },
     orange: {
         color: theme.palette.getContrastText(deepOrange[500]),

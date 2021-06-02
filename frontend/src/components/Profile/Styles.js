@@ -9,6 +9,9 @@ const useStyles = makeStyles((theme) => ({
         '& > *': {
             margin: theme.spacing(1),
         },
+        style: {
+            maxWidth: '30px',
+        },
     },
     input: {
         display: 'none',
