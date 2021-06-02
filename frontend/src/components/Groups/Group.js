@@ -79,7 +79,6 @@ const Group = ({ match }) => {
          getUser(mem).then(res => setMembers(prev => [...prev, res]))
       })
       members.forEach(mem => api.updateGroups(mem, [match.params.id]));
-
    }
 
    // fetches the group on startup
