@@ -1,5 +1,4 @@
 import FriendReq from '../models/friendReq.js';
-import User from '../models/user.js';
 import mongoose from 'mongoose';
 import db from '../server.js';
 
@@ -23,5 +22,18 @@ export const getFriendReqs = async (req, res) => {
       res.json({ reqs });
    } catch (error) {
       console.log(error);
+   }
+}
+
+export const updateFriendReq = async (req, res) => {
+   const { id: _id } = req.params;
+   const newStatus = req.body.status;
+
+   if (!mongoose.Types.ObjectId.isValid(_id)) {
+      return res.status(404).send('No friend request with that id');
+   } else {
+      var updatedReq = await FriendReq.findByIdAndUpdate(_id,
+         { status: newStatus }, { new: true });
+      res.json(updatedReq);
    }
 }
