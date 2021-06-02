@@ -16,3 +16,11 @@ export const getFriendReqs = async (id) => {
       console.log(error);
    }
 }
+
+export const updateFriendReq = async (id, updatedStatus) => {
+   try {
+      await api.updateFriendReq(id, updatedStatus);
+   } catch (error) {
+      console.log(error);
+   }
+}

@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { Grid } from '@material-ui/core';
 import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import { Card, CardHeader, CardContent } from '@material-ui/core';
-import { Button, Typography, ButtonGroup } from '@material-ui/core';
+import { Card, CardHeader } from '@material-ui/core';
+import { Button, ButtonGroup } from '@material-ui/core';
 import CheckIcon from '@material-ui/icons/Check';
 import ClearIcon from '@material-ui/icons/Clear';
+import { useDispatch } from 'react-redux';
+
+import { updateFriendReq } from '../../../actions/friendreqs';
+import { updateFriends } from '../../../actions/auth';
 
 const useStyles = makeStyles({
    root: {
@@ -29,13 +33,18 @@ const FriendReqCard = (props) => {
    const classes = useStyles;
    const [addDecline, setAddDecline] = useState(null);
    const [message, setMessage] = useState("");
+   const dispatch = useDispatch();
 
    const accept = () => {
       setAddDecline(true);
+      dispatch(updateFriends(props.recipient, [props.requester]));
+      updateFriends(props.requester, [props.recipient]);
+      updateFriendReq(props.id, { status: 2 });
       setMessage("Request Accepted!");
    }
    const decline = () => {
       setAddDecline(false);
+      updateFriendReq(props.id, { status: 3 });
       setMessage("Request Declined.");
    }
 

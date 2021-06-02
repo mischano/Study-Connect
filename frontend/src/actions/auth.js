@@ -1,5 +1,5 @@
 import {
-    ADDCLASS, ADDFRIEND, ADDGROUP, AUTH, EDITPROFILE, LEAVEGROUP
+    ADDCLASS, ADDFRIEND, ADDGROUP, AUTH, EDITPROFILE, LEAVEGROUP, REMOVEFRIEND
 } from '../constants/actionTypes.js';
 import * as api from '../api/index.js'
 
@@ -64,12 +64,21 @@ export const getUser = async (id) => {
     }
 }
 export const updateFriends = (id, friends) => async (dispatch) => {
-    try {
+   try {
         await api.updateFriends(id, friends);
         dispatch({ type: ADDFRIEND, data: friends });
     } catch (error) {
         console.log(error);
     }
+}
+
+export const removeFriend = (id, friends) => async (dispatch) => {
+   try {
+      await api.removeFriend(id, friends);
+      dispatch({ type: REMOVEFRIEND, data: friends });
+   } catch (error) {
+      console.log(error);
+   }
 }
 
 export const editProfile = (id, formData) => async (dispatch) => {

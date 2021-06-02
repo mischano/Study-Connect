@@ -113,31 +113,19 @@ export const updateFriends = async (req, res) => {
     res.json(updatedUser);
 }
 
-/*
-export const editName = async (req, res) => {
-    const { id: _id } = req.params;
-    const newName = req.body.data;
+export const removeFriend = async (req, res) => {
+   const { id: _id } = req.params;
+   const friend = req.body;
 
-    if (!mongoose.Types.ObjectId.isValid(_id)) {
-        return res.status(404).send('No user with that id');
-    } else {
-        var updatedUser = await User.findByIdAndUpdate(_id, { name: newName  }, { new : true });
-    }
-    res.json(updatedUser);
+   if (!mongoose.Types.ObjectId.isValid(_id)) {
+      return res.status(404).send('No friend with that id');
+   }
+   else {
+      var updatedFriends = await User.findByIdAndUpdate(_id, { $pull: { friends: { $in: [friend.data] } } },
+         { new: true });
+   }
+   res.json(updatedFriends);
 }
-
-export const editMajor = async (req, res) => {
-    const { id: _id } = req.params;
-    const newMajor = req.body.data;
-
-    if (!mongoose.Types.ObjectId.isValid(_id)) {
-        return res.status(404).send('No user with that id');
-    } else {
-        var updateMajor = await User.findByIdAndUpdate(_id, { major: newMajor  }, { new : true });
-    }
-    res.json(updateMajor);
-}
-*/
 
 export const editProfile = async (req, res) => {
     const { id: _id } = req.params;

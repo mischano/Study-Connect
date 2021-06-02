@@ -109,8 +109,6 @@ function filterAvailableTimes(times) {
       }
       filtered.push(slots);
    }
-   
-   console.log(filtered);
    return filtered;
 }
 

@@ -74,7 +74,11 @@ const Notif = () => {
                   <Grid item container spacing={1} xs={12}>
                      {reqs.map(req => {
                         getName(req.requester);
-                        return <FriendReqCard key={req._id} id={req._id} name={friend}/>;
+                        return <FriendReqCard key={req._id} 
+                                              id={req._id} 
+                                              name={friend}
+                                              requester={req.requester}
+                                              recipient={req.recipient}/>;
                      })}
                   </Grid>
                </DialogContentText>
