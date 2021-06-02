@@ -13,9 +13,12 @@ import LeaveGroup from './LeaveGroup'
 import { updateGroups } from '../../actions/auth';
 import { useDispatch } from 'react-redux';
 import { updateMembers } from '../../actions/group'
+import { getAvailableTimes } from '../ScheduleMatch';
 import * as api from '../../api/index';
 
 const Group = ({ match }) => {
+   const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+   var weekDayIdx = 0;
 
    const initialState = {
       title: '',
@@ -187,6 +190,21 @@ const Group = ({ match }) => {
                      <Link to={`/profile/${mem._id}`} key={mem._id}>{mem.name}</Link>
                   </li>
                })}
+               {/* open slots between all users */}
+               <Grid container direction="row" xs={12} align="center" justify="center">
+               {getAvailableTimes(members).map(weekday => {
+                  return (
+                     <>
+                     <Grid item xs={1}>
+                        {weekDays[weekDayIdx++]}
+                        {weekday.map(slot => {
+                           return <Grid item>{slot[0] + " - " + slot[1]}</Grid>
+                        })}
+                     </Grid>
+                     </>
+                  )
+               })}
+               </Grid>
                {/* use of invite component to invite members */}
 
                {member && 
