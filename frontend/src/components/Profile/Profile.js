@@ -7,6 +7,7 @@ import { CustomEditButton } from './Styles';
 import UserAvatar from './UserAvatar';
 import FriendsList from './FriendsList';
 import { classCard } from '../Cards'
+import GroupsList from '../Groups/GroupsList.js'
 import '../../App.css';
 
 const bannerTheme = {
@@ -39,21 +40,6 @@ function fetchClasses() {
     }
 }
 
-/* placeholder group card */
-function groupCard() {
-    return (
-        <a className="cardLink" href="">
-            <div className="card">
-                <div className="cardTitle">
-                    <h2>CHEM126 Lab Group</h2>
-                </div>
-                <div className="subTitle">
-                    <p>32 members</p>
-                </div>
-            </div>
-        </a>
-    )
-}
 
 const Profile = () => {
     const [clickEdit, setClickEdit] = useState(false);
@@ -119,9 +105,7 @@ const Profile = () => {
                         alignItems="stretch"
                         wrap="wrap">
                         <Grid item xs={12}><h2 className="sectionHeader">Your Groups</h2></Grid>
-                        <Grid item xs={12} sm={6}> {groupCard()} </Grid>
-                        <Grid item xs={12} sm={6}> {groupCard()} </Grid>
-                        <Grid item xs={12} sm={6}> {groupCard()} </Grid>
+                        <GroupsList></GroupsList>
                     </Grid>
                 </div>
                 <div className="friends">
