@@ -7,19 +7,12 @@ import FriendsList from './FriendsList';
 import { classCard } from '../Cards'
 import GroupsList from '../Groups/GroupsList.js'
 import '../../App.css';
-import { editProfile } from '../../api';
 
 const bannerTheme = {
     width: '100%',
     background: "linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://blog-www.pods.com/wp-content/uploads/2020/05/SF-Neighborhoods-Feature-photo-.jpg)",
     backgroundSize: 'cover',
     padding: '2em'
-}
-
-const bannerInfoStyle = {
-    direction: "row",
-    justify: "center",
-    alignItems: "center"
 }
 
 function fetchUser() {
@@ -39,19 +32,18 @@ function fetchClasses() {
     }
 }
 
-
 const Profile = () => {
     const [userInfo, setUserInfo] = useState(fetchUser);
     const [clickEdit, setClickEdit] = useState(false);
 
     useEffect(() => {
-            const interval = setInterval(() => {
-                if (JSON.parse(localStorage.getItem('profile'))) {
-                    let user = (JSON.parse(localStorage.getItem('profile'))).result;
-                    setUserInfo(user);
-                }
-            }, 2000);
-            return () => clearInterval(interval);
+        const interval = setInterval(() => {
+            if (JSON.parse(localStorage.getItem('profile'))) {
+                let user = (JSON.parse(localStorage.getItem('profile'))).result;
+                setUserInfo(user);
+            }
+        }, 1500);
+        return () => clearInterval(interval);
     });
 
     fetchClasses();
@@ -63,8 +55,10 @@ const Profile = () => {
     return (
         <div>
             <div style={bannerTheme}>
+                {clickEdit && (handleChange)}
                 <Grid container xs={10}>
-                    <Grid container justify="flex-end" xs={5}>
+                    <h1 style={{ height: "40px", width: "100px", marginLeft: "60px", fontSize: "38px", color: "whitesmoke" }}>Profile</h1>
+                    <Grid container justify="flex-end" style={{width: "146px", marginLeft: "200px" }}>
                         <UserAvatar />
                     </Grid>
                     <Grid className='profileBanner' justify="center" style={{ height: "80px", width: "350px" }}>
