@@ -146,7 +146,7 @@ export const editProfile = async (req, res) => {
     const newMajor = req.body.major;
     const newGradDate = req.body.gradDate;
     const newAvatar = req.body.avatar;
-    // const newBio = req.body.bio;
+    const newBio = req.body.bio;
 
     if (!mongoose.Types.ObjectId.isValid(_id)) {
         return res.status(404).send('No user with that id');
@@ -157,6 +157,7 @@ export const editProfile = async (req, res) => {
                 email: newEmail,
                 major: newMajor,
                 gradDate: newGradDate,
+                bio: newBio,
                 avatar: newAvatar
             }, { new: true });
     }

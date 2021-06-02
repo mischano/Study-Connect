@@ -1,19 +1,18 @@
-import React, { useEffect, useImperativeHandle, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Grid } from '@material-ui/core';
-import EditIcon from '@material-ui/icons/Edit';
-// import { CustomEditButton, EditProfile } from './EditProfile';
 import { EditProfile } from './EditProfile';
 import { CustomEditButton } from './Styles';
 import UserAvatar from './UserAvatar';
 import FriendsList from './FriendsList';
 import { classCard } from '../Cards'
 import '../../App.css';
+import { editProfile } from '../../api';
 
 const bannerTheme = {
     width: '100%',
     background: "linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://blog-www.pods.com/wp-content/uploads/2020/05/SF-Neighborhoods-Feature-photo-.jpg)",
     backgroundSize: 'cover',
-    padding: '.5em'
+    padding: '2em'
 }
 
 const bannerInfoStyle = {
@@ -56,55 +55,65 @@ function groupCard() {
 }
 
 const Profile = () => {
+    const [userInfo, setUserInfo] = useState(fetchUser);
     const [clickEdit, setClickEdit] = useState(false);
-    let user = fetchUser();
+
+    useEffect(() => {
+            const interval = setInterval(() => {
+                if (JSON.parse(localStorage.getItem('profile'))) {
+                    let user = (JSON.parse(localStorage.getItem('profile'))).result;
+                    setUserInfo(user);
+                }
+            }, 2000);
+            return () => clearInterval(interval);
+    });
+
     fetchClasses();
 
-    const handleCustomButtonState = () => {
+    const handleChange = () => {
         setClickEdit((prevVal) => !prevVal);
     }
 
     return (
         <div>
             <div style={bannerTheme}>
-                <Grid container style={bannerInfoStyle}>
-                    <Grid item container display="flex" direction="row" justify="center">
+                <Grid container xs={10}>
+                    <Grid container justify="flex-end" xs={5}>
                         <UserAvatar />
                     </Grid>
-                    <div className='profileBanner' style={{ margin: 'auto' }}>
-                        <Grid container display="flex" direction="row" justify="center">
-                            <h2>{user.name}</h2>
+                    <Grid className='profileBanner' justify="center" style={{ height: "80px", width: "350px" }}>
+                        <Grid container
+                            direction="row" justify="flex-start" alignItems="center"
+                            style={{ height: "80px", width: "350px" }}>
+                            <Grid item style={{ width: "350px", textAlign: "start" }} >
+                                <br></br>
+                                <h2 style={{ fontSize: "32px", marginLeft: "14px" }}>{userInfo.name}</h2>
+                                <h4 style={{ fontSize: "16px", marginLeft: "14px" }}>{userInfo.gradDate}, {userInfo.major}</h4>
+                            </Grid>
                         </Grid>
-                        <h4>{user.gradDate}, {user.major}</h4>
-                        <Grid
-                            container
-                            display="flex"
-                            direction="row"
-                            justify="center"
-                        >
-                            <CustomEditButton variant="outlined" startIcon={<EditIcon />}
-                                onClick={
-                                    handleCustomButtonState
-                                }>
-                                Edit Profile
-                            </CustomEditButton>
-                            {clickEdit && (
-                                <>
-                                    <EditProfile />
-                                    <handleCustomButtonState />
-                                </>
-                            )}
+                        <Grid container className='profileBanner' style={{ height: "90px", width: "670px" }}>
+                            <Grid container direction="column" jusitfy="center" alignItems="fle-start" style={{ height: "90px", width: "670px" }}>
+                                <h4 style={{ fontSize: "14px", marginLeft: "15px", marginTop: "10px", height: "90px" }}>{userInfo.bio}</h4>
+                            </Grid>
                         </Grid>
-                    </div>
+                    </Grid>
+                    <Grid style={{ width: "100px", height: "40px", marginTop: "30px" }}>
+                        <CustomEditButton style={{ height: "35px", width: "120px", marginTop: "10px" }}
+                            onClick={
+                                handleChange
+                            }>
+                            Edit Profile
+                        </CustomEditButton>
+                        {clickEdit && (<EditProfile />)}
+                    </Grid>
                 </Grid>
             </div>
-
             <div className="profileBody">
                 <div className="classes">
                     <Grid container spacing={1}
                         direction={'column'} justify="flex-start">
                         <Grid item xs={12}><h2 className="sectionHeader">Your Classes</h2></Grid>
-                        {user.classes.map(course => (
+                        {userInfo.classes.map(course => (
                             <Grid item xs={12}>
                                 {classCard(course)}
                             </Grid>
