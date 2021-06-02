@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import {Button, Paper, Grid, Typography, Container, Box} from '@material-ui/core';
-import {GoogleLogin} from 'react-google-login';
 import useStyles from './styles';
 import Input from './Input';
 import Icon from './icon';
@@ -46,21 +45,6 @@ const Auth = () => {
    const switchMode = () => {
       setIsSignup((prevIsSignup) => !prevIsSignup);
       setShowPassword(false);
-   };
-
-   const googleSuccess = async (res) => {
-      const result = res?.profileObj;
-      const token = res?.tokenId;
-      try {
-         dispatch({ type: 'AUTH', data: { result, token } });
-         history.push('/dashboard');
-      } catch (error) {
-         console.log(error);
-      }
-   };
-
-   const googleFailure = () => {
-      alert("Google sign in was unsuccessful");
    };
 
    const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -131,17 +115,6 @@ const Auth = () => {
                             <Button type="submit" fullWidth variant="contained" color="secondary" className={classes.submit}>
                                 {isSignup ? 'Continue' : 'Sign In'}
                             </Button>
-                            <GoogleLogin
-                                clientId="849061658118-9mn44552cinf7i42041nq16a05c2n54q.apps.googleusercontent.com"
-                                render={(renderProps) => (
-                                    <Button className={classes.googleButton} color='primary' fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} variant="contained">
-                                        Google Sign In
-                                    </Button>
-                                )}
-                                onSuccess={googleSuccess}
-                                onFailre={googleFailure}
-                                cookiePolicy="single_host_origin"
-                            />
                             </Box>   
                             <Grid container justify="center">
                                 <Grid item>

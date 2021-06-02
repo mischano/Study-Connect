@@ -7,6 +7,7 @@ import { sendFriendReq } from '../actions/friendreqs';
 import { getAvailableTimes } from './ScheduleMatch';
 import * as api from '../api/index';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
    root: {
@@ -36,6 +37,7 @@ const OtherUser = ({ match }) => {
    const [otherUser, setOtherUser] = useState(null);
    const friends = fetchUser().friends;
    const dispatch = useDispatch();
+   const history = useHistory();
    const user = fetchUser();
 
    function fetchUser() {
@@ -59,10 +61,11 @@ const OtherUser = ({ match }) => {
       sendFriendReq({ requester: fetchUser()._id, recipient: otherUser._id, status: 1});
    }
    const deleteFriend = async () => {
-      dispatch(removeFriend(user._id, { data: otherUser._id }));
+      dispatch(removeFriend(user._id, { data: otherUser._id }, history));
+      api.removeFriend(otherUser._id, { data: user._id });
    }
    const showSchedule = (cur, other) => {
-      getAvailableTimes([cur, other]);
+      console.log(getAvailableTimes([cur, other]));
    }
 
    return (

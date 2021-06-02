@@ -10,6 +10,8 @@ import { useDispatch } from 'react-redux';
 import { updateFriendReq } from '../../../actions/friendreqs';
 import { updateFriends } from '../../../actions/auth';
 
+import * as api from '../../../api';
+
 const useStyles = makeStyles({
    root: {
       boxShadow: "none",
@@ -38,7 +40,7 @@ const FriendReqCard = (props) => {
    const accept = () => {
       setAddDecline(true);
       dispatch(updateFriends(props.recipient, [props.requester]));
-      updateFriends(props.requester, [props.recipient]);
+      api.updateFriends(props.requester, [props.recipient]);
       updateFriendReq(props.id, { status: 2 });
       setMessage("Request Accepted!");
    }

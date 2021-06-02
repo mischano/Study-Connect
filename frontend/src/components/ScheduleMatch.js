@@ -126,20 +126,31 @@ export function getAvailableTimes(users) {
       var dayAvail = [];
 
       // For each unavailable slot in a day (if any):
-      if (!(singleDay === [])){
+      if (singleDay.length !== 0){
          for (var j = 0; j < singleDay.length; j++) {
             // If they have a 7AM class:
-            if (j === 0 && singleDay[j].startTime === "7:10")
-               dayAvail.push([singleDay[j].endTime, singleDay[j + 1].startTime]);
-            else if (j === 0) {
+            if (j === 0 && singleDay[j] && singleDay[j].startTime === "7:10")
+               if (singleDay[j + 1])
+                  dayAvail.push([singleDay[j].endTime, singleDay[j + 1].startTime]);
+               else
+                  dayAvail.push([singleDay[j].endTime, end]);
+            else if (j === 0 && singleDay[j]) {
                dayAvail.push([start, singleDay[j].startTime]);
-               dayAvail.push([singleDay[j].endTime, singleDay[j + 1].startTime]);
+               if (singleDay[j + 1])
+                  dayAvail.push([singleDay[j].endTime, singleDay[j + 1].startTime]);
+               else
+                  dayAvail.push([singleDay[j].endTime, end]);
             }
-            else if (j === singleDay.length - 1)
+            else if (singleDay[j] && j === singleDay.length - 1)
                dayAvail.push([singleDay[j].endTime, end]);
             // If they have a starting class after 7AM:
             else {
-               dayAvail.push([singleDay[j].endTime, singleDay[j + 1].startTime]);
+               if (singleDay[j]) {
+                  if (singleDay[j + 1])
+                     dayAvail.push([singleDay[j].endTime, singleDay[j + 1].startTime]);
+                  else
+                     dayAvail.push([singleDay[j].endTime, end]);
+               }
             }
          }
       } else {
@@ -147,6 +158,5 @@ export function getAvailableTimes(users) {
       }
       availableTimes.push(dayAvail);
    }
-   
    return filterAvailableTimes(availableTimes);
 }

@@ -72,10 +72,11 @@ export const updateFriends = (id, friends) => async (dispatch) => {
     }
 }
 
-export const removeFriend = (id, friends) => async (dispatch) => {
+export const removeFriend = (id, friends, history) => async (dispatch) => {
    try {
       await api.removeFriend(id, friends);
-      dispatch({ type: REMOVEFRIEND, data: friends });
+      dispatch({ type: REMOVEFRIEND, data: friends.data });
+      history.push('/profile');
    } catch (error) {
       console.log(error);
    }
