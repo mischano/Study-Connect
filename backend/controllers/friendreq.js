@@ -2,6 +2,7 @@ import FriendReq from '../models/friendReq.js';
 import mongoose from 'mongoose';
 import db from '../server.js';
 
+// POST request to create a friend request between two users
 export const sendFriendReq = async (req, res) => {
    const { requester, recipient, status } = req.body;
    var friendReqs = db.collection("friendReqs");
@@ -14,17 +15,21 @@ export const sendFriendReq = async (req, res) => {
    }
 }
 
+// GET request to fetch all friend requests towards a given user
 export const getFriendReqs = async (req, res) => {
    const { id: _id } = req.params;
    try {
-      const reqs = await FriendReq.find({ recipient: _id,
-                                          status: 1 });
+      const reqs = await FriendReq.find({
+         recipient: _id,
+         status: 1
+      });
       res.json({ reqs });
    } catch (error) {
       console.log(error);
    }
 }
 
+// PATCH request to change the status of a given friend request
 export const updateFriendReq = async (req, res) => {
    const { id: _id } = req.params;
    const newStatus = req.body.status;

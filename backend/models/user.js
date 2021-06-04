@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
    friends: [{ type: String }],
    classes: [],
    groups: [{ type: String }],
-   avatar: {type: String},
+   avatar: { type: String },
 });
 
 export default mongoose.model("User", userSchema);

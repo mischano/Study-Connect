@@ -18,6 +18,7 @@ function Signup2() {
    const [btnDisabled, setBtnDisabled] = useState(false);
    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
+   // when clicking 'class add' button, concat a new class add component
    const onAddBtnClick = event => {
       setInputList(inputList.concat(
          <Grid item>
@@ -26,17 +27,20 @@ function Signup2() {
          setBtnDisabled(true);
    };
 
+   // update the list of local classes and disable add class button
    const sub = (event) => {
       classes.push(event);
       setInputList(inputList.splice(-1, 1));
       setBtnDisabled(false);
    }
 
+   // update the user's classes locally and in the DB
    const handleSubmit = (e) => {
       e.preventDefault();
       dispatch(updateClasses(user.result._id, classes, history));
    };
 
+   //styles the left side image
    const styles = {
       container: {
          height: '100vh',
@@ -92,7 +96,7 @@ function Signup2() {
             <Box pb={1.5}>
             <div style={{ margin: '1.5em auto', padding: '1em 0em', maxWidth: '50em' }}>
                <Button className={Classes.addClass} disabled={btnDisabled} onClick={onAddBtnClick} style={{ float: 'left', border: '2px solid', borderColor: '#E67350'}}>Add a Class</Button>
-               <Button className={Classes.submit} onClick={handleSubmit} style={{ float: 'right' }}>Continue</Button>
+               <Button className={Classes.continue} onClick={handleSubmit} style={{ float: 'right' }}>Continue</Button>
             </div>
             </Box>
 

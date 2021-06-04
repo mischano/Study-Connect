@@ -3,7 +3,6 @@ import {
    Button,
    Grid,
    Dialog,
-   DialogActions,
    DialogContent,
    DialogContentText,
    DialogTitle
@@ -15,15 +14,7 @@ import { IconContext } from 'react-icons'
 
 import { getFriendReqs } from '../../../actions/friendreqs';
 import { getUser } from '../../../actions/auth';
-
-function fetchUser() {
-   if (JSON.parse(localStorage.getItem('profile'))) {
-      let user = (JSON.parse(localStorage.getItem('profile'))).result;
-      return user;
-   } else {
-      return null;
-   }
-}
+import { fetchUser } from '../../GetUser';
 
 const Notif = () => {
    const [open, setOpen] = useState(false);
@@ -56,7 +47,7 @@ const Notif = () => {
       }
    }, [open]);
 
-   
+
 
    return (
       <div>
@@ -82,11 +73,11 @@ const Notif = () => {
                   <Grid item container spacing={1} xs={12}>
                      {reqs.map(req => {
                         getName(req.requester);
-                        return <FriendReqCard key={req._id} 
-                           id={req._id} 
+                        return <FriendReqCard key={req._id}
+                           id={req._id}
                            name={friend}
                            requester={req.requester}
-                           recipient={req.recipient}/>;
+                           recipient={req.recipient} />;
                      })}
                   </Grid>
                </DialogContentText>

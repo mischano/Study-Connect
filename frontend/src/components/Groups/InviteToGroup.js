@@ -1,19 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import '../../App.css';
 import { getUser } from '../../actions/auth';
-/* eslint-disable no-use-before-define */
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-
-function fetchUser() {
-   if (JSON.parse(localStorage.getItem('profile'))) {
-      let user = (JSON.parse(localStorage.getItem('profile'))).result;
-      return user;
-   } else {
-      return null;
-   }
-}
+import { fetchUser } from '../GetUser';
 
 const useStyles = makeStyles((theme) => ({
    root: {
@@ -29,16 +20,19 @@ const MakeGroup = ({ handleChange }) => {
    const [users, setUsers] = useState([]);
    const classes = useStyles();
 
+   // get the user's friends from the DB
    const getFriends = async () => {
       Promise.all(user.friends.map(async friend => {
          return getUser(friend);
       })).then(arr => setUsers(users => [...users, ...arr]));
    }
 
+   // get friends when the component mounts
    useEffect(() => {
       getFriends();
    }, []);
 
+   // copy the state into a local array
    var userList = [];
    userList = users.map(friend => friend);
 

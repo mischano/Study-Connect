@@ -12,6 +12,7 @@ const app = express();
 
 const PORT = 5000;
 
+/* Set up routes */
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(cors());
 app.use('/user', userRouter);
@@ -19,6 +20,7 @@ app.use('/group', groupRouter);
 app.use('/post', postRouter);
 app.use('/friends', friendReqRouter);
 
+// Connect to the mongoDB database
 mongoose.connect(
    "mongodb+srv://StudyConnectUser:srcAVv$vq!7Lvfr@studyconnect.dscne.mongodb.net/StudyConnect?retryWrites=true&w=majority",
    {
@@ -32,7 +34,6 @@ const db = mongoose.connection;
 db.once('open', _ => {
    console.log('Database connected...');
 });
-
 
 db.on('error', err => {
    console.error('Database connection error...', err);

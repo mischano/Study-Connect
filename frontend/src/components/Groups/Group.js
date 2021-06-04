@@ -4,7 +4,7 @@ import { getGroup, updatePosts } from '../../actions/group';
 import { makePost, getPost } from '../../actions/post';
 import { getUser } from '../../actions/auth';
 import { Link } from 'react-router-dom';
-import { Button, TextField, Grid, Paper, Menu, MenuItem } from '@material-ui/core';
+import { Button, TextField, Grid, Paper, MenuItem } from '@material-ui/core';
 import useStyles from './styles';
 import PostForm from './Post'
 import Invite from './Invite'
@@ -13,15 +13,14 @@ import LeaveGroup from './LeaveGroup'
 import { updateGroups } from '../../actions/auth';
 import { useDispatch } from 'react-redux';
 import { updateMembers } from '../../actions/group'
-import { getAvailableTimes } from '../ScheduleMatch';
-import { friendCard } from '../Cards';
 import * as api from '../../api/index';
-import Schedule from '../Schedule';
-import Avatar from '@material-ui/core/Avatar'
+import Schedule from '../Scheduling/Schedule';
+import Avatar from '@material-ui/core/Avatar';
+import { fetchUser } from '../GetUser';
 
+// styles banner 
 const bannerTheme = {
    width: '100%',
-   // height: '100%',
    background: "linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://blog-www.pods.com/wp-content/uploads/2020/05/SF-Neighborhoods-Feature-photo-.jpg)",
    backgroundSize: '100% 100%',
    padding: '2em'
@@ -29,6 +28,7 @@ const bannerTheme = {
 
 const Group = ({ match }) => {
 
+   // intital state for a group
    const initialState = {
       title: '',
       message: '',
@@ -41,15 +41,6 @@ const Group = ({ match }) => {
 
    const classes = useStyles();
    const dispatch = useDispatch();
-
-   function fetchUser() {
-      if (JSON.parse(localStorage.getItem('profile'))) {
-         let user = (JSON.parse(localStorage.getItem('profile'))).result
-         return user;
-      } else {
-         return null;
-      }
-   }
 
    //holds the current new post
    const [post, setPost] = useState(initialState);
@@ -144,6 +135,7 @@ const Group = ({ match }) => {
       makePost(post).then(res => updatePostList(res.data));
    };
 
+   // update the members of the group
    const handleClick = () => {
       dispatch(updateGroups(fetchUser()._id, [match.params.id]));
       updateMembers(match.params.id, [fetchUser()._id])
@@ -162,61 +154,61 @@ const Group = ({ match }) => {
       <div>
          {group && (
             <>
-            <div style={bannerTheme}>
-               {/* group name */}
+               <div style={bannerTheme}>
+                  {/* group name */}
 
-               <Grid container alignItems='center' justify='center' direction='row'>
+                  <Grid container alignItems='center' justify='center' direction='row'>
 
-                     <h1 style={{color: "white"}}> {group.name} </h1>
+                     <h1 style={{ color: "white" }}> {group.name} </h1>
                      {member &&
-                           <>
-                              <Invite group={match.params.id} pushMembers={addMembers} />
-                              <LeaveGroup group={match.params.id}/>
-                           </>}
-                        {!member &&
-                           <Button className={classes.invite} onClick={handleClick}> Join group </Button>}
-                        
-                  {/*current user*/}
-                  <Grid item xs={12}>
-                  <Grid container alignItems='center' justify='center' direction='row' spacing={3}>
-                     {/* users name and profile picture */}
-                     <Grid item>
-                        <Grid container direction='row'>
-                           <Grid item>
-                              <Avatar src={fetchUser().avatar} style={{ height: '40px', width: '40px' }} />
-                           </Grid>
-                           <Grid item>
-                              {member && <MenuItem style={{color: "white"}} component={Link} to={'/profile'}> {fetchUser().name}  </MenuItem>}
-                           </Grid>
-                        </Grid>
-                     </Grid>
+                        <>
+                           <Invite group={match.params.id} pushMembers={addMembers} />
+                           <LeaveGroup group={match.params.id} />
+                        </>}
+                     {!member &&
+                        <Button className={classes.invite} onClick={handleClick}> Join group </Button>}
 
-                     {/* members names and profile picture */}
-                     {members.filter(mem => mem._id !== fetchUser()._id).map((mem, i) => {
-                        return <>
+                     {/*current user*/}
+                     <Grid item xs={12}>
+                        <Grid container alignItems='center' justify='center' direction='row' spacing={3}>
+                           {/* users name and profile picture */}
                            <Grid item>
                               <Grid container direction='row'>
                                  <Grid item>
-                                    <Avatar src={mem.avatar} style={{ height: '40px', width: '40px' }} />
+                                    <Avatar src={fetchUser().avatar} style={{ height: '40px', width: '40px' }} />
                                  </Grid>
                                  <Grid item>
-                                    <MenuItem style={{color: "white"}} component={Link} to={`/profile/${mem._id}`} key={mem._id}>{mem.name}</MenuItem>
+                                    {member && <MenuItem style={{ color: "white" }} component={Link} to={'/profile'}> {fetchUser().name}  </MenuItem>}
                                  </Grid>
                               </Grid>
                            </Grid>
-                        </>
-                     })}
+
+                           {/* members names and profile picture */}
+                           {members.filter(mem => mem._id !== fetchUser()._id).map((mem, i) => {
+                              return <>
+                                 <Grid item>
+                                    <Grid container direction='row'>
+                                       <Grid item>
+                                          <Avatar src={mem.avatar} style={{ height: '40px', width: '40px' }} />
+                                       </Grid>
+                                       <Grid item>
+                                          <MenuItem style={{ color: "white" }} component={Link} to={`/profile/${mem._id}`} key={mem._id}>{mem.name}</MenuItem>
+                                       </Grid>
+                                    </Grid>
+                                 </Grid>
+                              </>
+                           })}
+                        </Grid>
                      </Grid>
                   </Grid>
-               </Grid>
                </div>
 
-               
-                {/* open slots between all users */}
-                <div className="scheduleMatch">
-                        <h2 className="sectionHeader">Available Times to Meet</h2>
-                <div className="GroupPageMatches"><Schedule users={members}></Schedule></div>
-                </div>
+
+               {/* open slots between all users */}
+               <div className="scheduleMatch">
+                  <h2 className="sectionHeader">Available Times to Meet</h2>
+                  <div className="GroupPageMatches"><Schedule users={members}></Schedule></div>
+               </div>
 
                {/* use of invite component to invite members */}
 
@@ -226,13 +218,13 @@ const Group = ({ match }) => {
             <Grid item xs={10} sm={8} spacing={1}>
                <form onSubmit={addPost}>
                   <Paper elevation={3} className={classes.paper}>
-                     <Grid container spacing={2} justify ='center'>
+                     <Grid container spacing={2} justify='center'>
                         <Grid item xs={8}>
 
                            {/* input for the body of the post */}
 
-                              <TextField required name='message' className={classes.field} onChange={handle} variant="outlined" label='Write a post...'>
-                              </TextField>
+                           <TextField required name='message' className={classes.field} onChange={handle} variant="outlined" label='Write a post...'>
+                           </TextField>
                         </Grid>
                         <Grid item xs={8}>
                            <Button className={classes.submit} type="submit"> Add Post </Button>

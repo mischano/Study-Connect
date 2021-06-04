@@ -17,10 +17,12 @@ const ClassAdd = ({ onSubmit }) => {
    const [formData, setFormData] = useState(initialState);
    const Classes = useStyles();
 
+   // set the form data with the class info
    const handleChange = (e) => {
       setFormData({ ...formData, [e.target.name]: e.target.value });
    };
 
+   // send the data to the signup page
    const handleSubmit = (e) => {
       e.preventDefault();
       onSubmit(formData);
@@ -78,7 +80,7 @@ const ClassAdd = ({ onSubmit }) => {
 
                   {/* Submit */}
                   <Grid item xs={12} align="center">
-                     <Button className={Classes.continue} type="submit">Submit</Button>
+                     <Button className={Classes.submit} type="submit">Submit</Button>
                   </Grid>
 
                </Grid>

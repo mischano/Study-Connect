@@ -344,6 +344,13 @@
 
 @media only screen and (min-width: 600px){
 
+  /* global styling */
+  .card{
+    margin: 1em;
+    max-width: 20em;
+  }
+
+  /* dashboard styling */
   .topBanner{
     display: grid;
     grid-template-columns: 40% 60%;
@@ -370,19 +377,13 @@
   }
 
 
-.resources{
-  margin: 1em;
-}
+  .resources{
+    margin: 1em;
+  }
 
 
-.card{
-  margin: 1em;
-  max-width: 20em;
-}
 
-.bannerBlurb{
-  grid-column: 2/3;
-}
+/* profile styling */
 
 .profileBody{
   display: grid;
@@ -450,4 +451,3 @@
 }
 
 }
-

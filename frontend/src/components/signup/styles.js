@@ -1,8 +1,9 @@
-import { Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
-   submit: {
+
+   //continue button styling
+   continue: {
       border: 0,
       borderRadius: 40,
       boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
@@ -20,6 +21,7 @@ export default makeStyles((theme) => ({
       },
    },
 
+   // add class button
    addClass: {
       borderRadius: 40,
       boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
@@ -39,7 +41,9 @@ export default makeStyles((theme) => ({
       width: '100%', // Fix IE 11 issue.
       marginTop: theme.spacing(3),
    },
-   continue: {
+
+   //submit button styling
+   submit: {
       border: 0,
       borderRadius: 40,
       boxShadow: '0 3px 5px 2px rgba(0,0,0, .3)',
@@ -53,6 +57,7 @@ export default makeStyles((theme) => ({
       },
    },
 
+   //container for adding a class
    paper: {
       marginTop: theme.spacing(2),
       display: 'flex',
@@ -61,6 +66,8 @@ export default makeStyles((theme) => ({
       padding: theme.spacing(2),
       borderRadius: 8,
    },
+
+   //container for submitted classes
    root: {
       backgroundColor: "#fff",
       border: "2px solid",
@@ -70,15 +77,18 @@ export default makeStyles((theme) => ({
       width: "100%",
    },
    
+   //name of class
    title: {
       color: '#041923',
       fontWeight: "Bold"
    },
 
+   //description of class 
    text: {
       color: '#041923',
    },
 
+   //paragraph on the left 
    introParagraph: { 
       width: '80%',
       padding: 10,
@@ -86,6 +96,7 @@ export default makeStyles((theme) => ({
       color: 'white',
    }, 
 
+   //heading on left side of screen
    h4: {
       marginBottom: theme.spacing(3),
    },
@@ -94,6 +105,7 @@ export default makeStyles((theme) => ({
       position: 'fixed',
    },
 
+   //wraps entire right side screen
    container: { 
       paddingLeft: 100,
       paddingRight: 100,

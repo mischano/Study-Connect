@@ -2,6 +2,7 @@ import Post from '../models/post.js';
 import db from '../server.js';
 import mongoose from 'mongoose';
 
+// GET request to fetch a post in a group
 export const getPost = async (req, res) => {
    const { id: _id } = req.params;
    const post = await Post.findOne({ _id: mongoose.Types.ObjectId(_id) });
@@ -9,6 +10,7 @@ export const getPost = async (req, res) => {
    res.json({ post });
 }
 
+// POST request to create a new post in a group
 export const makePost = async (req, res) => {
    const { title, message, creator, comments, likeCount, created_at } = req.body;
    var posts = db.collection("posts");
@@ -21,6 +23,7 @@ export const makePost = async (req, res) => {
    }
 }
 
+// PATCH request to add a comment to a post
 export const updateComments = async (req, res) => {
    const { id: _id } = req.params;
    const comment = req.body;

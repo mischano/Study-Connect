@@ -16,9 +16,9 @@ const router = express.Router();
 
 router.post('/signin', signin);
 router.post('/signup', signup);
-router.patch('/:id', updateClasses);
 router.get('/users/:id', getUser);
 router.get('/users', getProfiles);
+router.patch('/:id', updateClasses);
 router.patch('/groups/:id', updateGroups);
 router.patch('/friends/:id', updateFriends);
 router.patch('/friends/remove/:id', removeFriend);

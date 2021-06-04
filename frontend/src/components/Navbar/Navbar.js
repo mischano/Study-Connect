@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../../App.css';
-import { useHistory, useLocation, Link } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Button } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
@@ -10,7 +10,7 @@ import decode from 'jwt-decode';
 import logo from '.././Assets/BLACK.png';
 import * as api from '../../api/index';
 import Sidebar from './Sidebar/Sidebar';
-import{ 
+import {
    Nav,
    NavLink,
    NavMenu,
@@ -66,7 +66,7 @@ const Navbar = () => {
                      margin="dense"
                      variant="outlined"
                      onKeyDown={e => {
-                        if (e.key === "Enter" || e.type == 'mousedown') {
+                        if (e.key === "Enter" || e.type === 'mousedown') {
                            window.location.assign(`/profile/${autoCompleteVal._id}`);
                         }
                      }}
@@ -92,7 +92,7 @@ const Navbar = () => {
                   {user ? (user.result.name) : null}
                </NavLink>
                <SearchBar />
-               <Notif/>
+               <Notif />
                <Button onClick={logout}>Logout</Button>
             </NavMenu>
             <NavBtn>

@@ -2,6 +2,7 @@ import React from 'react';
 import '../App.css';
 import logo from './Assets/WHITE.png';
 
+//styles the background
 const styling = {
    position: 'fixed',
    background: "linear-gradient( rgba(0, 100, 148, 0.7), rgba(0, 100, 148, 0.7) ), url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2700&q=80')",
@@ -10,6 +11,7 @@ const styling = {
    width: '100%'
 }
 
+//styles text 
 const contentStyle = {
    fontFamily: 'Lato',
    color: '#F2F0F0',

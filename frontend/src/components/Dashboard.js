@@ -1,61 +1,52 @@
 import { Grid } from '@material-ui/core';
-import React, {useState } from 'react';
+import React, { useState } from 'react';
 import '../App.css';
-import GroupsList from './Groups/GroupsList.js'
-
-
-function fetchUser() {
-   if (JSON.parse(localStorage.getItem('profile'))) {
-       let user = (JSON.parse(localStorage.getItem('profile'))).result
-       return user;
-   } else {
-       return null;
-   }
-}
+import GroupsList from './Groups/GroupsList.js';
+import { fetchUser } from './GetUser.js';
 
 const Dashboard = () => {
+   const [user, setUser] = useState(fetchUser());
 
-
-      const [user, setUser] = useState(fetchUser());
-
-      return (
+   return (
+      <div>
          <div>
-            <div>
-               <div className="topBanner">
-                  <h1 className="mainPageTitle"> Dashboard </h1>
-                  <img className = "heroImg" src = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Books_with_Apple_Flat_Icon_Vector.svg/1200px-Books_with_Apple_Flat_Icon_Vector.svg.png" alt="Image of books"></img>
-                  <div className="bannerBlurb">
-                     <h2 id="greeting">{getGreeting()}</h2>
-                     <h4 id="didYouKnow">Did you know...</h4>
-                     <p id="studyTip">{getStudyTip()}</p>
-                  </div>
+            <div className="topBanner">
+               <h1 className="mainPageTitle"> Dashboard </h1>
+               <img className="heroImg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Books_with_Apple_Flat_Icon_Vector.svg/1200px-Books_with_Apple_Flat_Icon_Vector.svg.png" alt="Books"></img>
+               <div className="bannerBlurb">
+                  <h2 id="greeting">{getGreeting()}</h2>
+                  <h4 id="didYouKnow">Did you know...</h4>
+                  <p id="studyTip">{getStudyTip()}</p>
                </div>
             </div>
-            <div className="groups">
-               <h2 className="sectionHeader">Your Groups</h2>
-               <GroupsList user={user}></GroupsList>
-            </div>
-
-            <div className="resources">
-               <Grid container
-                  spacing={1}
-                  direction="row"
-                  justify="flex-start"
-                  alignItems="stretch"
-                  wrap="wrap">
-                  <Grid item xs={12}><h2 className="sectionHeader">Resources</h2></Grid>
-                  <Grid item xs={12} sm={4} spacing={1}>{resourceCard("https://success.calpoly.edu/", "Mustang Success Center", "Academic Services")}</Grid>
-                  <Grid item xs={12} sm={4} spacing={1}>{resourceCard("https://careerservices.calpoly.edu/", "Career Services", "Career Development")}</Grid>
-                  <Grid item xs={12} sm={4} spacing={1}>{resourceCard("https://basicneeds.calpoly.edu/calfresh", "CalFresh", "Health and Wellbeing")}</Grid>
-                  <Grid item xs={12} sm={4} spacing={1}>{resourceCard("https://chw.calpoly.edu/health/health-services", "Cal Poly Health Services", "Health and Wellbeing")}</Grid>
-               </Grid>
-            </div>
          </div>
-      );
-   }
+         <div className="groups">
+            <h2 className="sectionHeader">Your Groups</h2>
+            <GroupsList user={user}></GroupsList>
+         </div>
+
+         <div className="resources">
+            <Grid container
+               spacing={1}
+               direction="row"
+               justify="flex-start"
+               alignItems="stretch"
+               wrap="wrap">
+               <Grid item xs={12}><h2 className="sectionHeader">Resources</h2></Grid>
+               <Grid item xs={12} sm={4} spacing={1}>{resourceCard("https://success.calpoly.edu/", "Mustang Success Center", "Academic Services")}</Grid>
+               <Grid item xs={12} sm={4} spacing={1}>{resourceCard("https://careerservices.calpoly.edu/", "Career Services", "Career Development")}</Grid>
+               <Grid item xs={12} sm={4} spacing={1}>{resourceCard("https://basicneeds.calpoly.edu/calfresh", "CalFresh", "Health and Wellbeing")}</Grid>
+               <Grid item xs={12} sm={4} spacing={1}>{resourceCard("https://chw.calpoly.edu/health/health-services", "Cal Poly Health Services", "Health and Wellbeing")}</Grid>
+            </Grid>
+         </div>
+      </div>
+   );
+}
 
 
 export default Dashboard;
+
+// returns a random study tip
 
 function getStudyTip() {
    let tip1 = `Changing up where you study keeps things fresh, 
@@ -68,6 +59,7 @@ function getStudyTip() {
    return tips[Math.floor(Math.random() * tips.length)];
 }
 
+// returns proper time of day greeting on banner
 function getGreeting() {
    let today = new Date();
    let currentHour = today.getHours();
@@ -92,7 +84,7 @@ function getGreeting() {
 }
 
 /* update when database can be accessed with resources*/
-function resourceCard(link, name, descrip) {
+function resourceCard(link, name, description) {
    return (
       <a href={link} className="cardLink">
          <div className="card">
@@ -100,7 +92,7 @@ function resourceCard(link, name, descrip) {
                <h2>{name}</h2>
             </div>
             <div className="subTitle">
-               <p>{descrip}</p>
+               <p>{description}</p>
             </div>
 
          </div>

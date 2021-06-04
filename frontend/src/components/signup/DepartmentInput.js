@@ -5,6 +5,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 
 const DepartmentInput = ({ handleChange }) => {
 
+   // list of all Cal Poly departments
    const options = ["AERO", "AGB", "AGC", "AGED", "AGB", "AEPS", "AGC", "AGED", "AG",
       "ASCI", "ANT", "ARCE", "ARCH", "ART", "ASTR", "BIO", "BMED", "BRAE", "BOT", "BUS",
       "CHEM", "CD", "CHIN", "CRP", "CE", "CLA", "COMS", "CPE", "CSC", "CM", "DSCI", "DANC",

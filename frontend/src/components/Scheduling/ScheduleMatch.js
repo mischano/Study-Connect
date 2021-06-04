@@ -31,7 +31,7 @@ function combineClasses(maps) {
 
    for (var i = 0; i < maps.length; i++) {
       let userMap = maps[i];
-      
+
       for (const [key, val] of userMap.entries()) {
          for (var j = 0; j < val.length; j++) {
             classesByDay.get(key).push(...[val[j]]);
@@ -54,10 +54,10 @@ function mergeRanges(classes) {
    if (classes === [])
       return [];
 
-   var sortedClasses = classes.slice().sort(function(a, b) {
+   var sortedClasses = classes.slice().sort(function (a, b) {
       return a.startTime > b.startTime ? 1 : -1;
    });
-   
+
    var mergedClasses = [sortedClasses[0]];
 
    for (var i = 1; i < sortedClasses.length; i++) {
@@ -66,7 +66,7 @@ function mergeRanges(classes) {
 
       if (convertToInt(curClass.startTime) <= convertToInt(lastMerged.endTime)) {
          lastMerged.endTime = (convertToInt(lastMerged.endTime) > convertToInt(curClass.endTime) ?
-                               lastMerged.endTime : curClass.endTime);
+            lastMerged.endTime : curClass.endTime);
       } else {
          mergedClasses.push(curClass);
       }
@@ -79,12 +79,12 @@ function mergeRanges(classes) {
 function getBusyTimes(users) {
    let maps = [];
    let unavailableTimes = [];
-   
-   for (var i = 0; i < users.length; i++) 
+
+   for (var i = 0; i < users.length; i++)
       maps.push(groupClassesByDay(users[i]));
 
    let allClasses = combineClasses(maps);
-   
+
    for (const [key, val] of allClasses.entries()) {
       unavailableTimes.push(mergeRanges(val));
    }
@@ -104,7 +104,7 @@ function filterAvailableTimes(times) {
          var startVal = convertToInt(day[j][0]);
          var endVal = convertToInt(day[j][1]);
 
-         if (Math.abs(startVal - endVal) >= 30) 
+         if (Math.abs(startVal - endVal) >= 30)
             slots.push([day[j][0], day[j][1]]);
       }
       filtered.push(slots);
@@ -126,7 +126,7 @@ export function getAvailableTimes(users) {
       var dayAvail = [];
 
       // For each unavailable slot in a day (if any):
-      if (singleDay.length !== 0){
+      if (singleDay.length !== 0) {
          for (var j = 0; j < singleDay.length; j++) {
             // If they have a 7AM class:
             if (j === 0 && singleDay[j] && singleDay[j].startTime === "7:10")

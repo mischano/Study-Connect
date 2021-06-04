@@ -1,19 +1,19 @@
 import styled from 'styled-components';
 import { NavLink as Link } from 'react-router-dom';
-import { FaBars } from 'react-icons/fa';
 
+//entire nav component
 export const Nav = styled.nav`
     background: #fff; 
     height: 80px; 
     display: flex; 
-    // justify-content: space-between; 
     padding: 0.5rem calc((100vw - 1000px) / 2);
-    z-index: 999; 
+    z-index: 999; //put the navbar above other content
 
     // left side nav 
     justify-content: flex-start;
 
 `
+//Navigation tabs that link to other routes
 export const NavLink = styled(Link)`
     color: #465963; 
     display: flex; 
@@ -36,10 +36,10 @@ export const NavLink = styled(Link)`
     }
 `
 
+//Items in menu 
 export const NavMenu = styled.div`
     display: flex; 
     align-items: center; 
-    // margin-right: -24px; 
 
     // left-side nav
     width: 100vw; 
@@ -51,6 +51,7 @@ export const NavMenu = styled.div`
     }
 `
 
+//Login Button styling
 export const NavBtn = styled.nav`
     display: flex; 
     align-items: center;
@@ -65,7 +66,7 @@ export const NavBtn = styled.nav`
         display: none;
     }
 `
-
+//Login text link
 export const NavBtnLink = styled(Link)`
     border-radius: 4px; 
     background: #E5623B; 

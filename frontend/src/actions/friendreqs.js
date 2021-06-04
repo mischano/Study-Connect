@@ -1,5 +1,6 @@
 import * as api from '../api/index.js';
 
+// add a new friend request to the database
 export const sendFriendReq = async (formData) => {
    try {
       return await api.sendFriendReq(formData);
@@ -8,6 +9,7 @@ export const sendFriendReq = async (formData) => {
    }
 }
 
+// get a friend request from the database
 export const getFriendReqs = async (id) => {
    try {
       const { reqs } = await api.getFriendReqs(id).then(res => res.data);
@@ -17,6 +19,7 @@ export const getFriendReqs = async (id) => {
    }
 }
 
+// update the friend request in the database
 export const updateFriendReq = async (id, updatedStatus) => {
    try {
       await api.updateFriendReq(id, updatedStatus);

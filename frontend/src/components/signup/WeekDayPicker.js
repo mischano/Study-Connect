@@ -9,6 +9,7 @@ const WeekDayPicker = ({ handleChange }) => {
    //correct order of days
    const days = ["M", "T", "W", "R", "F"];
 
+   // send the weekdays to the class add component
    useEffect(() => {
       handleChange(Weekdays);
    }, [Weekdays])

@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { Grid } from '@material-ui/core';
 import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import { Card, CardHeader } from '@material-ui/core';
-import { Button, ButtonGroup, Avatar } from '@material-ui/core';
+import { Button, ButtonGroup, Avatar, Card, CardHeader, Grid  } from '@material-ui/core';
 import CheckIcon from '@material-ui/icons/Check';
 import ClearIcon from '@material-ui/icons/Clear';
 import { useDispatch } from 'react-redux';
