@@ -31,23 +31,24 @@ const useStyles = makeStyles((theme) => ({
     purple: {
         color: theme.palette.getContrastText(deepPurple[500]),
         backgroundColor: deepPurple[500],
-      },
+    },
 }));
 
-export default function LetterAvatars() {
-    const user = fetchUser();
+export default function LetterAvatars(props) {
     const classes = useStyles();
-
-    let name = user.name;
+    let name = props.props.name;
+    
     return (
         <div className={classes.root}>
-            {user.avatar &&
-                <Avatar className={classes.large} src={user.avatar}>
+            {props.props.avatar &&
+                <Avatar className={classes.large} src={props.props.avatar}>
                 </Avatar>}
-            {!user.avatar &&
+            {!props.props.avatar &&
                 <Avatar className={`${classes.large} ${classes.orange}`}>
-                    {name.split(" ")[0].charAt(0)}
-                    {name.split(" ")[1] && name.split(" ")[1].charAt(0)}
+                    <h1>
+                        {name.split(" ")[0].charAt(0)}
+                        {name.split(" ")[1] && name.split(" ")[1].charAt(0)}
+                    </h1>
                 </Avatar>}
         </div>
     );

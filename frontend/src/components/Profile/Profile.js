@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Grid } from '@material-ui/core';
+import { Button, Grid } from '@material-ui/core';
 import { EditProfile } from './EditProfile';
 import { CustomEditButton } from './Styles';
-import UserAvatar from './UserAvatar';
+// import UserAvatar from './UserAvatar';
+import EditIcon from '@material-ui/icons/Edit';
+import LetterAvatars from './UserAvatar';
 import FriendsList from './FriendsList';
 import { classCard } from '../Cards'
 import GroupsList from '../Groups/GroupsList.js'
@@ -58,8 +60,8 @@ const Profile = () => {
                 {clickEdit && (handleChange)}
                 <Grid container xs={10}>
                     <h1 style={{ height: "40px", width: "100px", marginLeft: "60px", fontSize: "38px", color: "whitesmoke" }}>Profile</h1>
-                    <Grid container justify="flex-end" style={{width: "146px", marginLeft: "200px" }}>
-                        <UserAvatar />
+                    <Grid container justify="flex-end" style={{ width: "146px", marginLeft: "200px" }}>
+                        <LetterAvatars props={userInfo} />
                     </Grid>
                     <Grid className='profileBanner' justify="center" style={{ height: "80px", width: "350px" }}>
                         <Grid container
@@ -78,12 +80,18 @@ const Profile = () => {
                         </Grid>
                     </Grid>
                     <Grid style={{ width: "100px", height: "40px", marginTop: "30px" }}>
-                        <CustomEditButton style={{ height: "35px", width: "120px", marginTop: "10px" }}
+                        {/* <CustomEditButton style={{ height: "35px", width: "120px", marginTop: "10px" }}
                             onClick={
                                 handleChange
                             }>
                             Edit Profile
-                        </CustomEditButton>
+                        </CustomEditButton> */}
+                        <Button variant="outlined"  endIcon={<EditIcon />} color="primary" style={{ color: "tomato", width: "160px", marginTop: "10px"}}
+                        onClick={
+                            handleChange
+                        }>
+                            Edit Profile
+                            </Button>
                         {clickEdit && (<EditProfile />)}
                     </Grid>
                 </Grid>
