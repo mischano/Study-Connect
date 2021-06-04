@@ -174,7 +174,7 @@ const Group = ({ match }) => {
                               <LeaveGroup group={match.params.id}/>
                            </>}
                         {!member &&
-                           <Button onClick={handleClick}> Join group </Button>}
+                           <Button className={classes.invite} onClick={handleClick}> Join group </Button>}
                         
                   {/*current user*/}
                   <Grid item xs={12}>
