@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Grid } from '@material-ui/core';
 import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { Card, CardHeader } from '@material-ui/core';
-import { Button, ButtonGroup } from '@material-ui/core';
+import { Button, ButtonGroup, Avatar } from '@material-ui/core';
 import CheckIcon from '@material-ui/icons/Check';
 import ClearIcon from '@material-ui/icons/Clear';
 import { useDispatch } from 'react-redux';
@@ -54,6 +54,9 @@ const FriendReqCard = (props) => {
       <Grid item xs={12}>
          <Card className={classes.root}>
             <CardHeader
+               avatar={
+                  <Avatar src={props.avatar} aria-label="recipe" className={classes.avatar}></Avatar>
+               }
                action={
                   addDecline === null && <ThemeProvider theme={buttonTheme}>
                      <ButtonGroup aria-label="settings">
