@@ -54,7 +54,6 @@ export default function Groups() {
       setFormData(data);
       makeGroup(formData).then(res => updateMembers(res.data));
       setFormData(initialState);
-      window.location.reload(); 
    };
 
    // update the form data
