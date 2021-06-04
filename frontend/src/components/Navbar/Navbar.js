@@ -66,7 +66,7 @@ const Navbar = () => {
                      margin="dense"
                      variant="outlined"
                      onKeyDown={e => {
-                        if (e.key === "Enter") {
+                        if (e.key === "Enter" || e.type == 'mousedown') {
                            window.location.assign(`/profile/${autoCompleteVal._id}`);
                         }
                      }}

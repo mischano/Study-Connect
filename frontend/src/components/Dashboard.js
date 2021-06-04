@@ -19,15 +19,8 @@ export default class Dashboard extends React.Component {
                </div>
             </div>
             <div className="groups">
-               <Grid container
-                  spacing={1}
-                  direction="row"
-                  justify="flex-start"
-                  alignItems="stretch"
-                  wrap="wrap">
-                  <Grid item xs={12}> <h2 className="sectionHeader">Your Groups</h2></Grid>
-                  <GroupsList></GroupsList>
-               </Grid>
+               <h2 className="sectionHeader">Your Groups</h2>
+               <GroupsList></GroupsList>
             </div>
 
             <div className="resources">
