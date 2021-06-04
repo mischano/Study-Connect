@@ -9,13 +9,15 @@ import Notif from './Notif/Notif';
 import decode from 'jwt-decode';
 import logo from '.././Assets/BLACK.png';
 import * as api from '../../api/index';
-import {
+import Sidebar from './Sidebar/Sidebar'; 
+import{ 
    Nav,
    NavLink,
    NavMenu,
    NavBtn,
    NavBtnLink
 } from './NavBarElements';
+
 
 const Navbar = () => {
    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
@@ -78,6 +80,7 @@ const Navbar = () => {
    return (
       <>
          <Nav>
+            <Sidebar />
             <NavLink to="/dashboard">
                <img id='logo' src={logo} alt='StudyConnect'></img>
                {/*/*</NavLink><img src={require('./Assets/logo.svg')}*/}
@@ -90,11 +93,11 @@ const Navbar = () => {
                   {user ? (user.result.name) : null}
                </NavLink>
                <SearchBar />
+               <Button onClick={logout}>Logout</Button>
             </NavMenu>
             <NavBtn>
                {user ? (null) : <NavBtnLink to="/auth">Login</NavBtnLink>}
             </NavBtn>
-            <Button onClick={logout}>Logout</Button>
          </Nav>
       </>
    );

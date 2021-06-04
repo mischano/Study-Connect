@@ -36,22 +36,6 @@ export const NavLink = styled(Link)`
     }
 `
 
-export const Bars = styled(FaBars)`
-    display: none; 
-    color: #041923; 
-
-    // hamburger will only show at this width
-    @media screen and (max-width: 760px) { 
-        display: block; 
-        position: absolute; 
-        top: 0; 
-        right: 0; 
-        transform: translate(-100%, 75%); 
-        font-size: 1.8rem; 
-        cursor: pointer; 
-    }
-`
-
 export const NavMenu = styled.div`
     display: flex; 
     align-items: center; 
@@ -64,6 +48,7 @@ export const NavMenu = styled.div`
     //nav menu will disappear and only hamburger will show
     @media screen and (max-width: 768px){ 
         display: none;
+        
 
     }
 `
