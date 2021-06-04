@@ -24,7 +24,6 @@ const FriendsList = ({ user }) => {
       justify="flex-start" 
       alignItems="stretch"
       wrap="wrap">
-         <Grid item xs={12}><h2 className="sectionHeader">Your Friends</h2></Grid>
             {users.map(friend => {
                return ( 
                <Grid item xs={12} sm ={6} spacing={1}>{friendCard(friend)}</Grid>

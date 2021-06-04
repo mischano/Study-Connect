@@ -101,7 +101,10 @@ const OtherUser = ({ match }) => {
                     </div>
                     
                     <div className = "profileBody">
-                    <Schedule users={[fetchUser(), otherUser]}></Schedule>
+                    <div className="scheduleMatch">
+                        <h2 className="sectionHeader">Available Times to Meet</h2>
+                        <Schedule users={[fetchUser(), otherUser]}></Schedule>
+                    </div>
 
                     <div className="classes">
                         <h2 className="sectionHeader">{otherUser.name}'s Classes</h2>
