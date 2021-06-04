@@ -4,7 +4,7 @@ import { getGroup, updatePosts } from '../../actions/group';
 import { makePost, getPost } from '../../actions/post';
 import { getUser } from '../../actions/auth';
 import { Link } from 'react-router-dom';
-import { Button, TextField, Grid, Paper } from '@material-ui/core';
+import { Button, TextField, Grid, Paper, Menu, MenuItem } from '@material-ui/core';
 import useStyles from './styles';
 import PostForm from './Post'
 import Invite from './Invite'
@@ -17,10 +17,17 @@ import { getAvailableTimes } from '../ScheduleMatch';
 import { friendCard } from '../Cards';
 import * as api from '../../api/index';
 import Schedule from '../Schedule';
+import Avatar from '@material-ui/core/Avatar'
+
+const bannerTheme = {
+   width: '100%',
+   // height: '100%',
+   background: "linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://blog-www.pods.com/wp-content/uploads/2020/05/SF-Neighborhoods-Feature-photo-.jpg)",
+   backgroundSize: '100% 100%',
+   padding: '2em'
+}
 
 const Group = ({ match }) => {
-   const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
-   var weekDayIdx = 0;
 
    const initialState = {
       title: '',
@@ -34,7 +41,7 @@ const Group = ({ match }) => {
 
    const classes = useStyles();
    const dispatch = useDispatch();
-   
+
    function fetchUser() {
       if (JSON.parse(localStorage.getItem('profile'))) {
          let user = (JSON.parse(localStorage.getItem('profile'))).result
@@ -146,12 +153,73 @@ const Group = ({ match }) => {
    if (group !== null && members.length === 0 && posts.length === 0 && !member) {
       getMembers();
       getPosts();
-      if(group.members.includes((fetchUser()._id)))
+      if (group.members.includes((fetchUser()._id)))
          setMember(true);
    }
 
    return (
       <div>
+         {group && (
+            <>
+               {/* group name */}
+
+               <Grid container alignItems='center' justify='center' direction='column'>
+
+                  <h1> {group.name} </h1>
+
+                  {member &&
+                        <>
+                           <Invite group={match.params.id} pushMembers={addMembers} />
+                           <LeaveGroup group={match.params.id}
+                           />
+                        </>}
+                     {!member &&
+                        <Button onClick={handleClick}> Join group </Button>}
+
+                  {/*list of the members of group, excluding the current user */}
+                  <Grid item>
+                  <Grid container direction='column' spacing={3}>
+                     {/* users name and profile picture */}
+                     <Grid item>
+                        <Grid container direction='row'>
+                           <Grid item>
+                              <Avatar src={fetchUser().avatar} style={{ height: '40px', width: '40px' }} />
+                           </Grid>
+                           <Grid item>
+                              {member && <MenuItem component={Link} to={'/profile'}> {fetchUser().name}  </MenuItem>}
+                           </Grid>
+                        </Grid>
+                     </Grid>
+
+                     {/* members names and profile picture */}
+                     {members.filter(mem => mem._id !== fetchUser()._id).map((mem, i) => {
+                        return <>
+                           <Grid item>
+                              <Grid container direction='row'>
+                                 <Grid item>
+                                    <Avatar src={mem.avatar} style={{ height: '40px', width: '40px' }} />
+                                 </Grid>
+                                 <Grid item>
+                                    <MenuItem component={Link} to={`/profile/${mem._id}`} key={mem._id}>{mem.name}</MenuItem>
+                                 </Grid>
+                              </Grid>
+                           </Grid>
+                        </>
+                     })}
+                     </Grid>
+                  </Grid>
+               </Grid>
+
+               
+
+                {/* open slots between all users */}
+
+                <Schedule users={members}></Schedule>
+
+               {/* use of invite component to invite members */}
+
+            </>
+         )}
          {member && <Grid align='center'>
             <Grid item xs={12} sm={6} md={3} spacing={1}>
                <form onSubmit={addPost}>
@@ -177,45 +245,13 @@ const Group = ({ match }) => {
                </form>
             </Grid>
          </Grid>}
-         {group && (
-            <>
-               {/* group name */}
-               <h1> {group.name} </h1>
+         <Grid Container align='center' spacing={1}>
 
-               {/*Link to the logged in user's profile */}
-
-               {member && <Link to={'/profile'}> {fetchUser().name}  </Link>}
-
-               {/*list of the members of group, excluding the current user */}
-               {members.filter(mem => mem._id !== fetchUser()._id).map((mem, i) => {
-                  return <li key={i}>
-                     <Link to={`/profile/${mem._id}`} key={mem._id}>{mem.name}</Link>
-            
-                  </li>
-               })}
-               {/* open slots between all users */}
-
-               <Schedule users={members}></Schedule>
-               
-               {/* use of invite component to invite members */}
-
-               {member && 
-               <>
-               <Invite group={match.params.id} pushMembers={addMembers} />
-               <LeaveGroup group={match.params.id} 
-               />
-               </>}
-               {!member && 
-               <Button onClick={handleClick}> Join group </Button>}
-               <Grid Container align='center' spacing={1}>
-
-                  {/*Array of posts, formated using Post.js*/}
-                  {member && (posts.map((post, i) => {
-                     return <PostForm postComment={pushComments} post={post} />
-                  }))}
-               </Grid>
-            </>
-         )}
+            {/*Array of posts, formated using Post.js*/}
+            {member && (posts.map((post, i) => {
+               return <PostForm postComment={pushComments} post={post} />
+            }))}
+         </Grid>
       </div>
    );
 }
