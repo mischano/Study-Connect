@@ -25,7 +25,7 @@ function fetchUser() {
 
 export default function Groups() {
 
-   const user = fetchUser();
+   const [user, setUser] = useState(fetchUser())
 
    const initialState = {
       name: '',
@@ -110,7 +110,7 @@ export default function Groups() {
           </Button>
             </DialogActions>
          </Dialog>
-         <GroupsList/>
+         <GroupsList user={user}/>
       </div>
    );
 }

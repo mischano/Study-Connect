@@ -4,19 +4,10 @@ import { Link } from 'react-router-dom';
 import { Grid, Card } from '@material-ui/core';
 import {groupCard} from '../Cards'
 
-function fetchUser() {
-   if (JSON.parse(localStorage.getItem('profile'))) {
-      let user = (JSON.parse(localStorage.getItem('profile'))).result;
-      return user;
-   } else {
-      return null;
-   }
-}
+export default function GroupsList( {user} ) {
 
-export default function GroupsList() {
-   const user = fetchUser();
    const [groups, setGroups] = useState([]);
-
+   
    //gets all of the users groups from the database, and sets the state array
    const getGroups = async () => {
       Promise.all(user.groups.map(async group => {

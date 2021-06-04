@@ -10,6 +10,8 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import LetterAvatars from './Profile/UserAvatar';
+import GroupsList from './Groups/GroupsList'
+import FriendsList from './Profile/FriendsList'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -125,7 +127,6 @@ const OtherUser = ({ match }) => {
                         })}
                     </Grid>
 
-
                     <Grid className="classes">
                         <h2 className="sectionHeader">Classes</h2>
                         <Grid container spacing={4} direction={'column'} justify="space-evenly">
@@ -136,6 +137,9 @@ const OtherUser = ({ match }) => {
                             ))}
                         </Grid>
                     </Grid>
+
+                    <GroupsList user={otherUser}> </GroupsList>
+                    <FriendsList user={otherUser}> </FriendsList>
                 </>
             )}
         </div>

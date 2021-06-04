@@ -25,9 +25,12 @@ import { deepOrange, deepPurple } from '@material-ui/core/colors';
 
 export function friendCard(props){
     // const classes = useStyles();
+
     const profileLink = '/profile/' + props._id;
+    const user = JSON.parse(localStorage.getItem('profile')).result;
+
     return(
-       <a className="cardLink" href={profileLink}>
+       <a className="cardLink" href={user._id === props._id ? '/profile/' : profileLink}>
           <div className="friendCard">
              <div className='profilePhoto'>
                 <Avatar src={props.avatar} style={{ height:'52px', width: '52px' }}/>

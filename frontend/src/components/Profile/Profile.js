@@ -116,11 +116,11 @@ const Profile = () => {
                         alignItems="stretch"
                         wrap="wrap">
                         <Grid item xs={12}><h2 className="sectionHeader">Your Groups</h2></Grid>
-                        <GroupsList></GroupsList>
+                        <GroupsList user={userInfo}></GroupsList>
                     </Grid>
                 </div>
                 <div className="friends">
-                    <FriendsList />
+                    <FriendsList user={userInfo} />
                 </div>
             </div>
         </div>
