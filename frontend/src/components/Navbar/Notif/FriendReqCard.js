@@ -60,8 +60,8 @@ const FriendReqCard = (props) => {
                action={
                   addDecline === null && <ThemeProvider theme={buttonTheme}>
                      <ButtonGroup aria-label="settings">
-                        <Button onClick={accept} variant="outlined" color="primary"><CheckIcon /></Button>
-                        <Button onClick={decline} variant="outlined" color="secondary"><ClearIcon /></Button>
+                        <Button onClick={accept} variant="contained" color="#E5623B"><CheckIcon /></Button>
+                        <Button onClick={decline} variant="outlined" color="#E5623B"><ClearIcon /></Button>
                      </ButtonGroup>
                   </ThemeProvider>
                }

@@ -48,8 +48,6 @@ export const NavMenu = styled.div`
     //nav menu will disappear and only hamburger will show
     @media screen and (max-width: 768px){ 
         display: none;
-        
-
     }
 `
 

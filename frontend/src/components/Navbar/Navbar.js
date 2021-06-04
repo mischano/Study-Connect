@@ -9,7 +9,7 @@ import Notif from './Notif/Notif';
 import decode from 'jwt-decode';
 import logo from '.././Assets/BLACK.png';
 import * as api from '../../api/index';
-import Sidebar from './Sidebar/Sidebar'; 
+import Sidebar from './Sidebar/Sidebar';
 import{ 
    Nav,
    NavLink,
@@ -20,6 +20,7 @@ import{
 
 
 const Navbar = () => {
+   const classes = useStyles;
    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
    const [autoCompleteVal, setAutoCompleteVal] = useState(null);
    const [users, setUsers] = useState([]);
@@ -77,22 +78,22 @@ const Navbar = () => {
       );
    }
 
+
    return (
       <>
          <Nav>
             <Sidebar />
             <NavLink to="/dashboard">
                <img id='logo' src={logo} alt='StudyConnect'></img>
-               {/*/*</NavLink><img src={require('./Assets/logo.svg')}*/}
             </NavLink>
             <NavMenu>
                <NavLink to="/dashboard">Dashboard</NavLink>
                <NavLink to="/groups">Groups</NavLink>
-               <Notif/>
                <NavLink to="/profile">
                   {user ? (user.result.name) : null}
                </NavLink>
                <SearchBar />
+               <Notif/>
                <Button onClick={logout}>Logout</Button>
             </NavMenu>
             <NavBtn>
