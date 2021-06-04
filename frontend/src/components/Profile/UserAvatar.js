@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
         display: 'center',
         '& > *': {
-            margin: theme.spacing(1),
+            margin: '1em auto',
         },
     },
     large: {

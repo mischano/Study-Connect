@@ -14,6 +14,7 @@ import { updateGroups } from '../../actions/auth';
 import { useDispatch } from 'react-redux';
 import { updateMembers } from '../../actions/group'
 import { getAvailableTimes } from '../ScheduleMatch';
+import { friendCard } from '../Cards';
 import * as api from '../../api/index';
 
 const Group = ({ match }) => {
@@ -188,6 +189,7 @@ const Group = ({ match }) => {
                {members.filter(mem => mem._id !== fetchUser()._id).map((mem, i) => {
                   return <li key={i}>
                      <Link to={`/profile/${mem._id}`} key={mem._id}>{mem.name}</Link>
+            
                   </li>
                })}
                {/* open slots between all users */}

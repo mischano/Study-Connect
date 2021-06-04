@@ -58,27 +58,16 @@ const Profile = () => {
         <div>
             <div style={bannerTheme}>
                 {clickEdit && (handleChange)}
-                <Grid container xs={10}>
-                    <h1 style={{ height: "40px", width: "100px", marginLeft: "60px", fontSize: "38px", color: "whitesmoke" }}>Profile</h1>
-                    <Grid container justify="flex-end" style={{ width: "146px", marginLeft: "200px" }}>
-                        <LetterAvatars props={userInfo} />
-                    </Grid>
-                    <Grid className='profileBanner' justify="center" style={{ height: "80px", width: "350px" }}>
-                        <Grid container
-                            direction="row" justify="flex-start" alignItems="center"
-                            style={{ height: "80px", width: "350px" }}>
-                            <Grid item style={{ width: "350px", textAlign: "start" }} >
-                                <br></br>
-                                <h2 style={{ fontSize: "32px", marginLeft: "14px" }}>{userInfo.name}</h2>
-                                <h4 style={{ fontSize: "16px", marginLeft: "14px" }}>{userInfo.gradDate}, {userInfo.major}</h4>
-                            </Grid>
-                        </Grid>
-                        <Grid container className='profileBanner' style={{ height: "90px", width: "670px" }}>
-                            <Grid container direction="column" jusitfy="center" alignItems="fle-start" style={{ height: "90px", width: "670px" }}>
-                                <h4 style={{ fontSize: "14px", marginLeft: "15px", marginTop: "10px", height: "90px" }}>{userInfo.bio}</h4>
-                            </Grid>
-                        </Grid>
-                    </Grid>
+                    
+                    
+                    <div className='profileBanner'>
+                    <LetterAvatars className="avi" props={userInfo}/>
+                            <div className="userInfo">
+                                <h2>{userInfo.name}</h2>
+                                <h4>{userInfo.gradDate}, {userInfo.major}</h4>
+                                <p className="bio">{userInfo.bio}</p>
+                            </div>
+                    </div>
                     <Grid style={{ width: "100px", height: "40px", marginTop: "30px" }}>
                         {/* <CustomEditButton style={{ height: "35px", width: "120px", marginTop: "10px" }}
                             onClick={
@@ -94,7 +83,6 @@ const Profile = () => {
                             </Button>
                         {clickEdit && (<EditProfile />)}
                     </Grid>
-                </Grid>
             </div>
             <div className="profileBody">
                 <div className="classes">
@@ -111,10 +99,9 @@ const Profile = () => {
                 <div className='groups'>
                     <h2 className="sectionHeader">Your Groups</h2>
                     <GroupsList></GroupsList>
-                    
                 </div>
                 <div className="friends">
-                    <FriendsList />
+                    <FriendsList/>
                 </div>
             </div>
         </div>
