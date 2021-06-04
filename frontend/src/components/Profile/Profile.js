@@ -12,8 +12,9 @@ import '../../App.css';
 
 const bannerTheme = {
     width: '100%',
+    // height: '100%',
     background: "linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://blog-www.pods.com/wp-content/uploads/2020/05/SF-Neighborhoods-Feature-photo-.jpg)",
-    backgroundSize: 'cover',
+    backgroundSize: '100% 100%',
     padding: '2em'
 }
 
@@ -80,18 +81,19 @@ const Profile = () => {
                         </Grid>
                     </Grid>
                     <Grid style={{ width: "100px", height: "40px", marginTop: "30px" }}>
-                        {/* <CustomEditButton style={{ height: "35px", width: "120px", marginTop: "10px" }}
+                        {/* <CustomEditButton startIcon={<EditIcon />} style={{ height: "35px", width: "140px", marginTop: "10px" }}
                             onClick={
                                 handleChange
                             }>
                             Edit Profile
                         </CustomEditButton> */}
-                        <Button variant="outlined"  endIcon={<EditIcon />} color="primary" style={{ color: "tomato", width: "160px", marginTop: "10px"}}
+                        <Button variant="contained" color="primary" startIcon={<EditIcon />} size="small" style={{ fontSize: "12px", width: "135px", height: "35px" }} onClick={handleChange}>Edit Profile</Button>
+                        {/* <Button variant="contained"  endIcon={<EditIcon />} color="primary" style={{ color: "tomato", width: "160px", marginTop: "10px"}}
                         onClick={
                             handleChange
                         }>
                             Edit Profile
-                            </Button>
+                            </Button> */}
                         {clickEdit && (<EditProfile />)}
                     </Grid>
                 </Grid>
