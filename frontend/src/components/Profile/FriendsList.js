@@ -2,20 +2,10 @@ import { Grid } from '@material-ui/core';
 import React, { useState } from 'react';
 import '../../App.css';
 import { getUser } from '../../actions/auth';
-import { Link } from 'react-router-dom';
 import { friendCard } from '../Cards'
 
-function fetchUser() {
-   if (JSON.parse(localStorage.getItem('profile'))) {
-      let user = (JSON.parse(localStorage.getItem('profile'))).result;
-      return user;
-   } else {
-      return null;
-   }
-}
+const FriendsList = ({ user }) => {
 
-const FriendsList = () => {
-   let user = fetchUser();
    const [users, setUsers] = useState([]);
 
    const getFriends = async () => {

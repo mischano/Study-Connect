@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../App.css';
 import { getUser, removeFriend } from '../actions/auth';
-import { Button, Grid, makeStyles } from '@material-ui/core';
+import { Button, Grid } from '@material-ui/core';
 import { classCard } from './Cards';
 import { sendFriendReq } from '../actions/friendreqs';
 import { getAvailableTimes } from './ScheduleMatch';
@@ -10,6 +10,9 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import LetterAvatars from './Profile/UserAvatar';
+import GroupsList from './Groups/GroupsList'
+import FriendsList from './Profile/FriendsList'
+import Schedule from './Schedule'
 
 // const useStyles = makeStyles((theme) => ({
 //     root: {
@@ -73,6 +76,7 @@ const OtherUser = ({ match }) => {
         dispatch(removeFriend(user._id, { data: otherUser._id }, history));
         api.removeFriend(otherUser._id, { data: user._id });
     }
+
     const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
     var weekDayIdx = 0;
 
@@ -94,27 +98,13 @@ const OtherUser = ({ match }) => {
                                     <Button variant="contained" color="primary" startIcon={<PersonAddIcon />} size="small" style={{ fontSize: "12px" }} onClick={sendReq}>Add Friend</Button> :
                                     <Button variant="outlined" color="secondary" startIcon={<PersonAddIcon />} size="small" style={{ fontSize: "12px" }} onClick={deleteFriend}>Remove Friend</Button>}
                             </Grid>
-
                     </div>
                     
                     <div className = "profileBody">
                     <div className="scheduleMatch">
-                    <h2 className="sectionHeader">Available Times to Meet</h2>
-                    <Grid container direction="row" align="flex-start" justify="flex-start" wrap="row" spacing={1}>
-                        {getAvailableTimes([fetchUser(), otherUser]).map(weekday => {
-                            return (
-                                <>
-                                    <Grid item xs={3} spacing={1}>
-                                        {weekDays[weekDayIdx++]}
-                                        {weekday.map(slot => {
-                                            return <Grid item>{slot[0] + " - " + slot[1]}</Grid>
-                                        })}
-                                    </Grid>
-                                </>
-                            )
-                        })}
-                    </Grid></div>
-
+                        <h2 className="sectionHeader">Available Times to Meet</h2>
+                        <Schedule users={[fetchUser(), otherUser]}></Schedule>
+                    </div>
 
                     <div className="classes">
                         <h2 className="sectionHeader">{otherUser.name}'s Classes</h2>
@@ -127,6 +117,14 @@ const OtherUser = ({ match }) => {
                         </Grid>
                     </div>
                     </div>
+                    <div className='groups'>
+                    <h2 className="sectionHeader">Groups</h2>
+                    <GroupsList user={otherUser}></GroupsList>
+                </div>
+                <div className="friends">
+                    <h2 className="sectionHeader">Friends</h2>
+                    <FriendsList user={otherUser}/>
+                </div>
                 </>
             )}
         </div>

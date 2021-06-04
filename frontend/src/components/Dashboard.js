@@ -1,10 +1,23 @@
 import { Grid } from '@material-ui/core';
-import React from 'react';
+import React, {useState } from 'react';
 import '../App.css';
 import GroupsList from './Groups/GroupsList.js'
 
-export default class Dashboard extends React.Component {
-   render() {
+
+function fetchUser() {
+   if (JSON.parse(localStorage.getItem('profile'))) {
+       let user = (JSON.parse(localStorage.getItem('profile'))).result
+       return user;
+   } else {
+       return null;
+   }
+}
+
+const Dashboard = () => {
+
+
+      const [user, setUser] = useState(fetchUser());
+
       return (
          <div>
             <div>
@@ -20,7 +33,7 @@ export default class Dashboard extends React.Component {
             </div>
             <div className="groups">
                <h2 className="sectionHeader">Your Groups</h2>
-               <GroupsList></GroupsList>
+               <GroupsList user={user}></GroupsList>
             </div>
 
             <div className="resources">
@@ -40,7 +53,9 @@ export default class Dashboard extends React.Component {
          </div>
       );
    }
-}
+
+
+export default Dashboard;
 
 function getStudyTip() {
    let tip1 = `Changing up where you study keeps things fresh, 

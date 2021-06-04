@@ -101,11 +101,11 @@ const Profile = () => {
                 </div>
                 <div className='groups'>
                     <h2 className="sectionHeader">Your Groups</h2>
-                    <GroupsList></GroupsList>
+                    <GroupsList user={userInfo}></GroupsList>
                 </div>
                 <div className="friends">
                 <h2 className="sectionHeader">Your Friends</h2>
-                    <FriendsList/>
+                    <FriendsList user={userInfo}/>
                 </div>
             </div>
         </div>
