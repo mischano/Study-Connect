@@ -12,6 +12,7 @@ import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import LetterAvatars from './Profile/UserAvatar';
 import GroupsList from './Groups/GroupsList'
 import FriendsList from './Profile/FriendsList'
+import Schedule from './Schedule'
 
 // const useStyles = makeStyles((theme) => ({
 //     root: {
@@ -100,20 +101,7 @@ const OtherUser = ({ match }) => {
                     </div>
                     
                     <div className = "profileBody">
-                    <Grid container direction="row" xs={12} align="center" justify="center">
-                        {getAvailableTimes([fetchUser(), otherUser]).map(weekday => {
-                            return (
-                                <>
-                                    <Grid item xs={1}>
-                                        {weekDays[weekDayIdx++]}
-                                        {weekday.map(slot => {
-                                            return <Grid item>{slot[0] + " - " + slot[1]}</Grid>
-                                        })}
-                                    </Grid>
-                                </>
-                            )
-                        })}
-                    </Grid>
+                    <Schedule users={[fetchUser(), otherUser]}></Schedule>
 
                     <div className="classes">
                         <h2 className="sectionHeader">{otherUser.name}'s Classes</h2>

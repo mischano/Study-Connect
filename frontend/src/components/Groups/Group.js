@@ -16,6 +16,7 @@ import { updateMembers } from '../../actions/group'
 import { getAvailableTimes } from '../ScheduleMatch';
 import { friendCard } from '../Cards';
 import * as api from '../../api/index';
+import Schedule from '../Schedule';
 
 const Group = ({ match }) => {
    const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
@@ -193,20 +194,9 @@ const Group = ({ match }) => {
                   </li>
                })}
                {/* open slots between all users */}
-               <Grid container direction="row" xs={12} align="center" justify="center">
-               {getAvailableTimes(members).map(weekday => {
-                  return (
-                     <>
-                     <Grid item xs={1}>
-                        {weekDays[weekDayIdx++]}
-                        {weekday.map(slot => {
-                           return <Grid item>{slot[0] + " - " + slot[1]}</Grid>
-                        })}
-                     </Grid>
-                     </>
-                  )
-               })}
-               </Grid>
+
+               <Schedule users={members}></Schedule>
+               
                {/* use of invite component to invite members */}
 
                {member && 
