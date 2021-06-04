@@ -100,7 +100,7 @@ export default makeStyles((theme) => ({
     },
 
     schedule: { 
-        alignItems: 'center', 
+        paddingLeft: theme.spacing(3),
         
 
     }

@@ -444,5 +444,10 @@
   grid-column: 2/3;
 }
 
+.GroupPageMatches{
+  margin: 0em 6em 0em 10em;
+  display: block;
+}
+
 }
 
