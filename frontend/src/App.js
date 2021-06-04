@@ -7,7 +7,6 @@ import Groups from './components/Groups/Groups';
 import Messages from './components/Messages';
 import Profile from './components/Profile/Profile';
 import Navbar from './components/Navbar/Navbar';
-import Sidebar from './components/Navbar/Sidebar/Sidebar';
 import OtherUser from './components/OtherUser';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Auth from "./components/Auth/Auth";
@@ -22,7 +21,6 @@ function App() {
             <Route path="/auth" exact component={Auth} />
             <div className="App">
                <Navbar />
-               <Sidebar />
                <Route path="/dashboard" exact component={Dashboard} />
                <Route path="/groups" exact component={Groups} />
                <Route path="/messages" exact component={Messages} />

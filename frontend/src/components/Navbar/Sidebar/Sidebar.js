@@ -25,7 +25,7 @@ function Sidebar() {
                 <ul className= 'nav-menu-items' onClick={showSidebar}>
                     <li className= 'navbar-toggle' >
                     <IconContext.Provider value={{color: '#E67350'}}>
-                        <Link to='#' className='menu-bars'>
+                        <Link to='#' className='menu-close'>
                             <AiIcons.AiOutlineClose />
                         </Link>
                     </IconContext.Provider>

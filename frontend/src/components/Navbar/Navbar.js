@@ -9,13 +9,15 @@ import Notif from './Notif/Notif';
 import decode from 'jwt-decode';
 import logo from '.././Assets/BLACK.png';
 import * as api from '../../api/index';
-import {
+import Sidebar from './Sidebar/Sidebar';
+import{ 
    Nav,
    NavLink,
    NavMenu,
    NavBtn,
    NavBtnLink
 } from './NavBarElements';
+
 
 const Navbar = () => {
    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
@@ -64,7 +66,7 @@ const Navbar = () => {
                      margin="dense"
                      variant="outlined"
                      onKeyDown={e => {
-                        if (e.key === "Enter") {
+                        if (e.key === "Enter" || e.type == 'mousedown') {
                            window.location.assign(`/profile/${autoCompleteVal._id}`);
                         }
                      }}
@@ -75,26 +77,27 @@ const Navbar = () => {
       );
    }
 
+
    return (
       <>
          <Nav>
+            <Sidebar />
             <NavLink to="/dashboard">
                <img id='logo' src={logo} alt='StudyConnect'></img>
-               {/*/*</NavLink><img src={require('./Assets/logo.svg')}*/}
             </NavLink>
             <NavMenu>
                <NavLink to="/dashboard">Dashboard</NavLink>
                <NavLink to="/groups">Groups</NavLink>
-               <Notif/>
                <NavLink to="/profile">
                   {user ? (user.result.name) : null}
                </NavLink>
                <SearchBar />
+               <Notif/>
+               <Button onClick={logout}>Logout</Button>
             </NavMenu>
             <NavBtn>
                {user ? (null) : <NavBtnLink to="/auth">Login</NavBtnLink>}
             </NavBtn>
-            <Button onClick={logout}>Logout</Button>
          </Nav>
       </>
    );

@@ -10,6 +10,8 @@ import {
 } from '@material-ui/core';
 import '../../../App.css';
 import FriendReqCard from './FriendReqCard';
+import * as FaIcons from "react-icons/fa";
+import { IconContext } from 'react-icons'
 
 import { getFriendReqs } from '../../../actions/friendreqs';
 import { getUser } from '../../../actions/auth';
@@ -54,9 +56,15 @@ const Notif = () => {
       }
    }, [open]);
 
+   
+
    return (
       <div>
-         <Button onClick={handleClickOpen}>Notifications</Button>
+         <IconContext.Provider value={{ color: '#006494', size: '20px' }}>
+            <div>
+               <Button onClick={handleClickOpen}><FaIcons.FaRegBell /></Button>
+            </div>
+         </IconContext.Provider>
          <Dialog
             open={open}
             onClose={handleClose}
@@ -75,22 +83,14 @@ const Notif = () => {
                      {reqs.map(req => {
                         getName(req.requester);
                         return <FriendReqCard key={req._id} 
-                                              id={req._id} 
-                                              name={friend}
-                                              requester={req.requester}
-                                              recipient={req.recipient}/>;
+                           id={req._id} 
+                           name={friend}
+                           requester={req.requester}
+                           recipient={req.recipient}/>;
                      })}
                   </Grid>
                </DialogContentText>
             </DialogContent>
-            <DialogActions>
-               <Button onClick={handleClose} color="primary">
-                  Cancel
-          </Button>
-               <Button onClick={handleClose} color="primary">
-                  Subscribe
-          </Button>
-            </DialogActions>
          </Dialog>
       </div>
    )

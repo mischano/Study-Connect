@@ -91,7 +91,7 @@ const OtherUser = ({ match }) => {
                             </div>
                             <Grid container>
                                 {!friends.includes(otherUser._id) ?
-                                    <Button variant="outlined" color="secondary" startIcon={<PersonAddIcon/>} size="small" style={{ fontSize: "12px" }} onClick={sendReq}>Add Friend</Button> :
+                                    <Button variant="contained" color="primary" startIcon={<PersonAddIcon />} size="small" style={{ fontSize: "12px" }} onClick={sendReq}>Add Friend</Button> :
                                     <Button variant="outlined" color="secondary" startIcon={<PersonAddIcon />} size="small" style={{ fontSize: "12px" }} onClick={deleteFriend}>Remove Friend</Button>}
                             </Grid>
 
