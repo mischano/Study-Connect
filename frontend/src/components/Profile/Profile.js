@@ -14,8 +14,9 @@ const bannerTheme = {
     width: '100%',
     // height: '100%',
     background: "linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://blog-www.pods.com/wp-content/uploads/2020/05/SF-Neighborhoods-Feature-photo-.jpg)",
-    backgroundSize: '100% 100%',
-    padding: '2em'
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    padding: '2em',
 }
 
 function fetchUser() {
@@ -92,7 +93,7 @@ const Profile = () => {
                         direction={'column'} justify="flex-start">
                         <Grid item xs={12}><h2 className="sectionHeader">Your Classes</h2></Grid>
                         {userInfo.classes.map(course => (
-                            <Grid item xs={12}>
+                            <Grid item xs={12} spacing={1}>
                                 {classCard(course)}
                             </Grid>
                         ))}
@@ -103,6 +104,7 @@ const Profile = () => {
                     <GroupsList></GroupsList>
                 </div>
                 <div className="friends">
+                <h2 className="sectionHeader">Your Friends</h2>
                     <FriendsList/>
                 </div>
             </div>

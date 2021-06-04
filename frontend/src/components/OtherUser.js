@@ -98,11 +98,13 @@ const OtherUser = ({ match }) => {
                     </div>
                     
                     <div className = "profileBody">
-                    <Grid container direction="row" xs={12} align="center" justify="center">
+                    <div className="scheduleMatch">
+                    <h2 className="sectionHeader">Available Times to Meet</h2>
+                    <Grid container direction="row" align="flex-start" justify="flex-start" wrap="row" spacing={1}>
                         {getAvailableTimes([fetchUser(), otherUser]).map(weekday => {
                             return (
                                 <>
-                                    <Grid item xs={1}>
+                                    <Grid item xs={3} spacing={1}>
                                         {weekDays[weekDayIdx++]}
                                         {weekday.map(slot => {
                                             return <Grid item>{slot[0] + " - " + slot[1]}</Grid>
@@ -111,7 +113,7 @@ const OtherUser = ({ match }) => {
                                 </>
                             )
                         })}
-                    </Grid>
+                    </Grid></div>
 
 
                     <div className="classes">
