@@ -20,7 +20,6 @@ import{
 
 
 const Navbar = () => {
-   const classes = useStyles;
    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
    const [autoCompleteVal, setAutoCompleteVal] = useState(null);
    const [users, setUsers] = useState([]);
