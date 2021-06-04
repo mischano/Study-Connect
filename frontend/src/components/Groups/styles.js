@@ -2,12 +2,17 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
     paper: {
-        marginTop: theme.spacing(6),
+        margin: theme.spacing(6,0),
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'left',
         padding: theme.spacing(2),
         fontFamily: 'Lato',
+        width: '100%',
+
+    },
+
+    commentField: { 
         width: '100%',
     },
 
@@ -23,8 +28,9 @@ export default makeStyles((theme) => ({
 
     form: {
         width: '100%', // Fix IE 11 issue.
-        marginTop: theme.spacing(3),
+        margin: theme.spacing(3,0),
         fontFamily: 'Lato',
+        
     },
 
     field: {
@@ -94,6 +100,8 @@ export default makeStyles((theme) => ({
     },
 
     schedule: { 
+        alignItems: 'center', 
+        
 
     }
 }));
