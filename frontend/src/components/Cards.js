@@ -70,3 +70,4 @@ export function friendCard(props){
       </a>
    )
 }
+

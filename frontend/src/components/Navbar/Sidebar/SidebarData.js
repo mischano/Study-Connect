@@ -18,5 +18,10 @@ export const SidebarData = [
         title: 'Profile',
         path: '/profile', 
         cName: 'nav-text'
+    },
+    { 
+        title: 'Logout',
+        path: '/',
+        cName: 'nav-text'
     }
 ]

@@ -32,15 +32,8 @@ const Dashboard = () => {
                </div>
             </div>
             <div className="groups">
-               <Grid container
-                  spacing={1}
-                  direction="row"
-                  justify="flex-start"
-                  alignItems="stretch"
-                  wrap="wrap">
-                  <Grid item xs={12}> <h2 className="sectionHeader">Your Groups</h2></Grid>
-                  <GroupsList user={ user }></GroupsList>
-               </Grid>
+               <h2 className="sectionHeader">Your Groups</h2>
+               <GroupsList user={user}></GroupsList>
             </div>
 
             <div className="resources">
@@ -50,10 +43,11 @@ const Dashboard = () => {
                   justify="flex-start"
                   alignItems="stretch"
                   wrap="wrap">
-                  <Grid item xs={12}> <h2 className="sectionHeader">Resources</h2></Grid>
-                  <Grid item xs={12} sm={4} spacing={1}>{resourceCard("https://success.calpoly.edu/", "Mustang Success", "Academic Services")} </Grid>
-                  <Grid item xs={12} sm={4} spacing={1}>{resourceCard("https://careerservices.calpoly.edu/", "Career Services", "Career Development")} </Grid>
-                  <Grid item xs={12} sm={4} spacing={1}>{resourceCard("https://basicneeds.calpoly.edu/calfresh", "CalFresh", "Health and Wellbeing")} </Grid>
+                  <Grid item xs={12}><h2 className="sectionHeader">Resources</h2></Grid>
+                  <Grid item xs={12} sm={4} spacing={1}>{resourceCard("https://success.calpoly.edu/", "Mustang Success Center", "Academic Services")}</Grid>
+                  <Grid item xs={12} sm={4} spacing={1}>{resourceCard("https://careerservices.calpoly.edu/", "Career Services", "Career Development")}</Grid>
+                  <Grid item xs={12} sm={4} spacing={1}>{resourceCard("https://basicneeds.calpoly.edu/calfresh", "CalFresh", "Health and Wellbeing")}</Grid>
+                  <Grid item xs={12} sm={4} spacing={1}>{resourceCard("https://chw.calpoly.edu/health/health-services", "Cal Poly Health Services", "Health and Wellbeing")}</Grid>
                </Grid>
             </div>
          </div>
@@ -95,22 +89,6 @@ function getGreeting() {
          return ("Good evening!");
       }
    }
-}
-
-/* update when database can be accessed with group schema*/
-function groupCard(props) {
-   return (
-      // <a className="cardLink" href="">
-      <div className="card">
-         <div className="cardTitle">
-            <h2>CHEM126 Lab Group</h2>
-         </div>
-         <div className="subTitle">
-            <p>32 members</p>
-         </div>
-      </div>
-      // </a>
-   )
 }
 
 /* update when database can be accessed with resources*/

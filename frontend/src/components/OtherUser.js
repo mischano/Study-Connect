@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../App.css';
 import { getUser, removeFriend } from '../actions/auth';
-import { Button, Grid, makeStyles } from '@material-ui/core';
+import { Button, Grid } from '@material-ui/core';
 import { classCard } from './Cards';
 import { sendFriendReq } from '../actions/friendreqs';
 import { getAvailableTimes } from './ScheduleMatch';
@@ -13,29 +13,29 @@ import LetterAvatars from './Profile/UserAvatar';
 import GroupsList from './Groups/GroupsList'
 import FriendsList from './Profile/FriendsList'
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        minWidth: 275,
-        padding: 5,
-        backgroundColor: "white",
-        border: "1px solid blue",
-        width: "33%",
-        borderRadius: 20,
-        marginTop: theme.spacing(3),
-        marginLeft: theme.spacing(10)
-    },
-    title: {
-        fontSize: 25,
-        color: 'blue',
-        fontWeight: "fontWeightBold"
-    },
-    pos: {
-        marginBottom: 25,
-        fontSize: 20,
-        color: 'blue',
-        fontWeight: "fontWeightBold"
-    },
-}));
+// const useStyles = makeStyles((theme) => ({
+//     root: {
+//         /* minWidth: 275,
+//         padding: 5,
+//         backgroundColor: "white",
+//         border: "1px solid blue",
+//          width: "33%",
+//         borderRadius: 20,
+//         marginTop: theme.spacing(3),
+//         marginLeft: theme.spacing(10) */
+//     },
+//     title: {
+//         fontSize: 25,
+//         color: 'blue',
+//         fontWeight: "fontWeightBold"
+//     },
+//     pos: {
+//         marginBottom: 25,
+//         fontSize: 20,
+//         color: 'blue',
+//         fontWeight: "fontWeightBold"
+//     },
+// }));
 
 const bannerTheme = {
     width: '100%',
@@ -75,6 +75,7 @@ const OtherUser = ({ match }) => {
         dispatch(removeFriend(user._id, { data: otherUser._id }, history));
         api.removeFriend(otherUser._id, { data: user._id });
     }
+
     const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
     var weekDayIdx = 0;
 
@@ -83,35 +84,22 @@ const OtherUser = ({ match }) => {
             {otherUser && (
                 <>
                     <div style={bannerTheme}>
-                        <Grid container xs={10}>
-                            <h1 style={{ height: "40px", width: "100px", marginLeft: "60px", fontSize: "38px", color: "whitesmoke" }}>Profile</h1>
-                            <Grid container justify="flex-end" style={{ width: "146px", marginLeft: "200px" }}>
-                                <LetterAvatars props={otherUser} />
-                            </Grid>
-                            <Grid className='profileBanner' justify="center" style={{ height: "80px", width: "350px" }}>
-                                <Grid container
-                                    direction="row" justify="flex-start" alignItems="center"
-                                    style={{ height: "80px", width: "350px" }}>
-                                    <Grid item style={{ width: "350px", textAlign: "start" }} >
-                                        <br></br>
-                                        <h2 style={{ fontSize: "32px", marginLeft: "14px" }}>{otherUser.name}</h2>
-                                        <h4 style={{ fontSize: "16px", marginLeft: "16px" }}>{otherUser.gradDate}, {otherUser.major}</h4>
-                                    </Grid>
-                                </Grid>
-                                <Grid container className='profileBanner' style={{ height: "90px", width: "670px" }}>
-                                    <Grid container direction="column" jusitfy="center" alignItems="fle-start" style={{ height: "90px", width: "670px" }}>
-                                        <h4 style={{ fontSize: "14px", marginLeft: "15px", marginTop: "10px", height: "90px" }}>{otherUser.bio}</h4>
-                                    </Grid>
-                                </Grid>
-                            </Grid>
-                            <Grid container style={{height: "40px", width: "154px", marginTop: "30px" }}>
+                            <div className='profileBanner'>
+                                <LetterAvatars className="avi" props={otherUser}/>
+                                <div className="userInfo">
+                                    <h2>{otherUser.name}</h2>
+                                    <h4>{otherUser.gradDate}, {otherUser.major}</h4>
+                                    <p className='bio'>{otherUser.bio}</p>
+                                </div>
+                            </div>
+                            <Grid container>
                                 {!friends.includes(otherUser._id) ?
-                                    <Button variant="outlined" color="secondary" startIcon={<PersonAddIcon />} size="small" style={{ fontSize: "12px" }} onClick={sendReq}>Add Friend!</Button> :
-                                    <Button variant="outlined" color="secondary" startIcon={<PersonAddIcon />} size="small" style={{ fontSize: "12px" }} onClick={deleteFriend}>Remove Friend!</Button>}
+                                    <Button variant="contained" color="primary" startIcon={<PersonAddIcon />} size="small" style={{ fontSize: "12px" }} onClick={sendReq}>Add Friend</Button> :
+                                    <Button variant="outlined" color="secondary" startIcon={<PersonAddIcon />} size="small" style={{ fontSize: "12px" }} onClick={deleteFriend}>Remove Friend</Button>}
                             </Grid>
-                        </Grid>
                     </div>
-
+                    
+                    <div className = "profileBody">
                     <Grid container direction="row" xs={12} align="center" justify="center">
                         {getAvailableTimes([fetchUser(), otherUser]).map(weekday => {
                             return (
@@ -127,19 +115,25 @@ const OtherUser = ({ match }) => {
                         })}
                     </Grid>
 
-                    <Grid className="classes">
-                        <h2 className="sectionHeader">Classes</h2>
-                        <Grid container spacing={4} direction={'column'} justify="space-evenly">
+                    <div className="classes">
+                        <h2 className="sectionHeader">{otherUser.name}'s Classes</h2>
+                        <Grid container spacing={1} direction={'column'} justify="flex-start">
                             {otherUser.classes.map(course => (
                                 <Grid item xs={12}>
                                     {classCard(course)}
                                 </Grid>
                             ))}
                         </Grid>
-                    </Grid>
-
-                    <GroupsList user={otherUser}> </GroupsList>
-                    <FriendsList user={otherUser}> </FriendsList>
+                    </div>
+                    </div>
+                    <div className='groups'>
+                    <h2 className="sectionHeader">Groups</h2>
+                    <GroupsList user={otherUser}></GroupsList>
+                </div>
+                <div className="friends">
+                    <h2 className="sectionHeader">Friends</h2>
+                    <FriendsList user={otherUser}/>
+                </div>
                 </>
             )}
         </div>
