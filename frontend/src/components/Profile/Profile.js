@@ -71,19 +71,7 @@ const Profile = () => {
                             </div>
                     </div>
                     <Grid style={{ width: "100px", height: "40px", marginTop: "30px" }}>
-                        {/* <CustomEditButton startIcon={<EditIcon />} style={{ height: "35px", width: "140px", marginTop: "10px" }}
-                            onClick={
-                                handleChange
-                            }>
-                            Edit Profile
-                        </CustomEditButton> */}
                         <Button variant="contained" color="primary" startIcon={<EditIcon />} size="small" style={{ fontSize: "12px", width: "135px", height: "35px" }} onClick={handleChange}>Edit Profile</Button>
-                        {/* <Button variant="contained"  endIcon={<EditIcon />} color="primary" style={{ color: "tomato", width: "160px", marginTop: "10px"}}
-                        onClick={
-                            handleChange
-                        }>
-                            Edit Profile
-                            </Button> */}
                         {clickEdit && (<EditProfile />)}
                     </Grid>
             </div>

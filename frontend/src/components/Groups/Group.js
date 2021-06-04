@@ -66,6 +66,7 @@ const Group = ({ match }) => {
    //const member, or not a member
    const [member, setMember] = useState(false);
 
+
    // fetches the group from the database
    const fetchGroup = () => {
       getGroup(match.params.id).then(res => setGroup(res));
@@ -161,24 +162,23 @@ const Group = ({ match }) => {
       <div>
          {group && (
             <>
+            <div style={bannerTheme}>
                {/* group name */}
 
-               <Grid container alignItems='center' justify='center' direction='column'>
+               <Grid container alignItems='center' justify='center' direction='row'>
 
-                  <h1> {group.name} </h1>
-
-                  {member &&
-                        <>
-                           <Invite group={match.params.id} pushMembers={addMembers} />
-                           <LeaveGroup group={match.params.id}
-                           />
-                        </>}
-                     {!member &&
-                        <Button onClick={handleClick}> Join group </Button>}
-
-                  {/*list of the members of group, excluding the current user */}
-                  <Grid item>
-                  <Grid container direction='column' spacing={3}>
+                     <h1 style={{color: "white"}}> {group.name} </h1>
+                     {member &&
+                           <>
+                              <Invite group={match.params.id} pushMembers={addMembers} />
+                              <LeaveGroup group={match.params.id}/>
+                           </>}
+                        {!member &&
+                           <Button onClick={handleClick}> Join group </Button>}
+                        
+                  {/*current user*/}
+                  <Grid item xs={12}>
+                  <Grid container alignItems='center' justify='center' direction='row' spacing={3}>
                      {/* users name and profile picture */}
                      <Grid item>
                         <Grid container direction='row'>
@@ -186,7 +186,7 @@ const Group = ({ match }) => {
                               <Avatar src={fetchUser().avatar} style={{ height: '40px', width: '40px' }} />
                            </Grid>
                            <Grid item>
-                              {member && <MenuItem component={Link} to={'/profile'}> {fetchUser().name}  </MenuItem>}
+                              {member && <MenuItem style={{color: "white"}} component={Link} to={'/profile'}> {fetchUser().name}  </MenuItem>}
                            </Grid>
                         </Grid>
                      </Grid>
@@ -200,7 +200,7 @@ const Group = ({ match }) => {
                                     <Avatar src={mem.avatar} style={{ height: '40px', width: '40px' }} />
                                  </Grid>
                                  <Grid item>
-                                    <MenuItem component={Link} to={`/profile/${mem._id}`} key={mem._id}>{mem.name}</MenuItem>
+                                    <MenuItem style={{color: "white"}} component={Link} to={`/profile/${mem._id}`} key={mem._id}>{mem.name}</MenuItem>
                                  </Grid>
                               </Grid>
                            </Grid>
@@ -209,22 +209,22 @@ const Group = ({ match }) => {
                      </Grid>
                   </Grid>
                </Grid>
+               </div>
 
                
-
                 {/* open slots between all users */}
 
-                <Schedule users={members}></Schedule>
+                <Schedule classesName={classes.schedule} users={members}></Schedule>
 
                {/* use of invite component to invite members */}
 
             </>
          )}
          {member && <Grid align='center'>
-            <Grid item xs={12} sm={6} md={3} spacing={1}>
+            <Grid item xs={10} sm={8} spacing={1}>
                <form onSubmit={addPost}>
                   <Paper elevation={3} className={classes.paper}>
-                     <Grid align='center'>
+                     <Grid container spacing={2} justify ='center'>
                         <Grid item xs={8}>
 
                            {/* input for the title of the post */}
@@ -234,8 +234,9 @@ const Group = ({ match }) => {
                         <Grid item xs={8}>
 
                            {/* input for the body of the post */}
-                           <TextField required name='message' onChange={handle} variant="outlined" label='body'>
-                           </TextField>
+
+                              <TextField required name='message' className={classes.field} onChange={handle} variant="outlined" label='body'>
+                              </TextField>
                         </Grid>
                         <Grid item xs={8}>
                            <Button className={classes.submit} type="submit"> Add Post </Button>

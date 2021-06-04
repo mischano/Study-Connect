@@ -48,12 +48,12 @@ const PostForm = ({ post, postComment }) => {
                         {/* time when the post was created */}
                         {new Date(post.created_at).toLocaleString()}
                         </Grid>
-                        <Grid item xs={6} >
+                        <Grid item xs={8} >
 
                         {/* title of the post */}
                             {post.title}
                             </Grid>
-                        <Grid item xs={6} >
+                        <Grid item xs={8} >
 
                         {/* message of the post */}
                             {post.message}
@@ -64,7 +64,7 @@ const PostForm = ({ post, postComment }) => {
                             return <div> {new Date(comment.created_at).toLocaleString() + ' ' + comment.creator + ': ' + comment.message} </div>
                         })}
 
-                        <Grid item xs={6} >
+                        <Grid item xs={8} >
                             <form onSubmit={submit}>
                             <TextField
                                 variant='outlined' 

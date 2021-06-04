@@ -9,10 +9,12 @@ import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { leaveGroup } from '../../actions/auth';
 import { removeMember } from '../../actions/group'
+import useStyles from './styles';
 
 export default function LeaveGroup( {group} ) {
   const [open, setOpen] = React.useState(false);
 
+  const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -45,7 +47,7 @@ export default function LeaveGroup( {group} ) {
 
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+      <Button className={classes.leave} variant="outlined" color="white" onClick={handleClickOpen}>
         Leave
       </Button>
       <Dialog
