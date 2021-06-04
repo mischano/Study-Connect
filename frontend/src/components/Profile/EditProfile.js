@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { editProfile } from '../../actions/auth';
 import { useDispatch } from 'react-redux';
-import UserAvatar from './UserAvatar';
+import LetterAvatars from './UserAvatar';
+// import UserAvatar from './UserAvatar';
 import { useStyles, CustomEditButton, InputTextField } from './Styles';
 import { Save, Cancel } from '@material-ui/icons';
 import {
@@ -59,7 +60,7 @@ const EditProfile = () => {
                     <IconButton
                         component="span"
                         onClick={handleClick} >
-                        <UserAvatar />
+                        <LetterAvatars props={formData}/>
                     </IconButton>
                 </label>
             </div>
