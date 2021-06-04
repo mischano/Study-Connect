@@ -213,8 +213,10 @@ const Group = ({ match }) => {
 
                
                 {/* open slots between all users */}
-
-                <Schedule classesName={classes.schedule} users={members}></Schedule>
+                <div className="scheduleMatch">
+                        <h2 className="sectionHeader">Available Times to Meet</h2>
+                <div className="GroupPageMatches"><Schedule users={members}></Schedule></div>
+                </div>
 
                {/* use of invite component to invite members */}
 
@@ -227,15 +229,9 @@ const Group = ({ match }) => {
                      <Grid container spacing={2} justify ='center'>
                         <Grid item xs={8}>
 
-                           {/* input for the title of the post */}
-                           <TextField required name='title' className={classes.field} onChange={handle} variant="outlined" label='title'>
-                           </TextField>
-                        </Grid>
-                        <Grid item xs={8}>
-
                            {/* input for the body of the post */}
 
-                              <TextField required name='message' className={classes.field} onChange={handle} variant="outlined" label='body'>
+                              <TextField required name='message' className={classes.field} onChange={handle} variant="outlined" label='Write a post...'>
                               </TextField>
                         </Grid>
                         <Grid item xs={8}>
