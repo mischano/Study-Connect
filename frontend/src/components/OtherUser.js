@@ -103,7 +103,7 @@ const OtherUser = ({ match }) => {
                     <div className = "profileBody">
                     <div className="scheduleMatch">
                         <h2 className="sectionHeader">Available Times to Meet</h2>
-                        <Schedule users={[fetchUser(), otherUser]}></Schedule>
+                        <div className="matches"><Schedule users={[fetchUser(), otherUser]}></Schedule></div>
                     </div>
 
                     <div className="classes">
@@ -117,7 +117,7 @@ const OtherUser = ({ match }) => {
                         </Grid>
                     </div>
                     </div>
-                    <div className='groups'>
+                <div className='groups'>
                     <h2 className="sectionHeader">Groups</h2>
                     <GroupsList user={otherUser}></GroupsList>
                 </div>
