@@ -1,0 +1,35 @@
+{
+  "name": "study_connect",
+  "version": "1.0.0",
+  "description": "Lucas Radovan\r Mansur Ischanov\r Raphael Pham\r Keith Vega\r Caroline Padilla",
+  "main": "index.js",
+  "dependencies": {
+    "app": "^0.1.0",
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "create-react": "^0.0.0",
+    "express": "^4.17.1",
+    "moment": "^2.29.1",
+    "mongodb": "^3.6.6",
+    "mongoose": "^5.12.5",
+    "nodemon": "^2.0.7",
+    "path": "^0.12.7",
+    "react-icons": "^4.2.0",
+    "redux-devtools-extension": "^2.13.9",
+    "socket.io": "^4.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"No tests specified\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Raphael-Pham/study_connect.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Raphael-Pham/study_connect/issues"
+  },
+  "homepage": "https://github.com/Raphael-Pham/study_connect#readme"
+}

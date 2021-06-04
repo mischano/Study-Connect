@@ -1,9 +1,12 @@
-const mongoose = require("mongoose");
-const Schema = require("mongoose");
+import mongoose from 'mongoose';
 
 const groupSchema = new mongoose.Schema(
-    {
-    participants: [{ type: Schema.Types.ObjectId, ref: 'Profile'}]
-});
+   {
+      name: { type: String },
+      id: { type: String },
+      posts: [{ type: String }],
+      members: [{ type: String }]
+   }
+);
 
-export default mongoose.model("Profile", groupSchema);
+export default mongoose.model("Group", groupSchema);

@@ -1,19 +1,19 @@
-import styled from 'styled-components'
-import { NavLink as Link } from 'react-router-dom'
-import {FaBars} from 'react-icons/fa'
+import styled from 'styled-components';
+import { NavLink as Link } from 'react-router-dom';
 
+//entire nav component
 export const Nav = styled.nav`
     background: #fff; 
     height: 80px; 
     display: flex; 
-    // justify-content: space-between; 
     padding: 0.5rem calc((100vw - 1000px) / 2);
-    z-index: 999; 
+    z-index: 999; //put the navbar above other content
 
     // left side nav 
     justify-content: flex-start;
 
 `
+//Navigation tabs that link to other routes
 export const NavLink = styled(Link)`
     color: #465963; 
     display: flex; 
@@ -36,26 +36,10 @@ export const NavLink = styled(Link)`
     }
 `
 
-export const Bars = styled(FaBars)`
-    display: none; 
-    color: #041923; 
-
-    // hamburger will only show at this width
-    @media screen and (max-width: 760px) { 
-        display: block; 
-        position: absolute; 
-        top: 0; 
-        right: 0; 
-        transform: translate(-100%, 75%); 
-        font-size: 1.8rem; 
-        cursor: pointer; 
-    }
-`  
-
+//Items in menu 
 export const NavMenu = styled.div`
     display: flex; 
     align-items: center; 
-    // margin-right: -24px; 
 
     // left-side nav
     width: 100vw; 
@@ -64,11 +48,11 @@ export const NavMenu = styled.div`
     //nav menu will disappear and only hamburger will show
     @media screen and (max-width: 768px){ 
         display: none;
-
     }
 `
 
-export const NavBtn= styled.nav`
+//Login Button styling
+export const NavBtn = styled.nav`
     display: flex; 
     align-items: center;
     margin-right: 24px; 
@@ -82,7 +66,7 @@ export const NavBtn= styled.nav`
         display: none;
     }
 `
-
+//Login text link
 export const NavBtnLink = styled(Link)`
     border-radius: 4px; 
     background: #E5623B; 
